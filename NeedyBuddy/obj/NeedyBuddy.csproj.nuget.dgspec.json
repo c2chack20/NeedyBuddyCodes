@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\578031\\Desktop\\Call For Code\\Code\\NeedyBuddy\\NeedyBuddy\\NeedyBuddy.csproj": {}
+    "E:\\Projects\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\578031\\Desktop\\Call For Code\\Code\\NeedyBuddy\\NeedyBuddy\\NeedyBuddy.csproj": {
+    "E:\\Projects\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\578031\\Desktop\\Call For Code\\Code\\NeedyBuddy\\NeedyBuddy\\NeedyBuddy.csproj",
+        "projectUniqueName": "E:\\Projects\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
         "projectName": "NeedyBuddy",
-        "projectPath": "C:\\Users\\578031\\Desktop\\Call For Code\\Code\\NeedyBuddy\\NeedyBuddy\\NeedyBuddy.csproj",
-        "packagesPath": "C:\\Users\\578031\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\578031\\Desktop\\Call For Code\\Code\\NeedyBuddy\\NeedyBuddy\\obj\\",
+        "projectPath": "E:\\Projects\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "E:\\Projects\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\578031\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +57,15 @@
               "target": "Package",
               "version": "[3.1.1, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.1, )"
             }
@@ -80,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

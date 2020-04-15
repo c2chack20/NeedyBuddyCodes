@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using NeedyBuddy.Data.Model;
 
 namespace NeedyBuddy.Data
 {
@@ -12,5 +13,6 @@ namespace NeedyBuddy.Data
             : base(options)
         {
         }
+        public DbSet<Post> Post { get; set; }
     }
 }
