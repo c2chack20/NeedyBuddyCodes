@@ -12,6 +12,7 @@ namespace NeedyBuddy.Controllers
 {
     public class PostsController : Controller
     {
+        //dependency injection
         private readonly ApplicationDbContext _context;
         private readonly IRepository _repository;
         public PostsController(ApplicationDbContext context, IRepository repository)
