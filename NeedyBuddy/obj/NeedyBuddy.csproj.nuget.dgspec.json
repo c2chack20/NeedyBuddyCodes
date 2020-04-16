@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Projects\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {}
+    "E:\\Projects\\CFC2020\\NeedyBuddy\\NeedyBuddy.csproj": {}
   },
   "projects": {
-    "E:\\Projects\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {
+    "E:\\Projects\\CFC2020\\NeedyBuddy\\NeedyBuddy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Projects\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
+        "projectUniqueName": "E:\\Projects\\CFC2020\\NeedyBuddy\\NeedyBuddy.csproj",
         "projectName": "NeedyBuddy",
-        "projectPath": "E:\\Projects\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
+        "projectPath": "E:\\Projects\\CFC2020\\NeedyBuddy\\NeedyBuddy.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "E:\\Projects\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\obj\\",
+        "outputPath": "E:\\Projects\\CFC2020\\NeedyBuddy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
