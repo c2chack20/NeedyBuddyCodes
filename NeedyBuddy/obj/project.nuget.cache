@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F4jSiqxr/FCDcAEIEEaFxkhJ2JR4vexCM7UMU/SZQcvcYrD3I5lgxMJwPy0wF2r5IAXeslFWelt3xf5n2hbdMQ==",
+  "dgSpecHash": "g6tVlKjmhU4tzw70lhGCke7gFrbQTJCGd86HoZjUPKnoOgJ3yfc2/mI37CFQXnihJiggtHlEdLL+4wgbBUaPpQ==",
   "success": true,
-  "projectFilePath": "E:\\Projects\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
+  "projectFilePath": "E:\\Projects\\CFC2020\\NeedyBuddy\\NeedyBuddy.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.1\\microsoft.aspnetcore.cryptography.internal.3.1.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.1\\microsoft.aspnetcore.cryptography.keyderivation.3.1.1.nupkg.sha512",
