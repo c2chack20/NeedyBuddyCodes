@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {}
+    "D:\\Local Git\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {
+    "D:\\Local Git\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
+        "projectUniqueName": "D:\\Local Git\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
         "projectName": "NeedyBuddy",
-        "projectPath": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
-        "packagesPath": "C:\\Users\\578031\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\obj\\",
+        "projectPath": "D:\\Local Git\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
+        "packagesPath": "C:\\Users\\Bhagya\\.nuget\\packages\\",
+        "outputPath": "D:\\Local Git\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\578031\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bhagya\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -71,7 +68,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.0-preview1-19509-03, )"
+              "version": "[3.1.1, )"
             }
           },
           "imports": [
@@ -92,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
