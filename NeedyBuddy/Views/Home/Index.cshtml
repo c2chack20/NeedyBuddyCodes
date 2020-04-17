@@ -11,12 +11,12 @@
         document.getElementById(preViousValue.trim()).checked = false;
         var selectedText = listbox.options[listbox.selectedIndex].innerHTML;
         var selectedValue = listbox.value;
-        alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+        //alert("Selected Text: " + selectedText + " Value: " + selectedValue);
         document.getElementById(selectedText.trim()).checked = true;
         preViousValue = selectedText.trim();
     }
     function getValue(value) {
-        alert(value);
+        //alert(value);
         listbox.selectedIndex = value - 1;
     }
 
