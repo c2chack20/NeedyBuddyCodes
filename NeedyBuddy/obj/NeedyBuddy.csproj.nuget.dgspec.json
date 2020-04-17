@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Projects\\CFC2020\\NeedyBuddy\\NeedyBuddy.csproj": {}
+    "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {}
   },
   "projects": {
-    "E:\\Projects\\CFC2020\\NeedyBuddy\\NeedyBuddy.csproj": {
+    "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Projects\\CFC2020\\NeedyBuddy\\NeedyBuddy.csproj",
+        "projectUniqueName": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
         "projectName": "NeedyBuddy",
-        "projectPath": "E:\\Projects\\CFC2020\\NeedyBuddy\\NeedyBuddy.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "E:\\Projects\\CFC2020\\NeedyBuddy\\obj\\",
+        "projectPath": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
+        "packagesPath": "C:\\Users\\578031\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\578031\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -52,6 +52,10 @@
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[3.1.3, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -88,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
