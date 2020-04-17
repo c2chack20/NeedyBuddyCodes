@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {}
+    "C:\\Users\\Mann\\Documents\\TeamGIt\\NeedyBuddy\\NeedyBuddy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {
+    "C:\\Users\\Mann\\Documents\\TeamGIt\\NeedyBuddy\\NeedyBuddy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
+        "projectUniqueName": "C:\\Users\\Mann\\Documents\\TeamGIt\\NeedyBuddy\\NeedyBuddy.csproj",
         "projectName": "NeedyBuddy",
-        "projectPath": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
-        "packagesPath": "C:\\Users\\578031\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\obj\\",
+        "projectPath": "C:\\Users\\Mann\\Documents\\TeamGIt\\NeedyBuddy\\NeedyBuddy.csproj",
+        "packagesPath": "C:\\Users\\Mann\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mann\\Documents\\TeamGIt\\NeedyBuddy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\578031\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mann\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
