@@ -36,7 +36,7 @@
                     <select id="ServicesDropdown" name="ServicesDropdown">
                         @foreach (var service in ViewBag.servicesList)
                         {
-                            <option value="@service.ServiceId">@service.ServiceName</option>
+                            <option value="@service.ServiceCategoryId">@service.ServiceName</option>
                         }
                     </select>
                     <button class="site-btn" asp-action="UserServices" asp-controller="UserServices">Search</button>
