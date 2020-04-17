@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\578031\\Desktop\\Call For Code\\Code\\NeedyBuddy\\NeedyBuddy\\NeedyBuddy.csproj": {}
+    "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\578031\\Desktop\\Call For Code\\Code\\NeedyBuddy\\NeedyBuddy\\NeedyBuddy.csproj": {
+    "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\578031\\Desktop\\Call For Code\\Code\\NeedyBuddy\\NeedyBuddy\\NeedyBuddy.csproj",
+        "projectUniqueName": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
         "projectName": "NeedyBuddy",
-        "projectPath": "C:\\Users\\578031\\Desktop\\Call For Code\\Code\\NeedyBuddy\\NeedyBuddy\\NeedyBuddy.csproj",
+        "projectPath": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
         "packagesPath": "C:\\Users\\578031\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\578031\\Desktop\\Call For Code\\Code\\NeedyBuddy\\NeedyBuddy\\obj\\",
+        "outputPath": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -60,6 +60,14 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "Microsoft.Extensions.Logging.Debug": {
+              "target": "Package",
+              "version": "[3.1.0-preview1.19506.1, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.0-preview1-19509-03, )"
             }
           },
           "imports": [
