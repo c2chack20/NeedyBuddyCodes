@@ -1239,7 +1239,6 @@ C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\bin\Debug\netcoreapp3.1\runtimes\win-
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.csprojAssemblyReference.cache
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.csproj.CoreCompileInputs.cache
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.MvcApplicationPartsAssemblyInfo.cache
@@ -1279,3 +1278,4 @@ C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.cs
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\staticwebassets\NeedyBuddy.StaticWebAssets.Manifest.cache
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\staticwebassets\NeedyBuddy.StaticWebAssets.xml
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.genruntimeconfig.cache
+C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.csprojAssemblyReference.cache

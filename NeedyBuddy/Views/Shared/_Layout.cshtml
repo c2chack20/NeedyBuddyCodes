@@ -6,11 +6,12 @@
     <title>@ViewData["Title"] - NeedyBuddy</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/slicknav.min.css" />
 </head>
 <body class="container" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg');">
 
     <header class="header-section">
-        <a class="site-logo h2 text-danger" asp-controller="Home" asp-action="Index">NeedyBuddy</a>
+        <a class="site-logo h2 text-danger active" asp-controller="Home" asp-action="Index">NeedyBuddy</a>
 
         <nav class="header-nav">
             <ul class="main-menu">
@@ -36,10 +37,6 @@
             </div>
         </nav>
     </header>
-
-
-
-
     <div>
         <main role="main" class="pb-3" style="padding-top: 5rem !important">
             @RenderBody()
@@ -110,8 +107,9 @@
         </div>
     </footer>
     <!-- Footer Section end -->
-
+    <!--====== Javascripts & Jquery ======-->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/jquery.slicknav.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script>

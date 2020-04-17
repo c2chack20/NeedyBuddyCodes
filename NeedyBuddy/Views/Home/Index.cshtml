@@ -4,10 +4,16 @@
 }
 
     <script type="text/javascript">
-     
-       var preViousValue = "@Model.Take(5).FirstOrDefault().ServiceCategoryId";
-    
-    function GetSelectedTextValue(listbox) {
+
+        var count = '@Model.Count()';
+        var preViousValue;
+        if (count >0) {
+             preViousValue = "@Model.Take(3).FirstOrDefault().ServiceCategoryId";
+        }
+
+        
+        function GetSelectedTextValue(listbox) {
+
         document.getElementById(preViousValue.trim()).checked = false;
         var selectedText = listbox.options[listbox.selectedIndex].innerHTML;
         var selectedValue = listbox.value;
@@ -72,9 +78,9 @@
 <section class="stories-section spad">
     <div class="container">
         <div class="row ">
-            <div class="col-lg-5 order-lg-2">
+            @*<div class="col-lg-5 order-lg-2">
                 <img class="w-100" src="~/img/about/3.jpg" alt="">
-            </div>
+            </div>*@
             <div class="col-lg-7 order-lg-1">
                 <div class="about-text">
                     <h2><u>Success Stories</u></h2>
