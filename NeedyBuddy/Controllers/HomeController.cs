@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NeedyBuddy.Data;
+using NeedyBuddy.Data.Model;
 using NeedyBuddy.Models;
 
 namespace NeedyBuddy.Controllers
@@ -12,26 +14,25 @@ namespace NeedyBuddy.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ApplicationDbContext _context;
+        private readonly IRepository _repository;
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IRepository repository)
         {
             _logger = logger;
+            _context = context;
+            _repository = repository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<Service> servicesList = new List<Service>();
-            servicesList.Add(new Service() { ServiceId = 1, ServiceName = "Test" });
-            servicesList.Add(new Service() { ServiceId = 1, ServiceName = "Food" });
-            servicesList.Add(new Service() { ServiceId = 1, ServiceName = "Medicine" });
-            servicesList.Add(new Service() { ServiceId = 1, ServiceName = "Grocessary" });
-            servicesList.Add(new Service() { ServiceId = 1, ServiceName = "Doctor" });
-            servicesList.Add(new Service() { ServiceId = 1, ServiceName = "Physical Help" });
-            servicesList.Add(new Service() { ServiceId = 1, ServiceName = "Transportation" });
-
-            ViewBag.servicesList = servicesList;
-
-            return View();
+            var categories = await _repository.FindAll<ServiceCategory>();
+            return View(categories);
+        }
+        [HttpPost]
+        public ActionResult MyAction(string searchtext, string listbox)
+        {
+            return RedirectToAction("Index", "Posts");
+            //return View();
         }
 
         public IActionResult Privacy()
