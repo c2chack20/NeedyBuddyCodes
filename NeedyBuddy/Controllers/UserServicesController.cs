@@ -24,8 +24,7 @@ namespace NeedyBuddy.Controllers
             return View();
         }
 
-
-        // string area, string serviceName
+        //string area, string serviceName
         public ViewResult UserServices()
         {
             var userServicesViewModel = from p in _context.Users
@@ -44,6 +43,12 @@ namespace NeedyBuddy.Controllers
                                             Descriptions = q.Descriptions
                                         };
             return View(userServicesViewModel.ToList());
+        }
+
+        public IActionResult ServiceDetails(UserServicesViewModel contact)
+        {
+
+            return View();
         }
     }
 }
