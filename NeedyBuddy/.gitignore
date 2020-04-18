@@ -1,3 +1,4 @@
-.vs
+Data/Migrations
 bin
 obj
+appsettings.json
