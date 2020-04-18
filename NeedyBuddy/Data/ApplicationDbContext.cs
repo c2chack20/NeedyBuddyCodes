@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using NeedyBuddy.Data.Model;
+using NeedyBuddy.Models;
 
 namespace NeedyBuddy.Data
 {
@@ -15,5 +16,6 @@ namespace NeedyBuddy.Data
         }
         public DbSet<Post> Post { get; set; }
         public DbSet<ServiceCategory> ServiceCategory { get; set; }
+        public DbSet<RegisterModel> RegisterModel { get; set; }
     }
 }
