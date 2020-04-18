@@ -3,30 +3,28 @@
     ViewData["Title"] = "Home Page";
 }
 
-    <script type="text/javascript">
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
 
-        var count = '@Model.Count()';
-        var preViousValue;
-        if (count >0) {
-             preViousValue = "@Model.Take(3).FirstOrDefault().ServiceCategoryId";
-        }
+    $(document).ready(function () {
+        $(function () {
 
-        
-        function GetSelectedTextValue(listbox) {
 
-        document.getElementById(preViousValue.trim()).checked = false;
-        var selectedText = listbox.options[listbox.selectedIndex].innerHTML;
-        var selectedValue = listbox.value;
-        //alert("Selected Text: " + selectedText + " Value: " + selectedValue);
-        document.getElementById(selectedText.trim()).checked = true;
-        preViousValue = selectedText.trim();
-    }
-    function getValue(value) {
-        //alert(value);
-        listbox.selectedIndex = value - 1;
-    }
+            $('.select-service, input[name="serviceList"]').change(updateServiceElements);
 
-    </script>
+            function updateServiceElements(e) {
+                var serviceValueAttribute = '[value="' + e.target.value + '"]';
+                //$('input:checked').removeAttr('checked');
+                $(':radio').each(function () {
+                    $('input[type="radio"]').prop('checked', false);
+                })
+                $('.select-service option' + serviceValueAttribute).prop('selected', true);
+                $('input[name="serviceList"]' + serviceValueAttribute).prop('checked', true);
+            }
+
+        });
+    });
+</script>
 <!-- Header Section end -->
 <!-- Hero Section end -->
 <section class="hero-section set-bg" data-setbg="~/img/hero-bg.jpg">
@@ -42,7 +40,7 @@
                     @foreach (var item in Model.Take(3))
                     {
                         <div class="st-item">
-                            <input @(isFirstChecked ? "" : "checked") type="radio" name="st" id="@item.ServiceName" value="@item.ServiceCategoryId" onchange="getValue(this.value)">
+                            <input @(isFirstChecked ? "" : "checked") type="radio" name="serviceList" id="@item.ServiceName" value="@item.ServiceCategoryId" >
                             <label for="@item.ServiceName" id="@item.ServiceCategoryId">@item.ServiceName</label>
                         </div>
                         isFirstChecked = true;
@@ -54,7 +52,7 @@
                     <input type="text" placeholder="Search by state, postcode or suburb" name="searchtext" id="searchtext">
                     @*************Populating the dropdown List**********@
 
-                    <select name="listbox" id="listbox" onchange="GetSelectedTextValue(this)">
+                    <select name="serviceList" id="serviceList" class="select-service">
                         @foreach (var item in Model)
                         {
                             <option value="@item.ServiceCategoryId">
@@ -65,8 +63,6 @@
 
                     @********************************@
                     <button class="site-btn">Search</button>
-                    @*<input type="submit" value="Create" class="site-btn" />*@
-
                 </div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. </p>
             </form>
@@ -79,8 +75,8 @@
     <div class="container">
         <div class="row ">
             @*<div class="col-lg-5 order-lg-2">
-                <img class="w-100" src="~/img/about/3.jpg" alt="">
-            </div>*@
+                    <img class="w-100" src="~/img/about/3.jpg" alt="">
+                </div>*@
             <div class="col-lg-7 order-lg-1">
                 <div class="about-text">
                     <h2><u>Success Stories</u></h2>

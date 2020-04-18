@@ -842,8 +842,6 @@ C:\Users\578031\Source\Repos\NeedyBuddyCodes\NeedyBuddy\obj\Debug\netcoreapp3.1\
 C:\Users\578031\Source\Repos\NeedyBuddyCodes\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.csproj.CopyComplete
 C:\Users\578031\Source\Repos\NeedyBuddyCodes\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.dll
 C:\Users\578031\Source\Repos\NeedyBuddyCodes\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.pdb
-C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.dll
-C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.pdb
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -1277,5 +1275,7 @@ C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.Vi
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.csproj.CopyComplete
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\staticwebassets\NeedyBuddy.StaticWebAssets.Manifest.cache
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\staticwebassets\NeedyBuddy.StaticWebAssets.xml
+C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.dll
+C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.pdb
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.genruntimeconfig.cache
 C:\Users\Mann\Documents\TeamGIt\NeedyBuddy\obj\Debug\netcoreapp3.1\NeedyBuddy.csprojAssemblyReference.cache

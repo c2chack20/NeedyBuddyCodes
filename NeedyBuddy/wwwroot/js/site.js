@@ -48,9 +48,9 @@ $(window).on('load', function () {
 	/*------------------
         Magnific Popup
     --------------------*/
-	$('.video-play').magnificPopup({
-		type: 'iframe'
-	});
+	//$('.video-play').magnificPopup({
+	//	type: 'iframe'
+	//});
 
 	/*--------------------------
 		Loans calculator

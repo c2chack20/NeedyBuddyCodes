@@ -29,7 +29,7 @@ namespace NeedyBuddy.Controllers
             return View(categories);
         }
         [HttpPost]
-        public ActionResult MyAction(string searchtext, string listbox)
+        public ActionResult MyAction(int searchtext, int listbox)
         {
             return RedirectToAction("Index", "Posts");
             //return View();
