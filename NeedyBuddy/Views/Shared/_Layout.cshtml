@@ -6,7 +6,24 @@
     <title>@ViewData["Title"] - NeedyBuddy</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/slicknav.min.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("a").click(function () {
+                $("a").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+    </script>
+
     <link rel="stylesheet" href="~/css//srp.css" />
+
 </head>
 <body class="container" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg');">
 
@@ -57,8 +74,10 @@
                     <div class="footer-widger">
                         <div class="about-widget">
                             <div class="aw-text">
-                                <p>Donec eget efficitur ex. Donec eget dolor vitae eros feugiat tristique id vitae massa. Proin vulputate cong ue rutrum. Fusce lobortis a enim eget tempus. </p>
-                                <a href="#" class="site-btn">we are hiring</a>
+                                <p>
+                                    Here at NeedyBuddy, we are responsible for smooth running of application. If you encounter any technical issue with the application/transaction, reach out to us directly to resolve the issue.
+                                </p>
+                                <a class="site-btn" asp-controller="ContactUs" asp-action="Index">Help us improve</a>
                             </div>
                         </div>
                     </div>
@@ -67,38 +86,38 @@
                     <div class="footer-widger">
                         <h2>Company</h2>
                         <ul>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Services</a></li>
+                            <li><a asp-controller="AboutUs" asp-action="Index">About us</a></li>
+                            <li><a asp-controller="Home" asp-action="Index">Services</a></li>
 
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6">
                     <div class="footer-widger">
-                        <h2>Links</h2>
+                        <h2>Help</h2>
                         <ul>
-                            <li><a href="#">Buy with us</a></li>
-                            <li><a href="#">Papers</a></li>
+                            <li><a asp-controller="ContactUs" asp-action="Index">Contact Us</a></li>
+                            <li><a asp-controller="News" asp-action="Index">Latest News</a></li>
 
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6">
                     <div class="footer-widger">
-                        <h2>Links</h2>
+                        <h2>Authenticate</h2>
                         <ul>
-                            <li><a href="#">Seel With us</a></li>
-                            <li><a href="#">What do You Need</a></li>
+                            <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+                            <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
 
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6">
                     <div class="footer-widger">
-                        <h2>Linkss</h2>
+                        <h2>Others</h2>
                         <ul>
-                            <li><a href="#">Rent with us</a></li>
-                            <li><a href="#">Guidelines</a></li>
+                            <li><a href="#">volunteer</a></li>
+                            <li><a href="#">Career</a></li>
 
                         </ul>
                     </div>
@@ -112,17 +131,10 @@
     </footer>
     <!-- Footer Section end -->
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script>
-        $(document).ready(function () {
-            $(".main-menu .nav-item a").on("click", function () {
-                $(".main-menu .nav-item a").removeClass("active");
-                $(this).addClass("active");
-            })
-        });
-    </script>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
