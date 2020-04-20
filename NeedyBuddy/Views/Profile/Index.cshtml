@@ -1,0 +1,176 @@
+﻿@model NeedyBuddy.Models.Custom
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("input[name=btnPassport]").click(function () {
+            if ($(this).val() == "Show My Services") {
+                $("#dvPassport").show();
+                $("#test").hide();
+            } else {
+                $("#dvPassport").hide();
+                $("#test").show();
+            }
+        });
+    });
+</script>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<head>
+    <title>Professional profile</title>
+    <link rel="stylesheet" type="text/css" href="~/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<div class="profile-header">
+
+    <div class="user-detail">
+        <div class="user-image">
+            @*<img src="http://nicesnippets.com/demo/up-profile.jpg">*@
+            <img src="@Html.DisplayFor(modelItem=>@Model.servicedetails.FirstOrDefault().ProfileImage)" alt="a description of the image">
+        </div>
+        <div class="user-data">
+            @if (Model == null || Model.servicedetails.Count == 0)
+            {
+                <form asp-action="ProfileCreate">
+                    <input asp-for="@Model.servicedetails.FirstOrDefault().FirstName" placeholder="FirstName" class="form-control" />
+                    <input asp-for="@Model.servicedetails.FirstOrDefault().LastName" placeholder="LastName" class="form-control" />
+                    <input asp-for="@Model.servicedetails.FirstOrDefault().City" placeholder="City" class="form-control" />
+                    <input asp-for="@Model.servicedetails.FirstOrDefault().Pincode" placeholder="PinCode" class="form-control" />
+                    <input asp-for="@Model.servicedetails.FirstOrDefault().Address" placeholder="Address" class="form-control" />
+                    <input asp-for="@Model.servicedetails.FirstOrDefault().Email" placeholder="Email" class="form-control" />
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            }
+            else
+            {
+                <input asp-for="@Model.servicedetails.FirstOrDefault().FirstName" placeholder="FirstName" class="form-control" disabled />
+                <input asp-for="@Model.servicedetails.FirstOrDefault().LastName" placeholder="LastName" class="form-control" disabled />
+                <input asp-for="@Model.servicedetails.FirstOrDefault().City" placeholder="City" class="form-control" disabled />
+                <input asp-for="@Model.servicedetails.FirstOrDefault().Pincode" placeholder="PinCode" class="form-control" disabled />
+                <input asp-for="@Model.servicedetails.FirstOrDefault().Address" placeholder="Address" class="form-control" disabled />
+                <input asp-for="@Model.servicedetails.FirstOrDefault().Email" placeholder="Email" class="form-control" disabled />
+                <div class="form-group">
+                    <a asp-action="Editme" asp-route-id="@Model.servicedetails.FirstOrDefault().Id">Edit</a>
+                </div>
+
+            }
+
+
+
+        </div>
+        <input type="button" value="Show My Services" name="btnPassport" />
+        <input type="button" value="Add Services" name="btnPassport" />
+       
+        <hr />
+    </div>
+</div>
+
+@*****************************@
+<div id="dvPassport" style="padding-top:58px;display:none " background-image:url('https: //upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg');">
+    <section>
+        <br />
+
+        @foreach (var service in @Model.servicedetails)
+        {
+            <div class="flex relative clearfix m-srp-card__container">
+                <div class="m-srp-card__photo flex__item">
+                    <div class="m-srp-card__listing-type">
+                        &nbsp;
+                    </div>
+                    <div class="m-photo" onclick="stopPage=true;">
+                        <div class="m-photo__fig
+			zoom-cursor" onclick="getPhotoMapUrl ('46765577','PROJ1667993','11120','null','photoComponent');">
+                            <img class="m-photo__img lazy" src="https://img.staticmb.com/mbimages/project/Photo_h310_w462/2019/12/17/Project-Photo-13-Sai-Gangothri-Hill-Crest-Bangalore-5129271_560_996_310_462.jpg" title="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" alt="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" style="">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="m-srp-card__info flex__item">
+
+                    <div id="priceProperty46765577" class="m-srp-card__price">@service.ServiceName</div>
+
+                </div>
+                <div class="m-srp-card__desc flex__item">
+
+
+                    <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
+                        <div class="m-srp-card__summary js-collapse__content" data-content="srp-card-summary">
+                            <input type="hidden" id="propertyArea46765577" value="815 sqft">
+                            <div class="m-srp-card__summary__item">
+                                <div class="m-srp-card__summary__title">Service Name</div>
+                                <div class="m-srp-card__summary__info">@service.ServiceName</div>
+                            </div>
+                            <div class="m-srp-card__summary__item">
+                                <div class="m-srp-card__summary__title">Description</div>
+                                <div class="m-srp-card__summary__info">
+                                    @service.Descriptions
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
+                            <div class="ico m-srp-card__ico">
+                                <svg role="icon">
+                                    <use xlink:href="#icon-caret-down"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="m-srp-card__action">
+                        <div class="m-srp-card__action__item relative">
+
+                            <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices" asp-route-contact=@service>Edit Description</a>
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </div>
+        }
+    </section>
+</div>
+
+
+<br />
+<br />
+
+<div class="container">
+  
+    <form>
+        <div class="form-group">
+            <label for="sel1" class="text-danger">Select list (select one):</label>
+            @*************Populating the dropdown List**********@
+            @if (Model.categories != null)
+            {
+                <select name="serviceList" id="serviceList" class="select-service form-control">
+                    @foreach (var item in @Model.categories)
+                    {
+                        <option value="@item.ServiceCategoryId">
+                            @item.ServiceName
+                        </option>
+                    }
+                </select>
+            }
+
+            @********************************@
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" rows="5" id="comment" placeholder="Add Service Description"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary">Add Service</button>
+        </div>
+    </form>
+</div>

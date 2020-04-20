@@ -1,0 +1,46 @@
+﻿@model NeedyBuddy.Models.ApplicationUser
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<head>
+    <title>Professional profile</title>
+    <link rel="stylesheet" type="text/css" href="~/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<div class="profile-header">
+
+    <div class="user-detail">
+        <div class="user-image">
+            <img src="http://nicesnippets.com/demo/up-profile.jpg">
+        </div>
+        <div class="user-data">
+            <form asp-action="Editme">
+                <input asp-for="FirstName" placeholder="FirstName" class="form-control" />
+                <input asp-for="LastName" placeholder="LastName" class="form-control" />
+                <input asp-for="City" placeholder="City" class="form-control" />
+                <input asp-for="Pincode" placeholder="PinCode" class="form-control" />
+                <input asp-for="Address" placeholder="Address" class="form-control" />
+                <input asp-for="Email" placeholder="Email" class="form-control" />
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+
+
+
+        </div>
+
+
+        <hr />
+    </div>
+</div>
+
+@*****************************@

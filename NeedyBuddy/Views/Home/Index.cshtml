@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NeedyBuddy.Data.Model.ServiceCategory>
+﻿@model IEnumerable<NeedyBuddy.Models.ServiceCategory>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -62,7 +62,8 @@
                     </select>
 
                     @********************************@
-                    <button class="site-btn">Search</button>
+                    @*<button class="site-btn">Search</button>*@
+                    <button class="site-btn" asp-action="UserServices" asp-controller="UserServices">Search</button>
                 </div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. </p>
             </form>

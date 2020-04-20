@@ -1,0 +1,158 @@
+﻿
+@model List<NeedyBuddy.Data.Model.UserServicesViewModel>
+@{
+    ViewData["Title"] = "Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="padding-top:58px; "background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg');">
+    <section>
+
+
+        <div class="search-input">
+            <input type="text" placeholder="Search by state, postcode or suburb">
+            <select id="ServicesDropdown" name="ServicesDropdown">
+
+                <option value="test">Test</option>
+                <option value="medicine">Medicine</option>
+
+            </select>
+            <button class="site-btn">Search</button>
+        </div>
+
+
+
+
+        <br />
+
+        @foreach (var service in @Model)
+        {
+            <div class="flex relative clearfix m-srp-card__container">
+                <div class="m-srp-card__photo flex__item">
+                    <div class="m-srp-card__listing-type">
+                        &nbsp;
+                    </div>
+                    <div class="m-photo" onclick="stopPage=true;">
+                        <div class="m-photo__fig
+			zoom-cursor" onclick="getPhotoMapUrl ('46765577','PROJ1667993','11120','null','photoComponent');">
+                            <img class="m-photo__img lazy" src="https://img.staticmb.com/mbimages/project/Photo_h310_w462/2019/12/17/Project-Photo-13-Sai-Gangothri-Hill-Crest-Bangalore-5129271_560_996_310_462.jpg" title="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" alt="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" style="">
+                        </div>
+                        @*<div class="m-photo__caption" id="imageCountProperty46765577" onclick="getPhotoMapUrl ('46765577','PROJ1667993','11120','null','photoComponent');">
+                                12 Photos
+                            </div>*@
+                    </div>
+                    @*<div class="m-srp-card__post-date" itemscope="" itemtype="//schema.org/DataFeedItem">
+                            Posted:
+                            <span itemprop="dateCreated">Apr 14, '20</span>
+                        </div>*@
+                </div>
+                <div class="m-srp-card__info flex__item">
+
+                    <div id="priceProperty46765577" class="m-srp-card__price">@service.ServiceName</div>
+
+                </div>
+                <div class="m-srp-card__desc flex__item">
+                    <div class="m-srp-card__heading clearfix">
+                        <h3>
+                            <span class="m-srp-card__title" onclick="trackContactForSearch();">
+                                @*<span class="m-srp-card__title__bhk" onclick="sendPropertyImpression(['46765577-1-'],'SrpPropertyClick','S');tagPsmLeadGen('5129271','b');">
+                                        2 BHK Apartment
+                                    </span>*@
+                                <b>@service.UserName</b>
+                            </span>
+                        </h3>
+                        @*<div class="m-srp-card__link m-srp-card__link--nearby" id="map_link_46765577" data-link="https://www.magicbricks.com/propertyDetail/poiOnMap.html?lat=12.937459&amp;longt=77.46604&amp;projectOrProp=Project&amp;city=Bangalore&amp;includeJs=y&amp;type=poiMap2017&amp;address=Bangalore, Karnataka" onclick="stopPage=true; getPhotoMapUrl('12.937459','77.46604','Bangalore','Bangalore, Karnataka','poiMap');">
+                                <i class="m-srp-card__ico m-srp-card__link--nearby__ico">
+                                    <svg role="icon">
+                                        <use xlink:href="#icon-map"></use>
+                                    </svg>
+                                </i>What's near by
+                            </div>*@
+                    </div>
+                    @*<div class="m-srp-card__society">
+                            <span>Society: </span>
+                            <a id="project-link-46765577" class="m-srp-card__link" href="https://www.magicbricks.com/sai-gangothri-hill-crest-kengeri-bangalore-pdpid-4d4235313239323731" target="_blank">Sai Gangothri Hill Crest</a>
+                        </div>*@
+                    <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
+                        <div class="m-srp-card__summary js-collapse__content" data-content="srp-card-summary">
+                            <input type="hidden" id="propertyArea46765577" value="815 sqft">
+                            <div class="m-srp-card__summary__item">
+                                <div class="m-srp-card__summary__title">City</div>
+                                <div class="m-srp-card__summary__info">@service.City</div>
+                            </div>
+                            <div class="m-srp-card__summary__item">
+                                <div class="m-srp-card__summary__title">Pincode</div>
+                                <div class="m-srp-card__summary__info">
+                                    @service.Pincode
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
+                            <div class="ico m-srp-card__ico">
+                                <svg role="icon">
+                                    <use xlink:href="#icon-caret-down"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="m-srp-card__description js-content-read-more truncated">
+                            Hill Crest is a luxurious and affordable residential apartment project by Sairam Dwellings located next to Vishweshwaraiah Layout 2nd Stage Bangalore OFF NICE ROAD, which is also close proximity to Kengeri Metro Station, Educational institution like Edify School, Chitrakoota School, Hill Rock School, RV Engineering College.
+                            <span class="m-srp-card__link m-srp-card__link--semi-bold js-toggle-read-more m-srp-card__description__link" onclick="stopPage=true;">read more</span>
+                        </div>*@
+                    <div class="m-srp-card__action">
+                        <div class="m-srp-card__action__item relative">
+                            @*<button class="m-srp-card__btn m-srp-card__btn--primary">Contact Details</button>*@
+                            <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices" asp-route-contact=@service>Contact Details</a>
+                            @*<button class="m-srp-card__btn m-srp-card__btn--primary" id="contactBtn46765577" onclick="event.stopPropagation();hideNpsWidget();setSRPTrackCode('Contact Builder'); tagIfollow('5129271');trackSearchResultDetails('', '1', '46765577', 'C','3327' );fireCustomDimension('46765577','1','5129271','Kengeri','','23655337','45 Lac','2','Sale','Builder','Apartment','Contact Builder');
+
+                                        createCookie('contactTrackCookie', 'SEM', -1);
+
+
+                                   setPropCookiesValues('Sale','10002','80345','3327','','2','N');if(validateReqPostCookieProp('46765577','Property','')){_trackContactForm();showPropertyContactForm(this,'46765577','Sai Gangothri Hill Crest','https://cdn.staticmb.com/searchstatic/images/','above','property','Y');seachVersion='-';trackPropertyPositionNSRContact('0', '1', '');trackPropertyPosition('0', '1', '46765577', 'contactButton');};tagPsmLeadGen('5129271','b');">
+                                    Contact
+                                    Builder
+                                </button>*@
+                            @*<div class="contactForms">
+                                    <div class="contactForm contactAgentForm formsWrap" id="aboveContactAgentForm46765577" onclick="stopPage=true;" style="display: none;"></div>
+                                </div>*@
+                        </div>
+                        @*<div class="m-srp-card__action__item">
+                                <button class="m-srp-card__btn m-srp-card__btn--primary-o" id="viewPhoneBtn46765577" onclick="event.stopPropagation(); hideNpsWidget();
+
+                                                setSRPTrackCode('Enquire Now');
+
+
+
+                                             tagIfollow('5129271');trackSearchResultDetails('0', '1', '46765577', 'C', '3327');
+
+                                                createCookie('contactTrackCookie', 'SEM', -1);
+
+
+                                            setPropCookiesValues('Sale','10002','80345','3327','','2','N');if(validateReqPostCookieProp('46765577','Property','')){_trackContactForm();viewPropertyPhoneNumber(this,'46765577','Sai Gangothri Hill Crest','https://cdn.staticmb.com/searchstatic/images/','above','N','property','Y');seachVersion='-';trackPropertyPositionNSRContact('0', '1', ''); trackPropertyPosition('0', '1', '46765577', 'contactButton');};tagPsmLeadGen('5129271','b');	">
+                                    Save for Later
+                                </button>
+                                <div class="contactForms">
+                                    <div class="contactForm viewPhoneForm formsWrap" id="aboveAgentPhoneForm46765577" onclick="stopPage=true;" style="display: none;"></div>
+                                </div>
+                            </div>*@
+                        @*<div class="m-srp-card__action__item">
+                                <button class="m-srp-card__btn m-srp-card__btn--ico" id="savedShortList46765577" onclick="stopPage=true;shortListCardBuy('46765577','propertyShortList');hideNpsWidget();fireUniversalGA('Shortlist', 'Propertysearch', 'user');<!-- _gaq.push(['_trackPageview','Property-div-Save-Srch' ]); -->">
+                                    <svg role="icon">
+                                        <use xlink:href="#icon-shortlist-o"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="m-srp-card__action__item">
+                                <button class="m-srp-card__btn m-srp-card__btn--link" onclick="event.stopPropagation(); showFeedbackBox('feedback_box', '46765577')">Share Feedback</button>
+                            </div>
+                            <div class="m-srp-card__advertiser m-srp-card__advertiser--crisil text-right">
+                                <div class="m-srp-card__advertiser__type m-srp-card__advertiser__type--crisil">Builder</div>
+                                <div class="m-srp-card__advertiser__name">Sai Ram Dwellings</div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+    </section>
+</div>
