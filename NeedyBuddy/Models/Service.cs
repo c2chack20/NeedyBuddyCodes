@@ -7,8 +7,13 @@ namespace NeedyBuddy.Models
 {
     public class Service
     {
-        public int ServiceId { get; set; }
-        public string ServiceName { get; set; }
+        public long ServiceId { get; set; }
+
+        public ServiceCategory ServiceCategory { get; set; }
+
+        public string Descriptions { get; set; }
+
+        public ApplicationUser User { get; set; }
 
     }
 }

@@ -8714,19 +8714,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bhagya\\.nuget\\packages\\": {}
+    "C:\\Users\\578031\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Local Git\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
+      "projectUniqueName": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
       "projectName": "NeedyBuddy",
-      "projectPath": "D:\\Local Git\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
-      "packagesPath": "C:\\Users\\Bhagya\\.nuget\\packages\\",
-      "outputPath": "D:\\Local Git\\c2chack20\\NeedyBuddyCodes\\NeedyBuddy\\obj\\",
+      "projectPath": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\NeedyBuddy.csproj",
+      "packagesPath": "C:\\Users\\578031\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\578031\\Source\\Repos\\NeedyBuddyCodes\\NeedyBuddy\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Bhagya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\578031\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8801,7 +8805,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
