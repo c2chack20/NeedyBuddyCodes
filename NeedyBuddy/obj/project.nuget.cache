@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "g6tVlKjmhU4tzw70lhGCke7gFrbQTJCGd86HoZjUPKnoOgJ3yfc2/mI37CFQXnihJiggtHlEdLL+4wgbBUaPpQ==",
+  "dgSpecHash": "VcMfY+yG73jYni3Dh2u/pVhZhbavLvuapzevefB+KOUBfFf8PAemDyikcjPjWaPdpvM/TBTaQr1NBpXxKEmVcg==",
   "success": true,
   "projectFilePath": "E:\\Projects\\CFC2020\\NeedyBuddy\\NeedyBuddy.csproj",
   "expectedPackageFiles": [
@@ -10,17 +10,19 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.1\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\3.1.1\\microsoft.aspnetcore.identity.ui.3.1.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\3.1.3\\microsoft.aspnetcore.mvc.razor.extensions.3.1.3.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\3.1.3\\microsoft.aspnetcore.mvc.razor.runtimecompilation.3.1.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0-preview1.19508.6\\microsoft.aspnetcore.razor.language.3.1.0-preview1.19508.6.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.3\\microsoft.aspnetcore.razor.language.3.1.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.razor.runtime\\2.2.0\\microsoft.aspnetcore.razor.runtime.2.2.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\2.9.4\\microsoft.codeanalysis.analyzers.2.9.4.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.codeanalysis.common\\3.4.0-beta2-final\\microsoft.codeanalysis.common.3.4.0-beta2-final.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.codeanalysis.csharp\\3.4.0-beta2-final\\microsoft.codeanalysis.csharp.3.4.0-beta2-final.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.codeanalysis.csharp.workspaces\\3.4.0-beta2-final\\microsoft.codeanalysis.csharp.workspaces.3.4.0-beta2-final.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.codeanalysis.razor\\3.1.0-preview1.19508.6\\microsoft.codeanalysis.razor.3.1.0-preview1.19508.6.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.codeanalysis.workspaces.common\\3.4.0-beta2-final\\microsoft.codeanalysis.workspaces.common.3.4.0-beta2-final.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.codeanalysis.common\\3.3.1\\microsoft.codeanalysis.common.3.3.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.codeanalysis.csharp\\3.3.1\\microsoft.codeanalysis.csharp.3.3.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.codeanalysis.csharp.workspaces\\3.3.1\\microsoft.codeanalysis.csharp.workspaces.3.3.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.codeanalysis.razor\\3.1.3\\microsoft.codeanalysis.razor.3.1.3.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.codeanalysis.workspaces.common\\3.3.1\\microsoft.codeanalysis.workspaces.common.3.3.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.data.sqlclient\\1.0.19269.1\\microsoft.data.sqlclient.1.0.19269.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.1\\microsoft.entityframeworkcore.3.1.1.nupkg.sha512",
@@ -37,6 +39,7 @@
     "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.1\\microsoft.extensions.configuration.binder.3.1.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.1\\microsoft.extensions.dependencyinjection.3.1.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.1\\microsoft.extensions.dependencyinjection.abstractions.3.1.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.dependencymodel\\3.1.3\\microsoft.extensions.dependencymodel.3.1.3.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\3.1.1\\microsoft.extensions.fileproviders.abstractions.3.1.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.fileproviders.embedded\\3.1.1\\microsoft.extensions.fileproviders.embedded.3.1.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.identity.core\\3.1.1\\microsoft.extensions.identity.core.3.1.1.nupkg.sha512",
@@ -49,14 +52,14 @@
     "C:\\Users\\user\\.nuget\\packages\\microsoft.identity.client\\3.0.8\\microsoft.identity.client.3.0.8.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\3.1.0-preview1-19509-03\\microsoft.visualstudio.web.codegeneration.3.1.0-preview1-19509-03.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.contracts\\3.1.0-preview1-19509-03\\microsoft.visualstudio.web.codegeneration.contracts.3.1.0-preview1-19509-03.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\3.1.0-preview1-19509-03\\microsoft.visualstudio.web.codegeneration.core.3.1.0-preview1-19509-03.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.design\\3.1.0-preview1-19509-03\\microsoft.visualstudio.web.codegeneration.design.3.1.0-preview1-19509-03.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.entityframeworkcore\\3.1.0-preview1-19509-03\\microsoft.visualstudio.web.codegeneration.entityframeworkcore.3.1.0-preview1-19509-03.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.templating\\3.1.0-preview1-19509-03\\microsoft.visualstudio.web.codegeneration.templating.3.1.0-preview1-19509-03.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.utils\\3.1.0-preview1-19509-03\\microsoft.visualstudio.web.codegeneration.utils.3.1.0-preview1-19509-03.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegenerators.mvc\\3.1.0-preview1-19509-03\\microsoft.visualstudio.web.codegenerators.mvc.3.1.0-preview1-19509-03.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\3.1.1\\microsoft.visualstudio.web.codegeneration.3.1.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.contracts\\3.1.1\\microsoft.visualstudio.web.codegeneration.contracts.3.1.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\3.1.1\\microsoft.visualstudio.web.codegeneration.core.3.1.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.design\\3.1.1\\microsoft.visualstudio.web.codegeneration.design.3.1.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.entityframeworkcore\\3.1.1\\microsoft.visualstudio.web.codegeneration.entityframeworkcore.3.1.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.templating\\3.1.1\\microsoft.visualstudio.web.codegeneration.templating.3.1.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.utils\\3.1.1\\microsoft.visualstudio.web.codegeneration.utils.3.1.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.web.codegenerators.mvc\\3.1.1\\microsoft.visualstudio.web.codegenerators.mvc.3.1.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
@@ -158,6 +161,7 @@
     "C:\\Users\\user\\.nuget\\packages\\system.text.encoding.codepages\\4.5.1\\system.text.encoding.codepages.4.5.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\system.text.json\\4.7.1\\system.text.json.4.7.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
@@ -168,26 +172,5 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Microsoft.VisualStudio.Web.CodeGeneration.Templating 3.1.0-preview1-19509-03 depends on Microsoft.CodeAnalysis.CSharp (>= 3.4.0-beta2-19477-01) but Microsoft.CodeAnalysis.CSharp 3.4.0-beta2-19477-01 was not found. An approximate best match of Microsoft.CodeAnalysis.CSharp 3.4.0-beta2-final was resolved.",
-      "libraryId": "Microsoft.CodeAnalysis.CSharp",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    },
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Microsoft.VisualStudio.Web.CodeGeneration.Utils 3.1.0-preview1-19509-03 depends on Microsoft.CodeAnalysis.CSharp.Workspaces (>= 3.4.0-beta2-19477-01) but Microsoft.CodeAnalysis.CSharp.Workspaces 3.4.0-beta2-19477-01 was not found. An approximate best match of Microsoft.CodeAnalysis.CSharp.Workspaces 3.4.0-beta2-final was resolved.",
-      "libraryId": "Microsoft.CodeAnalysis.CSharp.Workspaces",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  "logs": []
 }
