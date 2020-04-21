@@ -30,11 +30,11 @@ namespace NeedyBuddy.Controllers
             var userServicesViewModel = from p in _context.Users
                                         join q in _context.Service on p.Id equals q.User.Id
                                         join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
-                                        where p.City.Equals(area) && r.ServiceName.Equals(serviceName)
+                                        where p.City.Equals(area) && r.ServiceCategoryId.Equals(serviceName)
                                         select new UserServicesViewModel
                                         {
                                             Id = p.Id,
-                                            UserName = p.UserName,
+                                            FirstName = p.UserName,
                                             ContactNumber = p.PhoneNumber,
                                             Email = p.Email,
                                             City = p.City,
