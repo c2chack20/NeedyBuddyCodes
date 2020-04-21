@@ -59,10 +59,6 @@
                 <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
                     <div class="m-srp-card__summary js-collapse__content" style="background-color:#d8232a;">
                         <input type="hidden" id="propertyArea46765577" value="815 sqft">
-                        <div class="m-srp-card__summary__item" style="font-weight:bold; color:white;">
-                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;"></div>
-                            @*<div class="m-srp-card__summary__info">815&nbsp;sqft</div>*@
-                        </div>
                         <div class="m-srp-card__summary__item" style="font-weight:bold">
                             <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">@Model[i].ServiceName</div>
                             @*<div class="m-srp-card__summary__info">
@@ -77,10 +73,8 @@
                             <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">@Model[i].City</div>
                         </div>
                         <div class="m-srp-card__summary__item" style="font-weight:bold">
-                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Food</div>
-
+                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">@Model[i].ContactNumber</div>
                         </div>
-
 
                     </div>
                     <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
@@ -96,7 +90,7 @@
                         <h3>
                             <span class="m-srp-card__title">
 
-                                <b style="color:white; font-size:15px;">@Model[i].Pincode</b>
+                                <b style="color:white; font-size:15px;">@Model[i].Address</b>
                             </span>
                         </h3>
 
