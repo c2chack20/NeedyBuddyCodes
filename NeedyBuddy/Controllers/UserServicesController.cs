@@ -24,13 +24,13 @@ namespace NeedyBuddy.Controllers
             return View();
         }
 
-        //string area, string serviceName
-        public ViewResult UserServices()
+        
+        public ViewResult UserServices(string area, string serviceName)
         {
             var userServicesViewModel = from p in _context.Users
                                         join q in _context.Service on p.Id equals q.User.Id
                                         join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
-                                        //where p.Pincode.Equals(area) && r.ServiceName.Equals(serviceName)
+                                        where p.City.Equals(area) && r.ServiceName.Equals(serviceName)
                                         select new UserServicesViewModel
                                         {
                                             Id = p.Id,

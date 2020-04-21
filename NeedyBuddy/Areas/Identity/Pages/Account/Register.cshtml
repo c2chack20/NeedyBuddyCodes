@@ -1,5 +1,5 @@
 ﻿@page
-@model NeedyBuddy.Models.RegisterModel
+@model NeedyBuddy.Models.RegisterViewModel
 @{
     ViewData["Title"] = "Register";
 }
@@ -13,7 +13,7 @@
 
 <div class="row text-white" style="display: flex;  align-items: center;  justify-content: center;">
     <div class="col-md-4">
-        <form asp-controller="UserRegistration" method="post" asp-action="create">
+        <form asp-controller="Account" method="post" asp-action="Register">
             <u><h1>@ViewData["Title"]</h1></u>
             <div asp-validation-summary="All" class="text-danger"></div>
             <br />
@@ -23,8 +23,8 @@
 
                 </div>
                 <div class="col-md-9 float-left">
-                    <input style="color: red;" type="radio" name="UserType" value="1" checked />Needy
-                    <input type="radio" style="margin: 0 0 0 10px;" name="UserType" value="2" />Service Provider
+                    <input style="color: red;" type="radio" name="UserType" value="0" checked />Needy
+                    <input type="radio" style="margin: 0 0 0 10px;" name="UserType" value="1" />Service Provider
                     <span asp-validation-for="UserType" class="text-danger"></span>
                 </div>
 
