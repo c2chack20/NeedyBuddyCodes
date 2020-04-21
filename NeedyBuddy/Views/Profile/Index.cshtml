@@ -16,7 +16,7 @@
                 <img src="http://nicesnippets.com/demo/up-profile.jpg">
             </div>
             <div class="user-data">
-                <h2 class="text-danger">@ViewBag.loggedinUser.UserName</h2>
+                <h2 class="text-danger">@ViewBag.loggedinUser.FirstName</h2>
                 <span class="post-label">@ViewBag.loggedinUser.ServiceName</span>
                 
                 <p class="text-white">
@@ -44,32 +44,39 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input value="@ViewBag.loggedinUser.UserName" class="form-control" placeholder="Name" />
+                            <input value="@ViewBag.loggedinUser.FirstName" class="form-control" name="FirstName" placeholder="FirstName" />
                         </div>
                         <div class="form-group">
-                            <input value="@ViewBag.loggedinUser.Email" class="form-control" placeholder="Email" />
+                            <input value="@ViewBag.loggedinUser.Descriptions" class="form-control" name="Descriptions" placeholder="Descriptions" />
                         </div>
                         <div class="form-group">
-                            <input type="number" value="@ViewBag.loggedinUser.ContactNumber" class="form-control" placeholder="Phone Number" />
+                            <input value="@ViewBag.loggedinUser.ContactNumber" class="form-control" name="ContactNumber" placeholder="Contact Number" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" value="@ViewBag.loggedinUser.City" name="City" class="form-control" placeholder="City" />
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input value="@ViewBag.loggedinUser.Descriptions" class="form-control" placeholder="Description" />
+                            <input value="@ViewBag.loggedinUser.LastName" class="form-control" name="LastName" placeholder="LastName" />
                         </div>
                         <div class="form-group">
-                            <input value="@ViewBag.loggedinUser.City" class="form-control" placeholder="City" />
+                            <input value="@ViewBag.loggedinUser.Email" class="form-control" name="Email" placeholder="Email" />
                         </div>
                         <div class="form-group">
-                            <input type="number" value="@ViewBag.loggedinUser.Pincode" class="form-control" placeholder="Pincode" />
+                            <input value="@ViewBag.loggedinUser.Address" class="form-control" name="Address"  placeholder="Address" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" value="@ViewBag.loggedinUser.Pincode" class="form-control" name="PinCode" placeholder="Pincode" />
                         </div>
                     </div>
 
                 </div>
 
                 <div class="row text-white" style="display: flex;  align-items: center;  justify-content: center;">
-                    <button type="submit" class="btn btn-primary bg-danger border-danger" style="width:20%;">Save</button>
+                    <button type="submit" asp-action="Save" asp-controller="Profile" class="btn btn-primary bg-danger border-danger" style="width:20%;">Save</button>
+                    @*<button type="submit" class="btn btn-primary bg-danger border-danger" style="width:20%;">Edit</button>*@
                 </div>
                 
 
@@ -98,27 +105,32 @@
                 </div>
 
                 <br />
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4 class="text-danger">Selected Services</h4>
+                <form asp-action="AddServices">
+                    <div class="row">
+                        <div class="col-md-12" >
+                            <h4 class="text-danger">Selected Services</h4>
 
-                        <ul id="selectedServices">
-                            @foreach (var service in ViewBag.selectedServicesList)
-                            {
-                                <li id="@service.ServiceCategoryId">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="close" style="color:red;">&times;</a></li>
-                            }
-                            @foreach (var service in ViewBag.nonSelectedServicesList)
-                            {
-                                <li id="@service.ServiceCategoryId" style="display:none;">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="close" style="color:red;">&times;</a></li>
-                            }
-                        </ul>
+                            <ul id="selectedServices" name="services">
+                                @foreach (var service in ViewBag.selectedServicesList)
+                                {
+                                    <li id="@service.ServiceCategoryId">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="close" style="color:red;">&times;</a></li>
+                                }
+                                @foreach (var service in ViewBag.nonSelectedServicesList)
+                                {
+                                    <li id="@service.ServiceCategoryId" style="display:none;">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="close" style="color:red;">&times;</a></li>
+                                }
+                            </ul>
+                        </div>
+
                     </div>
+                    <br />
 
-                </div>
-                <br />
+                    <input type="text" name="description" placeholder="Description">
 
-                <button type="submit" class="btn btn-primary bg-danger border-danger" >Save</button>
 
+                    <button class="site-btn" asp-action="AddServices" asp-controller="Profile">Search</button>
+                    @*<button type="submit" asp-action="AddServices" asp-controller="Profile" class="btn btn-primary bg-danger border-danger">Save</button>*@
+                </form>
 
 
             </div>
