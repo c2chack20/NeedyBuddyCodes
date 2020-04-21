@@ -29,7 +29,7 @@ namespace NeedyBuddy.Controllers
         public List<ServiceCategory> selectedServicesList = new List<ServiceCategory>();
         public List<ServiceCategory> nonSelectedServicesList = new List<ServiceCategory>();
         public UserServicesViewModel loggedinUser = new UserServicesViewModel();
-
+     
 
 
         public IActionResult Index()
@@ -41,7 +41,7 @@ namespace NeedyBuddy.Controllers
             ViewBag.selectedServicesList = selectedServicesList;
             ViewBag.nonSelectedServicesList = nonSelectedServicesList;
             ViewBag.loggedinUser = loggedinUser;
-
+           
        
            
             return View();
@@ -86,8 +86,17 @@ public void getProfileDetails()
             loggedinUser.LastName = servicedetails.FirstOrDefault().LastName;
             loggedinUser.Address = servicedetails.FirstOrDefault().Address;
             loggedinUser.ProfileImage = servicedetails.FirstOrDefault().ProfileImage;
-            loggedinUser.Descriptions = "helper";
-            loggedinUser.ServiceName = "Food";
+            loggedinUser.UserType = servicedetails.FirstOrDefault().UserType;
+            if (loggedinUser.UserType == "1")
+            {
+                loggedinUser.Descriptions = "Provider";
+            }
+            else
+            {
+                loggedinUser.Descriptions = "Needy";
+            }
+           
+            //loggedinUser.ServiceName = "Food";
 
             //ViewBag.Logo = Url.Content(loggedinUser.ProfileImage);
             ViewBag.Foto = @servicedetails.FirstOrDefault().ProfileImage;
@@ -159,17 +168,18 @@ public void getProfileDetails()
         {
             return _context.Users.Any(e => e.Id == id);
         }
-        public async Task<ActionResult> AddServices(string description, long services)
+        public async Task<ActionResult> AddServices(string description, string selectedvalue)
         {
             string currentUserName = User.Identity.Name;
             var userid = _context.Users.SingleOrDefault(u => u.UserName == currentUserName);
 
             Service s = new Service();
-            //ServiceCategory sc = new ServiceCategory();
+            ServiceCategory sc = new ServiceCategory();
             //ApplicationUser u = new ApplicationUser();
             s.Descriptions = description;
+            sc.ServiceCategoryId= Convert.ToInt64(selectedvalue);
+            s.ServiceCategory.ServiceCategoryId = sc.ServiceCategoryId;
             
-            s.ServiceCategory.ServiceCategoryId = services;
             //u.Id = "1";
             //s.ServiceCategory = sc;
             //s.User = u;
@@ -178,8 +188,9 @@ public void getProfileDetails()
             //_context.Entry(Service).State = EntityState.Modified;
             //await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Profile");
+            return RedirectToAction("MyServicesDetails", "MyServices");
             //return View();
         }
+
     }
 }
