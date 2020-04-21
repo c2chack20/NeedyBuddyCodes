@@ -29,8 +29,9 @@ namespace NeedyBuddy.Controllers
         {
             var c = _context.Users;
             var userServicesViewModel = from p in _context.Users
-                                        join q in _context.Service on p.Id equals q.User.Id
-                                        join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
+                                        join q in _context.Service on p.Id equals q.UserId
+                                        //join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
+                                        join r in _context.ServiceCategory on q.ServiceCategoryId equals r.ServiceCategoryId
                                         //where p.Pincode.Equals(area) && r.ServiceName.Equals(serviceName)
                                         select new UserServicesViewModel
                                         {

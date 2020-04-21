@@ -51,10 +51,14 @@ namespace NeedyBuddy.Controllers
             var profileDetails = await _context.Users.Where(m => m.Id == regid.Id).FirstOrDefaultAsync();
 
             var servicedetails = from p in _context.Users
-                                        join q in _context.Service on p.Id equals q.User.Id
-                                        join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
-                                        //where p.Pincode.Equals(area) && r.ServiceName.Equals(serviceName)
-                                        select new UserServicesViewModel
+                                     //join q in _context.Service on p.Id equals q.User.Id
+                                     //join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
+
+                                 join q in _context.Service on p.Id equals q.UserId
+                                 join r in _context.ServiceCategory on q.ServiceCategoryId equals r.ServiceCategoryId
+                                 where p.Id.Equals("1")
+                                 //where p.Pincode.Equals(area) && r.ServiceName.Equals(serviceName)
+                                 select new UserServicesViewModel
                                         {
                                             Id = p.Id,
                                             UserName = p.UserName,
@@ -68,6 +72,7 @@ namespace NeedyBuddy.Controllers
                                             FirstName=p.FirstName,
                                             LastName=p.LastName,
                                             Address=p.Address,
+                                            ServiceId=q.ServiceId
                                            
                                         };
            // return View(userServicesViewModel.ToList());
@@ -232,16 +237,18 @@ namespace NeedyBuddy.Controllers
             ServiceCategory sc = new ServiceCategory();
             ApplicationUser u = new ApplicationUser();
             s.Descriptions = description;
+            s.ServiceCategoryId = serviceList;
+            s.UserId = "1";
             sc.ServiceCategoryId = serviceList;
             //u.Id = "1";
-            s.ServiceCategory = sc;
+            //s.ServiceCategory = sc;
             //s.User = u;
            
             await _repository.CreateAsync<Service>(s);
             //_context.Entry(Service).State = EntityState.Modified;
             //await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Posts");
+            return RedirectToAction("Index", "Profile");
             //return View();
         }
     }
