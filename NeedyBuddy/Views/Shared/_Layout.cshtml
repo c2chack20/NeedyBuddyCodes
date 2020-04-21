@@ -6,13 +6,31 @@
     <title>@ViewData["Title"] - NeedyBuddy</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/css/slicknav.min.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("a").click(function () {
+                $("a").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+    </script>
+
+
     <link rel="stylesheet" href="~/css/srp.css" />
+
+
 </head>
 <body class="container" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg');">
 
     <header class="header-section">
-        <a class="site-logo h2 text-danger active" asp-controller="Home" asp-action="Index">NeedyBuddy</a>
+        <a class="site-logo h2 text-danger" asp-controller="Home" asp-action="Index">NeedyBuddy</a>
 
         <nav class="header-nav">
             <ul class="main-menu">
@@ -28,22 +46,43 @@
                 <li class="nav-item">
                     <a asp-area="" asp-controller="ContactUs" asp-action="Index">Contact Us</a>
                 </li>
-                <li class="nav-item">
-                    <a asp-area="" asp-controller="Posts" asp-action="Index">Posts</a>
-                </li>
-                <li class="nav-item">
-                    <a asp-area="" asp-controller="Profile" asp-action="Index">Edit Profile</a>
-                </li>
-
+                @if(!String.IsNullOrEmpty(User.Identity.Name))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Home/Index">Hello @User.Identity.Name..!</a>
+                    </li>
+                    <li class="nav-item">
+                            
+                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button class="register border-danger">Logout</button>
+                        </form>
+                                
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <div class="header-right">
+                            <div class="user-panel">
+                                <a class="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="header-right">
+                            <div class="user-panel">
+                                <a class="register border-danger" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
+                            </div>
+                        </div>
+                    </li>
+                }
             </ul>
-            <div class="header-right">
-                <div class="user-panel">
-                    <a class="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
-                    <a class="register border-danger" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
-                </div>
-            </div>
         </nav>
     </header>
+
+
+
+
     <div>
         <main role="main" class="pb-3" style="padding-top: 5rem !important">
             @RenderBody()
@@ -55,7 +94,7 @@
 
         <div class="container">
 
-            <div class="row text-white">
+            @*<div class="row text-white">
                 <div class="col-lg-4">
                     <div class="footer-widger">
                         <div class="about-widget">
@@ -108,7 +147,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div>*@
             <div class="copyright">
                 Copyright &copy; NeedyBuddy
                 <script>document.write(new Date().getFullYear());</script> -  All rights reserved
@@ -116,9 +155,7 @@
         </div>
     </footer>
     <!-- Footer Section end -->
-    <!--====== Javascripts & Jquery ======-->
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/jquery.slicknav.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 

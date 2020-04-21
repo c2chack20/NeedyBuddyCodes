@@ -1,197 +1,167 @@
-﻿@model NeedyBuddy.Models.Custom
-@{
-    ViewData["Title"] = "Profile";
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $("input[name=btnPassport]").click(function () {
-            if ($(this).val() == "Show My Services") {
-                $("#dvPassport").show();
-                $("#test").hide();
-            } else {
-                $("#dvPassport").hide();
-                $("#test").show();
-            }
-        });
+<link href="~/css/site.css" rel="stylesheet" />
+<title>Professional profile</title>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-        $('.ids').click(function () {
-            var ServiceId = $(this).data('id');
-        });
-    });
-</script>
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<head>
-    <title>Professional profile</title>
-    <link rel="stylesheet" type="text/css" href="~/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<div class="profile-main">
+    <div class="profile-header">
+        <div class="user-detail">
+            <div class="user-image">
+                <img src="http://nicesnippets.com/demo/up-profile.jpg">
+            </div>
+            <div class="user-data">
+                <h2 class="text-danger">@ViewBag.loggedinUser.UserName</h2>
+                <span class="post-label">@ViewBag.loggedinUser.ServiceName</span>
+                
+                <p class="text-white">
+                    @ViewBag.loggedinUser.Descriptions <br />
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>  @ViewBag.loggedinUser.City,  @ViewBag.loggedinUser.Pincode
+                </p>
 
-</head>
-<div class="profile-header">
-
-    <div class="user-detail">
-        <div class="user-image">
-            @*<img src="http://nicesnippets.com/demo/up-profile.jpg">*@
-            <img src="@Html.DisplayFor(modelItem=>@Model.servicedetails.FirstOrDefault().ProfileImage)" alt="a description of the image">
-        </div>
-        <div class="user-data">
-            @if (Model == null || Model.servicedetails.Count == 0)
-            {
-                <form asp-action="ProfileCreate">
-                    <input asp-for="@Model.servicedetails.FirstOrDefault().FirstName" placeholder="FirstName" class="form-control" />
-                    <input asp-for="@Model.servicedetails.FirstOrDefault().LastName" placeholder="LastName" class="form-control" />
-                    <input asp-for="@Model.servicedetails.FirstOrDefault().City" placeholder="City" class="form-control" />
-                    <input asp-for="@Model.servicedetails.FirstOrDefault().Pincode" placeholder="PinCode" class="form-control" />
-                    <input asp-for="@Model.servicedetails.FirstOrDefault().Address" placeholder="Address" class="form-control" />
-                    <input asp-for="@Model.servicedetails.FirstOrDefault().Email" placeholder="Email" class="form-control" />
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
-                    </div>
-                </form>
-            }
-            else
-            {
-                <input asp-for="@Model.servicedetails.FirstOrDefault().FirstName" placeholder="FirstName" class="form-control" disabled />
-                <input asp-for="@Model.servicedetails.FirstOrDefault().LastName" placeholder="LastName" class="form-control" disabled />
-                <input asp-for="@Model.servicedetails.FirstOrDefault().City" placeholder="City" class="form-control" disabled />
-                <input asp-for="@Model.servicedetails.FirstOrDefault().Pincode" placeholder="PinCode" class="form-control" disabled />
-                <input asp-for="@Model.servicedetails.FirstOrDefault().Address" placeholder="Address" class="form-control" disabled />
-                <input asp-for="@Model.servicedetails.FirstOrDefault().Email" placeholder="Email" class="form-control" disabled />
-                <div class="form-group">
-                    <a asp-action="Editme" asp-route-id="@Model.servicedetails.FirstOrDefault().Id">Edit</a>
-                </div>
-
-            }
-
+                <ul class="tabs">
+                    <li class="tab-link current" data-tab="Basic-detail">Basic Detail</li>
+                    <li class="tab-link" data-tab="Edu-detail">Service provides</li>
+                </ul>
+            </div>
+            
 
 
         </div>
-        <input type="button" value="Show My Services" name="btnPassport" />
-        <input type="button" value="Add Services" name="btnPassport" asp-action="MyAction" asp-controller="Profile" />
-       
 
-        <hr />
     </div>
-</div>
+    <div class=" tab-panel-main">
 
-@*****************************@
-<div id="dvPassport" style="padding-top:58px;display:none " background-image:url('https: //upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg');">
-    <section>
-        <br />
-
-        @foreach (var service in @Model.servicedetails)
-        {
-            <div class="flex relative clearfix m-srp-card__container">
-                <div class="m-srp-card__photo flex__item">
-                    <div class="m-srp-card__listing-type">
-                        &nbsp;
-                    </div>
-                    <div class="m-photo" onclick="stopPage=true;">
-                        <div class="m-photo__fig
-			zoom-cursor" onclick="getPhotoMapUrl ('46765577','PROJ1667993','11120','null','photoComponent');">
-                            <img class="m-photo__img lazy" src="https://img.staticmb.com/mbimages/project/Photo_h310_w462/2019/12/17/Project-Photo-13-Sai-Gangothri-Hill-Crest-Bangalore-5129271_560_996_310_462.jpg" title="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" alt="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" style="">
+        <div id="Basic-detail" class="tab-content current col-md-12">
+            <form class="" asp-controller="UserRegistration" method="post" asp-action="create">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input value="@ViewBag.loggedinUser.UserName" class="form-control" placeholder="Name" />
                         </div>
+                        <div class="form-group">
+                            <input value="@ViewBag.loggedinUser.Email" class="form-control" placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="number" value="@ViewBag.loggedinUser.ContactNumber" class="form-control" placeholder="Phone Number" />
+                        </div>
+                    </div>
 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input value="@ViewBag.loggedinUser.Descriptions" class="form-control" placeholder="Description" />
+                        </div>
+                        <div class="form-group">
+                            <input value="@ViewBag.loggedinUser.City" class="form-control" placeholder="City" />
+                        </div>
+                        <div class="form-group">
+                            <input type="number" value="@ViewBag.loggedinUser.Pincode" class="form-control" placeholder="Pincode" />
+                        </div>
                     </div>
 
                 </div>
-                <div class="m-srp-card__info flex__item">
 
-                    <div id="priceProperty46765577" class="m-srp-card__price">@service.ServiceName</div>
-
+                <div class="row text-white" style="display: flex;  align-items: center;  justify-content: center;">
+                    <button type="submit" class="btn btn-primary bg-danger border-danger" style="width:20%;">Save</button>
                 </div>
-             
-                <div class="m-srp-card__desc flex__item">
+                
 
 
-                    <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
-                        <div class="m-srp-card__summary js-collapse__content" data-content="srp-card-summary">
-                            <input type="hidden" id="propertyArea46765577" value="815 sqft">
-                            <div class="m-srp-card__summary__item">
-                                <div class="m-srp-card__summary__title">Service Name</div>
-                                <div class="m-srp-card__summary__info">@service.ServiceName</div>
-                            </div>
-                            <div class="m-srp-card__summary__item">
-                                <div class="m-srp-card__summary__title" style="display:none">Service Id</div>
-                                <div class="m-srp-card__summary__info" style="display:none">@service.ServiceId</div>
-                            </div>
-                            <div class="m-srp-card__summary__item">
-                                <div class="m-srp-card__summary__title">Description</div>
-                                <div class="m-srp-card__summary__info">
-                                    @service.Descriptions
-                                </div>
-                            </div>
-                        </div>
-                        <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
-                            <div class="ico m-srp-card__ico">
-                                <svg role="icon">
-                                    <use xlink:href="#icon-caret-down"></use>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="m-srp-card__action">
-                        <div class="m-srp-card__action__item relative">
-
-            <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices" asp-route-contact=@service>Edit Description</a>
-
+            </form>
         </div>
+        <div id="Edu-detail" class="tab-content">
+            <div class="Edu-box-main text-danger">
 
-                        @*<div class="form-group">
-                            <a asp-action="Editme" class="ids" data-id="@Service.ServiceId" asp-route-id="@Model.servicedetails.FirstOrDefault().ServiceId">Edit</a>
-                        </div>*@
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="text-danger">Non-selected Services</h4>
+                        <ul id="nonSelectedServices">
+                            @foreach (var service in ViewBag.nonSelectedServicesList)
+                            {
+
+                                <li id="@service.ServiceCategoryId">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="add" style="color:green;">&#10010;</a></li>
+                            }
+                            @foreach (var service in ViewBag.selectedServicesList)
+                            {
+
+                                <li id="@service.ServiceCategoryId" style="display:none;">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="add" style="color:green;">&#10010;</a></li>
+                            }
+                        </ul>
                     </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="text-danger">Selected Services</h4>
+
+                        <ul id="selectedServices">
+                            @foreach (var service in ViewBag.selectedServicesList)
+                            {
+                                <li id="@service.ServiceCategoryId">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="close" style="color:red;">&times;</a></li>
+                            }
+                            @foreach (var service in ViewBag.nonSelectedServicesList)
+                            {
+                                <li id="@service.ServiceCategoryId" style="display:none;">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="close" style="color:red;">&times;</a></li>
+                            }
+                        </ul>
+                    </div>
+
                 </div>
                 <br />
+
+                <button type="submit" class="btn btn-primary bg-danger border-danger" >Save</button>
+
+
+
             </div>
-        }
-    </section>
+        </div>
+       
+    </div>
+    <div style="clear: both;"></div>
+   
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('ul.tabs li').click(function () {
+            var tab_id = $(this).attr('data-tab');
 
+            $('ul.tabs li').removeClass('current');
+            $('.tab-content').removeClass('current');
 
-<br />
-<br />
+            $(this).addClass('current');
+            $("#" + tab_id).addClass('current');
+        });
 
-<div class="container">
-  
-    <form>
-        <div class="form-group">
-            <label for="sel1" class="text-danger">Select list (select one):</label>
-            @*************Populating the dropdown List**********@
-            @if (Model.categories != null)
-            {
-                <select name="serviceList" id="serviceList" class="select-service form-control">
-                    @foreach (var item in @Model.categories)
-                    {
-                        <option value="@item.ServiceCategoryId">
-                            @item.ServiceName
-                        </option>
-                    }
-                </select>
-            }
+        $('.close').click(function () {              
 
-            @********************************@
-        </div>
-        <div class="form-group">
-            <textarea class="form-control" rows="5" id="comment" name="description" placeholder="Add Service Description"></textarea>
-        </div>
-        <div class="form-group">
-            
-            <input type="submit" value="Createnow" class="btn btn-primary" id="ok"  />
-        </div>
-    </form>
-</div>
+            var parentId = $(this).parent().attr("id");
+            this.parentElement.style.display = 'none';
+            $('#nonSelectedServices #' + parentId).css("display", "inline-block");
+
+        });
+
+         $('.add').click(function () {
+            var parentId = $(this).parent().attr("id");
+            this.parentElement.style.display = 'none';
+
+            $('#selectedServices #' + parentId).css("display", "inline-block");
+
+        });
 
 
 
+        
+    });
 
+        
+</script>
 
 

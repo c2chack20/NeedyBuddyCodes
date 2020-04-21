@@ -9,15 +9,11 @@ namespace NeedyBuddy.Models
     {
         public long ServiceId { get; set; }
 
-        //public ServiceCategory ServiceCategory { get; set; }
-
-        public long ServiceCategoryId { get; set; }
+        public ServiceCategory ServiceCategory { get; set; }
 
         public string Descriptions { get; set; }
 
-        public string UserId { get; set; }
-
-        // public ApplicationUser User { get; set; }
+        public ApplicationUser User { get; set; }
 
     }
 }

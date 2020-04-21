@@ -12,6 +12,8 @@ using NeedyBuddy.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NeedyBuddy.Models;
+using NeedyBuddy.Services;
 
 namespace NeedyBuddy
 {
@@ -31,10 +33,11 @@ namespace NeedyBuddy
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IRepository, Repository<ApplicationDbContext>>();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddTransient<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
