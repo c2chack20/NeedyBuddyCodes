@@ -20,6 +20,17 @@ namespace NeedyBuddy.Controllers
 
         public IActionResult Index()
         {
+            List<ServiceCategory> servicesList = new List<ServiceCategory>();
+            servicesList.Add(new ServiceCategory() { ServiceCategoryId = 1, ServiceName = "Test" });
+            servicesList.Add(new ServiceCategory() { ServiceCategoryId = 1, ServiceName = "Food" });
+            servicesList.Add(new ServiceCategory() { ServiceCategoryId = 1, ServiceName = "Medicine" });
+            servicesList.Add(new ServiceCategory() { ServiceCategoryId = 1, ServiceName = "Grocessary" });
+            servicesList.Add(new ServiceCategory() { ServiceCategoryId = 1, ServiceName = "Doctor" });
+            servicesList.Add(new ServiceCategory() { ServiceCategoryId = 1, ServiceName = "Physical Help" });
+            servicesList.Add(new ServiceCategory() { ServiceCategoryId = 1, ServiceName = "Transportation" });
+
+            ViewBag.servicesList = servicesList;
+
             return View();
         }
 
