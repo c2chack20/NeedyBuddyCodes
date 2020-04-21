@@ -38,7 +38,7 @@
                         var isFirstChecked = false;
                     }
 
-                    @foreach (var item in Model.Take(3))
+                    @foreach (var item in Model.Take(5))
                     {
                         <div class="st-item">
                             <input @(isFirstChecked ? "" : "checked") type="radio" name="serviceList" id="@item.ServiceName" value="@item.ServiceCategoryId">
