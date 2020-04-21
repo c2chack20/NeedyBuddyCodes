@@ -24,7 +24,6 @@
       
 
         function submit(id, comments) {
-            alert("ayo" + id + comments);
             $.ajax({
                 url: '<%: Url.Action("AddServices")%>',
                 data: { 'id': selectedId, 'comments': comments },
