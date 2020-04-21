@@ -42,8 +42,8 @@ namespace NeedyBuddy.Controllers
             ViewBag.nonSelectedServicesList = nonSelectedServicesList;
             ViewBag.loggedinUser = loggedinUser;
 
-
-            ViewBag.loggedinUser = loggedinUser;
+       
+           
             return View();
         }
 public void getProfileDetails()
@@ -85,8 +85,12 @@ public void getProfileDetails()
             loggedinUser.FirstName = servicedetails.FirstOrDefault().FirstName;
             loggedinUser.LastName = servicedetails.FirstOrDefault().LastName;
             loggedinUser.Address = servicedetails.FirstOrDefault().Address;
+            loggedinUser.ProfileImage = servicedetails.FirstOrDefault().ProfileImage;
             loggedinUser.Descriptions = "helper";
             loggedinUser.ServiceName = "Food";
+
+            //ViewBag.Logo = Url.Content(loggedinUser.ProfileImage);
+            ViewBag.Foto = @servicedetails.FirstOrDefault().ProfileImage;
 
         } 
         public void getServicesList()
@@ -112,7 +116,7 @@ public void getProfileDetails()
                 
             }
         }
-        public async Task<IActionResult> Save(string FirstName,string LastName,string Email,string ContactNumber,string City,string Pincode,string Address)
+        public async Task<IActionResult> Save(string FirstName,string LastName,string Email,string ContactNumber,string City,string Pincode,string Address,string ProfileImage)
         {
 
             string currentUserName = User.Identity.Name;
@@ -127,6 +131,7 @@ public void getProfileDetails()
                 newsPost.City = City;
                 newsPost.Pincode = Pincode;
                 newsPost.Address = Address;
+                newsPost.ProfileImage = ProfileImage;
 
                 try
                 {
