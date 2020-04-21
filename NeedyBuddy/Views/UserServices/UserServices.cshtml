@@ -1,1022 +1,222 @@
 ﻿
-@model List<NeedyBuddy.Data.Model.UserServicesViewModel>
 @{
-    ViewData["Title"] = "Services";
+    ViewBag.View = "Services";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div style="padding-top:58px; style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg');">
+<div style="padding-top:58px; background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg');">
     <section>
 
 
-        <div class="search-input">
-            <input type="text" placeholder="Search by state, postcode or suburb">
-            <select id="ServicesDropdown" name="ServicesDropdown">
 
-                <option value="test">Test</option>
-                <option value="medicine">Medicine</option>
+    
+
+        <div class="search-input" style="background-color:#d8232a;">
+
+            <input type="text" style="font-size:medium;" placeholder="Search by state, postcode or suburb">
+            <select id="ServicesDropdown" name="ServicesDropdown"  style="font-size:medium;">
+
+
+                <option value="Test">Test</option>
+                <option value="Medicine">Medicine</option>
 
             </select>
-            <button class="site-btn">Search</button>
+            <button class="site-btn" asp-action="UserServices" asp-controller="UserServices">Search</button>
+
         </div>
-
-        @*<div class="srpStack">
-            <div class="wrapper" style="width: 1200px;">
-                <div class="srpRefineWrap">
-                    <div id="refinePanel">
-                        <input type="hidden" id="category" value="S">
-                        <input type="hidden" id="criAgents" value="">
-                        <input type="hidden" id="refine_source" value="">
-                        <input type="hidden" id="city" value="2060">
-                        <input type="hidden" id="prev_city" value="2060">
-                        <input type="hidden" id="ownerId" value="">
-                        <input type="hidden" id="transactionTypeRefine" value="">
-                        <input type="hidden" id="tab1" value="">
-                        <input type="hidden" id="isMapSearch" value="false">
-                        <input type="hidden" id="city_name" value="Hyderabad">
-                        <input type="hidden" id="homePropertyType_new" value="10000">
-                        <input type="hidden" id="budget_min_new" value="">
-                        <input type="hidden" id="budget_max_new" value="">
-                        <input type="hidden" id="localityName" value="">
-                        <input type="hidden" id="locationId" value="">
-                        <input type="hidden" id="bedrooms_new" value="">
-                        <input type="hidden" id="sessionIdVal" value="1312fbac-17bc-46ca-80af-ed22d6cfffa9">
-                        <input type="hidden" id="loginIdVal" value="">
-                        <input type="hidden" id="projectSocity" value="">
-                        <input type="hidden" id="developerName" name="developerName" value="">
-                        <input type="hidden" id="radius" value="">
-                        <input type="hidden" id="searchLocName" value="">
-                        <input type="hidden" id="searchLocType" value="">
-                        <input type="hidden" id="searchTransMode" value="">
-                        <input type="hidden" id="searchLocTime" value="">
-                        <input type="hidden" id="isRadiusSearch" value="">
-                        <div id="srpRefine">
-                            <div class="mbSrpFilter">
-                                <div class="filterWrapper">
-                                    <div class="srpFlWrap srpRefine m-filter">
-                                        <div id="filterTopNavigation" class="m-filter__component">
-                                            <div class="m-filter__cat refineBuyRent" id="refinecategory">
-                                                <div class="m-filter__title" onclick="showDropDown(this, event);" style="padding-right: 20px;">
-                                                    <div id="inputcategory" class="buyRentInput">Buy</div>
-                                                </div>
-                                                <div class="m-filter__drop-down buyRentList toggleList" style="padding-top: 26px; left:0px; min-width:205px;">
-                                                    <div class="m-filter__ptype clearfix">
-                                                        <div class="m-filter__ptype__title">RESIDENTIAL</div>
-                                                        <div class="m-filter__ptype__item checked">
-                                                            <input class="m-filter__ptype__item__input" name="category" type="radio" id="category_S" value="S" onclick="return validateFieldsSuccess();" onchange="getCheckedVal(this,inputcategory,'Buy')" text="Buy" checked="checked">
-                                                            <label class="m-filter__ptype__item__label-1 pSelected" id="S" onclick="applyCategoryFilter(this, 'category_S')">Buy</label>
-                                                        </div>
-                                                        <div class="m-filter__ptype__item">
-                                                            <input class="m-filter__ptype__item__input" name="category" type="radio" id="category_R" value="R" onclick="return validateFieldsSuccess();" onchange="getCheckedVal(this,inputcategory,'Buy')" text="Rent">
-                                                            <label class="m-filter__ptype__item__label-1" id="R" onclick="applyCategoryFilter(this, 'category_R')">Rent</label>
-                                                        </div>
-                                                        <div class="m-filter__ptype__item">
-                                                            <label class="m-filter__ptype__item__label-1" id="pg" onclick="openCategoryPage('PG', 'Hyderabad', '_self')">PG</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="m-filter__ptype clearfix">
-                                                        <div class="m-filter__ptype__title"> COMMERCIAL</div>
-                                                        <div class="m-filter__ptype__item">
-                                                            <input class="m-filter__ptype__item__input" name="categoryC" type="radio" id="categoryC_S" value="S" onclick="return validateFieldsSuccess();" onchange="getCheckedVal(this,inputcategory,'Buy')" text="Buy">
-                                                            <label class="m-filter__ptype__item__label-1" onclick="applyCategoryFilter(this, 'categoryC_S')">Buy</label>
-                                                        </div>
-                                                        <div class="m-filter__ptype__item">
-                                                            <input class="m-filter__ptype__item__input" name="categoryC" type="radio" id="categoryC_R" value="R" onclick="return validateFieldsSuccess();" onchange="getCheckedVal(this,inputcategory,'Buy')" text="Lease">
-                                                            <label class="m-filter__ptype__item__label-1" onclick="applyCategoryFilter(this, 'categoryC_R')">Lease</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="m-filter__cta-done"><a href="javascript:void(0)" onclick="filterDropdownClose();">DONE</a></div>
-                                                </div>
-                                            </div>
-                                            <span id="topnaviagetionSearchVal"></span>
-                                            <div class="m-filter__search">
-                                                <div id="keywordAutoSuggestDropDown">
-                                                    <div class="drop-shadow"></div>
-                                                    <div id="autoSuggestInputDivrefine_keyword" class="localityProjectKeyword" onclick="openAutoSuggest(this, 'refine_keyword');">
-
-                                                        <div class="divContainerrefine_keyword localityKeywordParent"><div class="selectedTextDivrefine_keyword localityKeywordNames" title="Hyderabad" data-box="Hyderabad--undefined">Hyderabad</div><div class="crossIcon"></div></div><div class="divContainerComrefine_keyword localityKeywordParent" style="display: none;"></div><div class="localityKeywordParent"></div><input spellcheck="false" placeholder="Add More" class="cityLocProjectField noPlace" autocomplete="off" id="refine_keyword" onkeyup="autoSuggestion_advancedNewProj('#refine_keyword', 'city', false, 'keyword_suggest','PropKey','PropKey');" value="" onclick="openAutoSuggest(this, 'refine_keyword'); trackGAEventNew();" size="0" style="width: 122.109px; display: block;">
-                                                    </div>
-                                                    <div style="position:relative;"><div id="propertyKeywordAlertBuilder" style="top:-1px; width:auto;" class="localityToolTip"></div></div>
-                                                    <div id="keyword_suggest" class="webkit__scroll-filter" style="display: none; visibility: hidden;"></div>
-                                                    <div class="formErr" id="moreThanOneCityDivrefine_keyword" style="display: none;">
-                                                        <span class="formErrArrow"></span>
-                                                        <p style="font-weight: bold">Did you mean?</p>
-                                                    </div>
-                                                    <div class="formErr duplicateLP" id="localityProjectDuplicaterefine_keyword" style="display: none">
-                                                        <span class="formErrArrow"></span>
-                                                        <p style="font-weight: bold">Please select one of the following</p>
-                                                    </div>
-                                                    <div class="formErr" id="errorMessageCity" style="display: none;">
-                                                        <span class="formErrArrow"></span>
-                                                        <p style="display: none" id="validLocation">Please enter a Valid Location</p>
-                                                        <p style="display: none" id="onlyLocation">Please enter a Location</p>
-                                                    </div>
-                                                    <div class="recent-proj-loc webkit__scroll-filter">
-                                                        <div class="recent-search search-divider" style="display: none;">
-                                                            <div class="recent-search__title">Recently Searched</div>
-                                                            <div id="recentSearched"></div>
-                                                        </div>
-                                                        <div class="loc-project top-localities search-divider" style="display: none;">
-                                                            <div class="loc-project__title" id="topLocalitiesTitle"></div>
-                                                            <div id="topLocalitiesDiv"></div>
-                                                        </div>
-                                                        <div class="loc-project nearby-localities search-divider" style="display: none;">
-                                                            <div class="loc-project__title">Similar Localities nearby selected Localities</div>
-                                                            <div id="nearByLocalitiesDiv"></div>
-                                                        </div>
-                                                        <div class="loc-project top-projects search-divider" style="display: none;">
-                                                            <div class="loc-project__title" id="topProjectsTitle"></div>
-                                                            <div id="topProjectsDiv"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div id="selectedRefinedOptionslocalityName" style="display:none"><ul></ul></div>
-                                            </div>
-                                            <div class="m-filter__search-filter-icon"></div>
-                                        </div>
-                                        <div id="topLocalityFacet" class="pull-left" style="display: none;">
-                                            <div class="rfnBlk fltrBlk m-filter__component refinelocality">
-                                                <span class="tkIco" id="localitytkIco" onclick="removeLocalityRefine('locality');"></span>
-                                                <div class="m-filter__title" onclick="showDropDown(this, event);">
-                                                    <div class="title-ellipsis" style="max-width: 95px;">
-                                                        <span id="locality-title" title="Top Localities">
-                                                            Top
-                                                            Localities
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="topZoneDetails" class="pull-left">
-                                            <input type="hidden" value="8" id="totalZoneInCity">
-                                            <div id="zoneSRPListingFilterCode" style="display: none">
-                                                <div class="m-floating-filter">
-                                                    <div class="m-floating-filter__component clearfix">
-                                                        <div class="m-floating-filter__left m-floating-filter__left--possession">
-                                                            <div class="m-floating-filter__title">
-                                                                <span class="j-heading"> Top </span> <span>Investment Corridors <br>in Hyderabad </span>
-                                                            </div>
-                                                            <div class="m-floating-filter__con">
-                                                                Select the corridor here to
-                                                                customize your search
-                                                            </div>
-                                                        </div>
-                                                        <div class="m-floating-filter__right m-floating-filter__right--possession _j-zonechild">
-                                                            <div class="m-filter__ptype__item _j-showless">
-                                                                <input class="m-filter__ptype__item__input" name="floating-zone" type="checkbox" id="fl-zone_50051" value="50051" text="CBD and Financial Corridor">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38" for="fl-zone_50051" id="fl-zone_50051_lable" onclick="topInvesmentZoneFloatingFilter('fl-zone_50051_lable','zone_50051');">CBD and Financial Corridor</label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showless">
-                                                                <input class="m-filter__ptype__item__input" name="floating-zone" type="checkbox" id="fl-zone_50053" value="50053" text="Patancheru Industrial Corridor">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38" for="fl-zone_50053" id="fl-zone_50053_lable" onclick="topInvesmentZoneFloatingFilter('fl-zone_50053_lable','zone_50053');">Patancheru Industrial Corridor</label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showless">
-                                                                <input class="m-filter__ptype__item__input" name="floating-zone" type="checkbox" id="fl-zone_50055" value="50055" text="Hyderabad - Nagpur IT Corridor">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38" for="fl-zone_50055" id="fl-zone_50055_lable" onclick="topInvesmentZoneFloatingFilter('fl-zone_50055_lable','zone_50055');">Hyderabad - Nagpur IT Corridor</label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showless">
-                                                                <input class="m-filter__ptype__item__input" name="floating-zone" type="checkbox" id="fl-zone_50057" value="50057" text="Warangal Highway Corridor">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38" for="fl-zone_50057" id="fl-zone_50057_lable" onclick="topInvesmentZoneFloatingFilter('fl-zone_50057_lable','zone_50057');">Warangal Highway Corridor</label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showless">
-                                                                <input class="m-filter__ptype__item__input" name="floating-zone" type="checkbox" id="fl-zone_50047" value="50047" text="Aerospace Corridor">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38" for="fl-zone_50047" id="fl-zone_50047_lable" onclick="topInvesmentZoneFloatingFilter('fl-zone_50047_lable','zone_50047');">Aerospace Corridor</label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showmore" style="display: none">
-                                                                <input class="m-filter__ptype__item__input" name="floating-zone" type="checkbox" id="fl-zone_50051" value="50051" text="CBD and Financial Corridor">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38" for="fl-zone_50051" id="fl-zone_50051_lable" onclick="topInvesmentZoneFloatingFilter('fl-zone_50051_lable','zone_50051');">CBD and Financial Corridor</label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showmore" style="display: none">
-                                                                <input class="m-filter__ptype__item__input" name="floating-zone" type="checkbox" id="fl-zone_50053" value="50053" text="Patancheru Industrial Corridor">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38" for="fl-zone_50053" id="fl-zone_50053_lable" onclick="topInvesmentZoneFloatingFilter('fl-zone_50053_lable','zone_50053');">Patancheru Industrial Corridor</label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showmore" style="display: none">
-                                                                <input class="m-filter__ptype__item__input" name="floating-zone" type="checkbox" id="fl-zone_50055" value="50055" text="Hyderabad - Nagpur IT Corridor">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38" for="fl-zone_50055" id="fl-zone_50055_lable" onclick="topInvesmentZoneFloatingFilter('fl-zone_50055_lable','zone_50055');">Hyderabad - Nagpur IT Corridor</label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showmore" style="display: none">
-                                                                <input class="m-filter__ptype__item__input" name="floating-zone" type="checkbox" id="fl-zone_50057" value="50057" text="Warangal Highway Corridor">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38" for="fl-zone_50057" id="fl-zone_50057_lable" onclick="topInvesmentZoneFloatingFilter('fl-zone_50057_lable','zone_50057');">Warangal Highway Corridor</label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showmore" style="display: none">
-                                                                <input class="m-filter__ptype__item__input" name="floating-zone" type="checkbox" id="fl-zone_50047" value="50047" text="Aerospace Corridor">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38" for="fl-zone_50047" id="fl-zone_50047_lable" onclick="topInvesmentZoneFloatingFilter('fl-zone_50047_lable','zone_50047');">Aerospace Corridor</label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showmore" style="display: none">
-                                                                <input class="m-filter__ptype__item__input" name="floating-zone" type="checkbox" id="fl-zone_50049" value="50049" text="Hyderabad Airport Corridor">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38" for="fl-zone_50049" id="fl-zone_50049_lable" onclick="topInvesmentZoneFloatingFilter('fl-zone_50049_lable','zone_50049');">Hyderabad Airport Corridor</label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showmore" style="display: none">
-                                                                <input class="m-filter__ptype__item__input" name="floating-zone" type="checkbox" id="fl-zone_50071" value="50071" text="Pharma City Corridor">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38" for="fl-zone_50071" id="fl-zone_50071_lable" onclick="topInvesmentZoneFloatingFilter('fl-zone_50071_lable','zone_50071');">Pharma City Corridor</label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showmore" style="display: none">
-                                                                <input class="m-filter__ptype__item__input" name="floating-zone" type="checkbox" id="fl-zone_50081" value="50081" text="Genome Valley Biotech Corridor">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38" for="fl-zone_50081" id="fl-zone_50081_lable" onclick="topInvesmentZoneFloatingFilter('fl-zone_50081_lable','zone_50081');">Genome Valley Biotech Corridor</label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showless _j-showmorebtn">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38">
-                                                                    +
-                                                                    3 More
-                                                                </label>
-                                                            </div>
-                                                            <div class="m-filter__ptype__item _j-showmore _j-showlessbtn" style="display: none">
-                                                                <label class="m-filter__ptype__item__label m-filter__ptype__item__label--height38">
-                                                                    - Less
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="rfnBlk fltrBlk m-filter__component refinezone">
-                                                <span class="tkIco" id="zonetkIco" onclick="clearChkFilter('zone', 'zonetkIco', 'Top Investment Corridors');"></span>
-                                                <div class="m-filter__title" onclick="showDropDown(this, event);">
-                                                    <div class="title-ellipsis text-limit-max" style="max-width: 176px;">
-                                                        <span id="zone-title" title="Top Investment Corridors">Top Investment Corridors</span>
-                                                    </div>
-                                                </div>
-                                                <div class="refDDList nbyList m-filter__drop-down toggleList filter-zone" id="refinezone">
-                                                    <div class="m-filter__cta-done"><a href="javascript:void(0)" onclick="filterDropdownClose();">DONE</a></div>
-                                                    <div class="m-filter__ptype clearfix">
-                                                        <div class="m-filter__ptype__item">
-                                                            <input class="m-filter__ptype__item__input" title="Top Investment Corridors" name="zone" type="checkbox" id="zone_50051" value="50051" onchange="getCheckedVal(this)" text="CBD and Financial Corridor" data-text="CBD and Financial Corridor" autocomplete="off">
-                                                            <label class="m-filter__ptype__item__label" for="zone_50051">
-                                                                CBD and Financial Corridor
-                                                            </label>
-                                                        </div>
-                                                        <div class="m-filter__ptype__item">
-                                                            <input class="m-filter__ptype__item__input" title="Top Investment Corridors" name="zone" type="checkbox" id="zone_50053" value="50053" onchange="getCheckedVal(this)" text="Patancheru Industrial Corridor" data-text="Patancheru Industrial Corridor" autocomplete="off">
-                                                            <label class="m-filter__ptype__item__label" for="zone_50053">
-                                                                Patancheru Industrial Corridor
-                                                            </label>
-                                                        </div>
-                                                        <div class="m-filter__ptype__item">
-                                                            <input class="m-filter__ptype__item__input" title="Top Investment Corridors" name="zone" type="checkbox" id="zone_50055" value="50055" onchange="getCheckedVal(this)" text="Hyderabad - Nagpur IT Corridor" data-text="Hyderabad - Nagpur IT Corridor" autocomplete="off">
-                                                            <label class="m-filter__ptype__item__label" for="zone_50055">
-                                                                Hyderabad - Nagpur IT Corridor
-                                                            </label>
-                                                        </div>
-                                                        <div class="m-filter__ptype__item">
-                                                            <input class="m-filter__ptype__item__input" title="Top Investment Corridors" name="zone" type="checkbox" id="zone_50057" value="50057" onchange="getCheckedVal(this)" text="Warangal Highway Corridor" data-text="Warangal Highway Corridor" autocomplete="off">
-                                                            <label class="m-filter__ptype__item__label" for="zone_50057">
-                                                                Warangal Highway Corridor
-                                                            </label>
-                                                        </div>
-                                                        <div class="m-filter__ptype__item">
-                                                            <input class="m-filter__ptype__item__input" title="Top Investment Corridors" name="zone" type="checkbox" id="zone_50047" value="50047" onchange="getCheckedVal(this)" text="Aerospace Corridor" data-text="Aerospace Corridor" autocomplete="off">
-                                                            <label class="m-filter__ptype__item__label" for="zone_50047">
-                                                                Aerospace Corridor
-                                                            </label>
-                                                        </div>
-                                                        <div class="m-filter__ptype__item">
-                                                            <input class="m-filter__ptype__item__input" title="Top Investment Corridors" name="zone" type="checkbox" id="zone_50049" value="50049" onchange="getCheckedVal(this)" text="Hyderabad Airport Corridor" data-text="Hyderabad Airport Corridor" autocomplete="off">
-                                                            <label class="m-filter__ptype__item__label" for="zone_50049">
-                                                                Hyderabad Airport Corridor
-                                                            </label>
-                                                        </div>
-                                                        <div class="m-filter__ptype__item">
-                                                            <input class="m-filter__ptype__item__input" title="Top Investment Corridors" name="zone" type="checkbox" id="zone_50071" value="50071" onchange="getCheckedVal(this)" text="Pharma City Corridor" data-text="Pharma City Corridor" autocomplete="off">
-                                                            <label class="m-filter__ptype__item__label" for="zone_50071">
-                                                                Pharma City Corridor
-                                                            </label>
-                                                        </div>
-                                                        <div class="m-filter__ptype__item">
-                                                            <input class="m-filter__ptype__item__input" title="Top Investment Corridors" name="zone" type="checkbox" id="zone_50081" value="50081" onchange="getCheckedVal(this)" text="Genome Valley Biotech Corridor" data-text="Genome Valley Biotech Corridor" autocomplete="off">
-                                                            <label class="m-filter__ptype__item__label" for="zone_50081">
-                                                                Genome Valley Biotech Corridor
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="rfnBlk fltrBlk m-filter__component refinePropType selected">
-                                            <span class="tkIco active" id="propTypekIco" onclick="removeLocalityRefine('propertyType_new');"></span>
-                                            <div class="m-filter__title" onclick="showDropDown(this, event);">
-                                                <div id="proertyTypeDefault" class="title-ellipsis" title="Property Type"> Plot/Land</div>
-                                            </div>
-                                            <div class="refineBlock filterBlock refinePropertyType">
-                                                <div id="propertyType" class="srpRefineField propertyTypeField toggleLink" onclick="showDropDown(this,event)" style="display:none;">
-                                                    <span id="proertyTypeVal"></span>
-                                                    <span id="proertyTypeCount"></span>
-                                                </div>
-                                                <span class="refDDList propertyTypeArrow toggleProList" style="display:none;"></span>
-                                                <div class="formErr" id="propType_err" style="display: none;">
-                                                    <span class="formErrArrow"></span>
-                                                    <p>Select at least one property type</p>
-                                                </div>
-                                                <div class="m-filter__drop-down toggleList filter-property" id="propType" style="display: none;">
-                                                    <div class="m-filter__ptype__item checked">
-                                                        <input class="m-filter__ptype__item__input" type="checkbox" value="10000" text="Plot/Land" name="propertyType_new" id="propertyType_10000" onchange="clickOnPropertyType('propType_span_10000', 'propertyType_10000', 'Plot/Land', 'proertyTypeDefault', 'propType_disable_0', 'propertyType_new', 'proertyTypeCount', 'Property Type', '10000');" checked="checked">
-                                                        <label class="m-filter__ptype__item__label-1 pSelected" id="10000" onclick="applyPTypeFilter(this, 'propertyType_10000');"> Plot/Land</label>
-                                                    </div>
-                                                    <div class="m-filter__ptype__item">
-                                                        <input class="m-filter__ptype__item__input" type="checkbox" value="10006_10012" text="Commercial Land" name="propertyType_new" id="propertyType_10006_10012" onchange="clickOnPropertyType('propType_span_10006_10012', 'propertyType_10006_10012', 'Commercial Land', 'proertyTypeDefault', 'propType_disable_0', 'propertyType_new', 'proertyTypeCount', 'Property Type', '10006_10012');">
-                                                        <label class="m-filter__ptype__item__label-1" id="10006_10012" onclick="applyPTypeFilter(this, 'propertyType_10006_10012');"> Commercial Land</label>
-                                                    </div>
-                                                    <div class="m-filter__ptype__item">
-                                                        <input class="m-filter__ptype__item__input" type="checkbox" value="10005" text="Agricultural Land" name="propertyType_new" id="propertyType_10005" onchange="clickOnPropertyType('propType_span_10005', 'propertyType_10005', 'Agricultural Land', 'proertyTypeDefault', 'propType_disable_0', 'propertyType_new', 'proertyTypeCount', 'Property Type', '10005');">
-                                                        <label class="m-filter__ptype__item__label-1" id="10005" onclick="applyPTypeFilter(this, 'propertyType_10005');"> Agricultural Land</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="rfnBlk fltrBlk m-filter__component">
-                                            <span class="tkIco" id="budgetIco" onclick="clearBudgetFilter();"></span>
-                                            <div class="m-filter__title" onclick="showDropDown(this, event);">
-                                                <div id="inputbudget" class="title-ellipsis" style="max-width: 130px;" title="Budget">Budget</div>
-                                            </div>
-                                            <div class="m-filter__drop-down toggleList" style="left: -100px;">
-                                                <input type="hidden" id="budgetMin" name="budgetMin" value="" text="">
-                                                <input type="hidden" id="budgetMax" name="budgetMax" value="" text="">
-                                                <div class="moreCol budgetRefineShowMore" style="padding: 10px 10px 52px 10px;">
-                                                    <div id="budgetRefineShowMore">
-                                                        <input style="display: none" value="Budget" id="hiddenActualHeading">
-                                                        <div class="dropDownOptions refineBudgetPerSqft" id="budget">
-                                                            <div class="rangeList toggleList" id="budgetRange">
-                                                                <div class="rangeOption">
-                                                                    <input maxlength="10" id="rangeMinLinkbudgetinput" onclick="rangeMinLinkClick(this)" class="m-filter__area" type="text" placeholder="Min" name="budgetPerSqftMin" value="" text="" style="margin-right: 8px;">
-                                                                    <input maxlength="11" id="rangeMaxLinkbudgetinput" onclick="rangeMaxLinkClick(this)" class="m-filter__area" type="text" placeholder="Max" name="budgetPerSqftMax" value="" text="">
-                                                                    <div class="clearAll"></div>
-                                                                </div>
-                                                                <div class="range m-filter__budget-range rangeMin webkit__scroll-filter">
-                                                                    <ul>
-                                                                        <li actualval="Min" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="Min">
-                                                                            Min
-                                                                        </li>
-                                                                        <li actualval="500000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="500000">
-                                                                            ₹ 5 Lac
-                                                                        </li>
-                                                                        <li actualval="1000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="1000000">
-                                                                            ₹ 10 Lac
-                                                                        </li>
-                                                                        <li actualval="1500000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="1500000">
-                                                                            ₹ 15 Lac
-                                                                        </li>
-                                                                        <li actualval="2000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="2000000">
-                                                                            ₹ 20 Lac
-                                                                        </li>
-                                                                        <li actualval="2500000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="2500000">
-                                                                            ₹ 25 Lac
-                                                                        </li>
-                                                                        <li actualval="3000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="3000000">
-                                                                            ₹ 30 Lac
-                                                                        </li>
-                                                                        <li actualval="3500000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="3500000">
-                                                                            ₹ 35 Lac
-                                                                        </li>
-                                                                        <li actualval="4000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="4000000">
-                                                                            ₹ 40 Lac
-                                                                        </li>
-                                                                        <li actualval="4500000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="4500000">
-                                                                            ₹ 45 Lac
-                                                                        </li>
-                                                                        <li actualval="5000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="5000000">
-                                                                            ₹ 50 Lac
-                                                                        </li>
-                                                                        <li actualval="6000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="6000000">
-                                                                            ₹ 60 Lac
-                                                                        </li>
-                                                                        <li actualval="7000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="7000000">
-                                                                            ₹ 70 Lac
-                                                                        </li>
-                                                                        <li actualval="8000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="8000000">
-                                                                            ₹ 80 Lac
-                                                                        </li>
-                                                                        <li actualval="9000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="9000000">
-                                                                            ₹ 90 Lac
-                                                                        </li>
-                                                                        <li actualval="10000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="10000000">
-                                                                            ₹ 1 Cr
-                                                                        </li>
-                                                                        <li actualval="12000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="12000000">
-                                                                            ₹ 1.2 Cr
-                                                                        </li>
-                                                                        <li actualval="14000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="14000000">
-                                                                            ₹ 1.4 Cr
-                                                                        </li>
-                                                                        <li actualval="16000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="16000000">
-                                                                            ₹ 1.6 Cr
-                                                                        </li>
-                                                                        <li actualval="18000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="18000000">
-                                                                            ₹ 1.8 Cr
-                                                                        </li>
-                                                                        <li actualval="20000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="20000000">
-                                                                            ₹ 2.0 Cr
-                                                                        </li>
-                                                                        <li actualval="23000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="23000000">
-                                                                            ₹ 2.3 Cr
-                                                                        </li>
-                                                                        <li actualval="26000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="26000000">
-                                                                            ₹ 2.6 Cr
-                                                                        </li>
-                                                                        <li actualval="30000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="30000000">
-                                                                            ₹ 3 Cr
-                                                                        </li>
-                                                                        <li actualval="35000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="35000000">
-                                                                            ₹ 3.5 Cr
-                                                                        </li>
-                                                                        <li actualval="40000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="40000000">
-                                                                            ₹ 4 Cr
-                                                                        </li>
-                                                                        <li actualval="45000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="45000000">
-                                                                            ₹ 4.5 Cr
-                                                                        </li>
-                                                                        <li actualval="50000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="50000000">
-                                                                            ₹ 5 Cr
-                                                                        </li>
-                                                                        <li actualval="100000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="100000000">
-                                                                            ₹ 10 Cr
-                                                                        </li>
-                                                                        <li actualval="200000000" onclick="updateCountForBudgetPerSqft(this,'rangeMinLinkbudgetinput','rangeMaxLinkbudgetinput','budget');rangeMaxLinkClick($('#rangeMaxLinkbudget'));" value="200000000">
-                                                                            ₹ 20 Cr
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="range m-filter__budget-range rangeMax webkit__scroll-filter" style="display: none;">
-                                                                    <ul>
-                                                                        <li actualval="Min" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="Min">
-                                                                            ₹ Min
-                                                                        </li>
-                                                                        <li actualval="500000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="500000">
-                                                                            ₹ 5 Lac
-                                                                        </li>
-                                                                        <li actualval="1000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="1000000">
-                                                                            ₹ 10 Lac
-                                                                        </li>
-                                                                        <li actualval="1500000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="1500000">
-                                                                            ₹ 15 Lac
-                                                                        </li>
-                                                                        <li actualval="2000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="2000000">
-                                                                            ₹ 20 Lac
-                                                                        </li>
-                                                                        <li actualval="2500000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="2500000">
-                                                                            ₹ 25 Lac
-                                                                        </li>
-                                                                        <li actualval="3000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="3000000">
-                                                                            ₹ 30 Lac
-                                                                        </li>
-                                                                        <li actualval="3500000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="3500000">
-                                                                            ₹ 35 Lac
-                                                                        </li>
-                                                                        <li actualval="4000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="4000000">
-                                                                            ₹ 40 Lac
-                                                                        </li>
-                                                                        <li actualval="4500000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="4500000">
-                                                                            ₹ 45 Lac
-                                                                        </li>
-                                                                        <li actualval="5000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="5000000">
-                                                                            ₹ 50 Lac
-                                                                        </li>
-                                                                        <li actualval="6000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="6000000">
-                                                                            ₹ 60 Lac
-                                                                        </li>
-                                                                        <li actualval="7000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="7000000">
-                                                                            ₹ 70 Lac
-                                                                        </li>
-                                                                        <li actualval="8000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="8000000">
-                                                                            ₹ 80 Lac
-                                                                        </li>
-                                                                        <li actualval="9000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="9000000">
-                                                                            ₹ 90 Lac
-                                                                        </li>
-                                                                        <li actualval="10000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="10000000">
-                                                                            ₹ 1 Cr
-                                                                        </li>
-                                                                        <li actualval="12000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="12000000">
-                                                                            ₹ 1.2 Cr
-                                                                        </li>
-                                                                        <li actualval="14000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="14000000">
-                                                                            ₹ 1.4 Cr
-                                                                        </li>
-                                                                        <li actualval="16000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="16000000">
-                                                                            ₹ 1.6 Cr
-                                                                        </li>
-                                                                        <li actualval="18000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="18000000">
-                                                                            ₹ 1.8 Cr
-                                                                        </li>
-                                                                        <li actualval="20000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="20000000">
-                                                                            ₹ 2.0 Cr
-                                                                        </li>
-                                                                        <li actualval="23000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="23000000">
-                                                                            ₹ 2.3 Cr
-                                                                        </li>
-                                                                        <li actualval="26000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="26000000">
-                                                                            ₹ 2.6 Cr
-                                                                        </li>
-                                                                        <li actualval="30000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="30000000">
-                                                                            ₹ 3 Cr
-                                                                        </li>
-                                                                        <li actualval="35000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="35000000">
-                                                                            ₹ 3.5 Cr
-                                                                        </li>
-                                                                        <li actualval="40000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="40000000">
-                                                                            ₹ 4 Cr
-                                                                        </li>
-                                                                        <li actualval="45000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="45000000">
-                                                                            ₹ 4.5 Cr
-                                                                        </li>
-                                                                        <li actualval="50000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="50000000">
-                                                                            ₹ 5 Cr
-                                                                        </li>
-                                                                        <li actualval="100000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="100000000">
-                                                                            ₹ 10 Cr
-                                                                        </li>
-                                                                        <li actualval="200000000" onclick="updateCountForBudgetPerSqft(this,'rangeMaxLinkbudgetinput','rangeMinLinkbudgetinput','budget');" value="200000000">
-                                                                            ₹ 20 Cr
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div class="m-filter__cta-done"><a href="javascript:void(0)" onclick="filterDropdownClose();">DONE</a></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="rfnBlk fltrBlk m-filter__component refineinputListings">
-                                            <span class="tkIco" id="inputListingstkIco" onclick="clearChkFilter('inputListings', 'inputListingstkIco', 'Posted By');"></span>
-                                            <div class="m-filter__title" onclick="showDropDown(this, event);">
-                                                <div class="title-ellipsis text-limit-max">
-                                                    <span id="inputListings-title" title="Posted By">Posted By</span>
-                                                </div>
-                                            </div>
-                                            <div class="refDDList bathDD m-filter__drop-down toggleList filter-inputListings" id="refineinputListings">
-                                                <div class="m-filter__cta-done"><a href="javascript:void(0)" onclick="filterDropdownClose();">DONE</a></div>
-                                                <div class="m-filter__ptype clearfix">
-                                                    <div class="m-filter__ptype__item">
-                                                        <input class="m-filter__ptype__item__input" title="Posted By" name="inputListings" type="checkbox" id="inputListings_I" value="I" onchange="getCheckedVal(this)" text="Owners" data-text="Owners" autocomplete="off">
-                                                        <label class="m-filter__ptype__item__label" for="inputListings_I">
-                                                            Owners
-                                                        </label>
-                                                    </div>
-                                                    <div class="m-filter__ptype__item">
-                                                        <input class="m-filter__ptype__item__input" title="Posted By" name="inputListings" type="checkbox" id="inputListings_A" value="A" onchange="getCheckedVal(this)" text="Brokers" data-text="Brokers" autocomplete="off">
-                                                        <label class="m-filter__ptype__item__label" for="inputListings_A">
-                                                            Brokers
-                                                        </label>
-                                                    </div>
-                                                    <div class="m-filter__ptype__item">
-                                                        <input class="m-filter__ptype__item__input" title="Posted By" name="inputListings" type="checkbox" id="inputListings_B" value="B" onchange="getCheckedVal(this)" text="Builders" data-text="Builders" autocomplete="off">
-                                                        <label class="m-filter__ptype__item__label" for="inputListings_B">
-                                                            Builders
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="rfnBlk fltrBlk m-filter__component refinearea">
-                                            <span class="tkIco" id="areatkIco" onclick="clearAreaFilter('areatkIco');" style="opacity: 0;"></span>
-                                            <div class="m-filter__title" onclick="showDropDown(this, event);">
-                                                <div id="areaHeading" title="Area" class="title-ellipsis" style="max-width: 90px;">Area</div>
-                                            </div>
-                                            <div class="refDDList araFltr m-filter__drop-down toggleList filter-area" id="refinearea" style="width: 286px;">
-                                                <div class="m-filter__ptype clearfix" id="area">
-                                                    <div class="m-filter__ptype__item">
-                                                        <div class="m-filter__area" style="width: 60px;">
-                                                            <input class="areaNewIn" type="button" id="areaTxt" value="sqft">
-                                                            <div class="m-filter__drop-down">
-                                                                <span class="sMn"><input name="areaUnit" checked="checked" type="radio" style="display:none" onchange="$('.areatab').removeClass('active');$('#areaUnit_12800').addClass('active');" id="areaUnit_12800" value="12800" text="sqft"></span>
-                                                                <div class="col-1 areatab areaUnit_12800 " onclick="$('#areaUnit_12800').click();$('#areaTxt').val('sqft');getLocValue($('input[name=areaUnit]:checked'));if($('#areaTo_').val() != ''){getSearchUrl();}else if($('#areaFrom_').val() != ''){getLocValue($('input[name=areaUnit]:checked'));getSearchUrl();}setAreaValusesDefault();" value="12800">sqft</div>
-                                                                <span class="sMn"><input name="areaUnit" type="radio" style="display:none" onchange="$('.areatab').removeClass('active');$('#areaUnit_12803').addClass('active');" id="areaUnit_12803" value="12803" text="sqyrd"></span>
-                                                                <div class="col-1 areatab areaUnit_12803 " onclick="$('#areaUnit_12803').click();$('#areaTxt').val('sqyrd');getLocValue($('input[name=areaUnit]:checked'));if($('#areaTo_').val() != ''){getSearchUrl();}else if($('#areaFrom_').val() != ''){getLocValue($('input[name=areaUnit]:checked'));getSearchUrl();}setAreaValusesDefault();" value="12803">sqyrd</div>
-                                                                <span class="sMn"><input name="areaUnit" type="radio" style="display:none" onchange="$('.areatab').removeClass('active');$('#areaUnit_12801').addClass('active');" id="areaUnit_12801" value="12801" text="sqm"></span>
-                                                                <div class="col-1 areatab areaUnit_12801 " onclick="$('#areaUnit_12801').click();$('#areaTxt').val('sqm');getLocValue($('input[name=areaUnit]:checked'));if($('#areaTo_').val() != ''){getSearchUrl();}else if($('#areaFrom_').val() != ''){getLocValue($('input[name=areaUnit]:checked'));getSearchUrl();}setAreaValusesDefault();" value="12801">sqm</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="m-filter__ptype__item"><input class="areaFrom areaNewIn m-filter__area" name="areaFrom" placeholder="Min" type="text" id="areaFrom_" value="" onblur="if(!$.isNumeric($('#areaFrom_').val())){$('#areaFrom_').val('')};if($('#areaFrom_').val() == ''){setAreaValusesDefault(); $('.areaareaFrom').remove();getLocValue('#areaFrom_');}else{ setAreaValusesDefault(); if ((($('#areaFrom_').val() == '' &amp;&amp; $('#areaTo_').val() != '') || ($('#areaFrom_').val() != '' &amp;&amp; $('#areaTo_').val() == '')) || parseInt($('#areaFrom_').val()) < parseInt($('#areaTo_').val())) { $('#areatkIco').animate({ opacity: 1 }); getLocValue($('input[name=areaUnit]:checked')); $('#moreRefineWraptkIco').animate({ opacity: 1 }); $('.removeAllNSR').show(); selectAutosuggest(getElementById('areaFrom_'), 'area'); } };"></div>
-                                                    <div class="m-filter__ptype__item"><input class="areaTo areaNewIn m-filter__area" name="areaTo" placeholder="Max" type="text" id="areaTo_" value="" onblur="if(!$.isNumeric($('#areaTo_').val())){$('#areaTo_').val('')};if($('#areaTo_').val() == ''){setAreaValusesDefault();$('.areaareaTo').remove();getLocValue('#areaTo_'); }else{ setAreaValusesDefault(); if ((($('#areaFrom_').val() == '' &amp;&amp; $('#areaTo_').val() != '') || ($('#areaFrom_').val() != '' &amp;&amp; $('#areaTo_').val() == '')) || parseInt($('#areaFrom_').val()) < parseInt($('#areaTo_').val())) { $('#areatkIco').animate({ opacity: 1 }); getLocValue($('input[name=areaUnit]:checked')); $('#moreRefineWraptkIco').animate({ opacity: 1 }); $('.removeAllNSR').show(); selectAutosuggest(getElementById('areaTo_'), 'area'); } };"></div>
-                                                    <div class="m-filter__cta-done"><a href="javascript:void(0)" onclick="filterDropdownClose();">DONE</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="rfnBlk fltrBlk m-filter__component refineMore selected">
-                                            <div class="m-filter__title" title="More Filters" id="refineMoreTitle" onclick="showDropDown(this, event);">
-                                                <span class="tkIco more-cout active" id="moreRefineWraptkIco">2</span>
-                                                <span class="more-icon"></span>
-                                                More Filters
-                                            </div>
-                                            <div id="moreRefineWrap" class="m-filter__drop-down filter-more toggleList " onclick="closeAllFilters(event)">
-                                                <div id="moreRefined">
-                                                    <div class="m-filter__more-left webkit__scroll-filter">
-                                                        <div class="m-filter__more-title" onclick="scrollMoreFilterDrop(this, '.refinesaleType');">
-                                                            Sale Type
-                                                            <span class="tkIco-icon" id="saleTypetkIco"></span>
-                                                        </div>
-                                                        <div class="m-filter__more-title selected" onclick="scrollMoreFilterDrop(this, '.refinepostedSince');">
-                                                            Posted Since
-                                                            <span class="tkIco-icon active" id="postedSincetkIco"></span>
-                                                        </div>
-                                                        <div class="m-filter__more-title" onclick="scrollMoreFilterDrop(this, '.refineownershipType');">
-                                                            Ownership
-                                                            <span class="tkIco-icon" id="ownershipTypetkIco"></span>
-                                                        </div>
-                                                        <div class="m-filter__more-title" onclick="scrollMoreFilterDrop(this, '.refinefacing');">
-                                                            Facing
-                                                            <span class="tkIco-icon" id="facingtkIco"></span>
-                                                        </div>
-                                                        <div class="m-filter__more-title selected" onclick="scrollMoreFilterDrop(this, '.refinepType');">
-                                                            Sub Property Type
-                                                            <span class="tkIco-icon active" id="pTypetkIco"></span>
-                                                        </div>
-                                                        <div class="m-filter__more-title" onclick="scrollMoreFilterDrop(this, '.refineimageVideo');">
-                                                            Photos &amp; Videos
-                                                            <span class="tkIco-icon" id="imageVideotkIco"></span>
-                                                        </div>
-                                                        <div class="m-filter__more-title" onclick="scrollMoreFilterDrop(this, '.refineisCertifedAgent');">
-                                                            Certified Agents
-                                                            <span class="tkIco-icon" id="isCertifedAgenttkIco"></span>
-                                                        </div>
-                                                        <div class="m-filter__more-title" onclick="scrollMoreFilterDrop(this, '.refinediscountsOffers');">
-                                                            Properties with Offers
-                                                            <span class="tkIco-icon" id="discountsOfferstkIco"></span>
-                                                        </div>
-                                                        <div class="m-filter__more-title" onclick="scrollMoreFilterDrop(this, '.refineverified');">
-                                                            Verified Properties
-                                                            <span class="tkIco-icon" id="verifiedtkIco"></span>
-                                                        </div>
-                                                        <div class="m-filter__more-title" onclick="scrollMoreFilterDrop(this, '.refineisRera');">
-                                                            RERA Registered Properties
-                                                            <span class="tkIco-icon" id="isReratkIco"></span>
-                                                        </div>
-                                                        <div class="m-filter__more-title" onclick="scrollMoreFilterDrop(this, '.refineisReraAgent');">
-                                                            RERA Registered Agents
-                                                            <span class="tkIco-icon" id="isReraAgenttkIco"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="m-filter__more-right webkit__scroll-filter" id="more-filter-dropdown">
-                                                        <div class="more-filter-inner">
-                                                            <div class="rfnBlk fltrBlk refinesaleType">
-                                                                <div class="m-filter__sub-heading">Sale Type</div>
-                                                                <div class="refDDList more-filter" id="refinesaleType">
-                                                                    <div class="m-filter__ptype clearfix filter-saleType">
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" name="saleType" type="checkbox" id="saleType_20501" value="20501" onchange="updateSelection('saleType','checkbox');getLocValue(this);" text="New">
-                                                                            <label class="m-filter__ptype__item__label" id="20501" for="saleType_20501">New</label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" name="saleType" type="checkbox" id="saleType_20500" value="20500" onchange="updateSelection('saleType','checkbox');getLocValue(this);" text="Resale">
-                                                                            <label class="m-filter__ptype__item__label" id="20500" for="saleType_20500">Resale</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rfnBlk fltrBlk refinepostedSince">
-                                                                <div class="m-filter__sub-heading">Posted Since</div>
-                                                                <div class="refDDList more-filter" id="refinepostedSince">
-                                                                    <div class="m-filter__ptype clearfix filter-postedSince">
-                                                                        <div class="m-filter__ptype__item checked">
-                                                                            <input class="m-filter__ptype__item__input" title="Posted Since" name="postedSince" type="radio" id="postedSince_-1" value="-1" onchange="getCheckedVal(this);" text="All" checked="checked">
-                                                                            <label class="m-filter__ptype__item__label pSelected" id="-1" for="postedSince_-1">All</label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Posted Since" name="postedSince" type="radio" id="postedSince_1" value="1" onchange="getCheckedVal(this);" text="Yesterday">
-                                                                            <label class="m-filter__ptype__item__label" id="1" for="postedSince_1">Yesterday</label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Posted Since" name="postedSince" type="radio" id="postedSince_11000" value="11000" onchange="getCheckedVal(this);" text="Last Week">
-                                                                            <label class="m-filter__ptype__item__label" id="11000" for="postedSince_11000">Last Week</label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Posted Since" name="postedSince" type="radio" id="postedSince_11111" value="11111" onchange="getCheckedVal(this);" text="Last 2 Weeks">
-                                                                            <label class="m-filter__ptype__item__label" id="11111" for="postedSince_11111">Last 2 Weeks</label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Posted Since" name="postedSince" type="radio" id="postedSince_11112" value="11112" onchange="getCheckedVal(this);" text="Last 3 Weeks">
-                                                                            <label class="m-filter__ptype__item__label" id="11112" for="postedSince_11112">Last 3 Weeks</label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Posted Since" name="postedSince" type="radio" id="postedSince_11001" value="11001" onchange="getCheckedVal(this);" text="Last Month">
-                                                                            <label class="m-filter__ptype__item__label" id="11001" for="postedSince_11001">Last Month</label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Posted Since" name="postedSince" type="radio" id="postedSince_11004" value="11004" onchange="getCheckedVal(this);" text="Last 2 Months">
-                                                                            <label class="m-filter__ptype__item__label" id="11004" for="postedSince_11004">Last 2 Months</label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Posted Since" name="postedSince" type="radio" id="postedSince_11002" value="11002" onchange="getCheckedVal(this);" text="Last 4 Months">
-                                                                            <label class="m-filter__ptype__item__label" id="11002" for="postedSince_11002">Last 4 Months</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rfnBlk fltrBlk refineownershipType">
-                                                                <div class="m-filter__sub-heading">Ownership</div>
-                                                                <div class="refDDList more-filter" id="refineownershipType">
-                                                                    <div class="m-filter__ptype clearfix">
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Ownership" name="ownershipType" type="checkbox" id="ownershipType_11600" value="11600" onchange="getCheckedVal(this)" text="Freehold" data-text="Freehold" autocomplete="off">
-                                                                            <label class="m-filter__ptype__item__label" for="ownershipType_11600">
-                                                                                Freehold
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Ownership" name="ownershipType" type="checkbox" id="ownershipType_11601" value="11601" onchange="getCheckedVal(this)" text="Leasehold" data-text="Leasehold" autocomplete="off">
-                                                                            <label class="m-filter__ptype__item__label" for="ownershipType_11601">
-                                                                                Leasehold
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Ownership" name="ownershipType" type="checkbox" id="ownershipType_11602" value="11602" onchange="getCheckedVal(this)" text="Power Of Attorney" data-text="Power Of Attorney" autocomplete="off">
-                                                                            <label class="m-filter__ptype__item__label" for="ownershipType_11602">
-                                                                                Power Of Attorney
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Ownership" name="ownershipType" type="checkbox" id="ownershipType_11603" value="11603" onchange="getCheckedVal(this)" text="Co-operative Society" data-text="Co-operative Society" autocomplete="off">
-                                                                            <label class="m-filter__ptype__item__label" for="ownershipType_11603">
-                                                                                Co-operative Society
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rfnBlk fltrBlk refinefacing">
-                                                                <div class="m-filter__sub-heading">Facing</div>
-                                                                <div class="refDDList more-filter" id="refinefacing">
-                                                                    <div class="m-filter__ptype clearfix">
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Facing" name="facing" type="checkbox" id="facing_11400" value="11400" onchange="getCheckedVal(this)" text="East" data-text="East" autocomplete="off">
-                                                                            <label class="m-filter__ptype__item__label" for="facing_11400">
-                                                                                East
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Facing" name="facing" type="checkbox" id="facing_11500" value="11500" onchange="getCheckedVal(this)" text="North" data-text="North" autocomplete="off">
-                                                                            <label class="m-filter__ptype__item__label" for="facing_11500">
-                                                                                North
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Facing" name="facing" type="checkbox" id="facing_11501" value="11501" onchange="getCheckedVal(this)" text="North - East" data-text="North - East" autocomplete="off">
-                                                                            <label class="m-filter__ptype__item__label" for="facing_11501">
-                                                                                North - East
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Facing" name="facing" type="checkbox" id="facing_11502" value="11502" onchange="getCheckedVal(this)" text="North - West" data-text="North - West" autocomplete="off">
-                                                                            <label class="m-filter__ptype__item__label" for="facing_11502">
-                                                                                North - West
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Facing" name="facing" type="checkbox" id="facing_11503" value="11503" onchange="getCheckedVal(this)" text="South" data-text="South" autocomplete="off">
-                                                                            <label class="m-filter__ptype__item__label" for="facing_11503">
-                                                                                South
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" title="Facing" name="facing" type="checkbox" id="facing_11504" value="11504" onchange="getCheckedVal(this)" text="South - East" data-text="South - East" autocomplete="off">
-                                                                            <label class="m-filter__ptype__item__label" for="facing_11504">
-                                                                                South - East
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rfnBlk fltrBlk refinepType">
-                                                                <div class="m-filter__sub-heading">Sub Property Type</div>
-                                                                <div class="refDDList more-filter" id="refinepType">
-                                                                    <div class="m-filter__ptype clearfix">
-                                                                        <div class="m-filter__ptype__item checked">
-                                                                            <input class="m-filter__ptype__item__input" title="Sub Property Type" name="pType" type="checkbox" id="pType_10000" value="10000" onchange="getCheckedVal(this)" text="Residential Plot" data-text="Residential Plot" autocomplete="off" checked="checked">
-                                                                            <label class="m-filter__ptype__item__label pSelected" for="pType_10000">
-                                                                                Residential Plot
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rfnBlk fltrBlk refineimageVideo">
-                                                                <div class="m-filter__sub-heading">Photos &amp; Videos</div>
-                                                                <div class="refDDList more-filter" id="refineimageVideo">
-                                                                    <div class="m-filter__ptype clearfix filter-imageVideo">
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" name="imageVideo" type="checkbox" id="imageVideo_1" value="1" onchange="updateSelection('imageVideo','checkbox');getLocValue(this);" text="Photos">
-                                                                            <label class="m-filter__ptype__item__label" id="1" for="imageVideo_1">Photos</label>
-                                                                        </div>
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" name="imageVideo" type="checkbox" id="imageVideo_2" value="2" onchange="updateSelection('imageVideo','checkbox');getLocValue(this);" text="Videos">
-                                                                            <label class="m-filter__ptype__item__label" id="2" for="imageVideo_2">Videos</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rfnBlk fltrBlk refineisCertifedAgent">
-                                                                <div class="m-filter__sub-heading">Posted By Certified Agents</div>
-                                                                <div class="refDDList more-filter" id="refineisCertifedAgent">
-                                                                    <div class="m-filter__ptype clearfix filter-isCertifedAgent">
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" name="isCertifedAgent" type="checkbox" id="isCertifedAgent_Y" value="Y" onchange="updateSelection('isCertifedAgent','checkbox');getLocValue(this);" text="Posted By Certified Agents">
-                                                                            <label class="m-filter__ptype__item__label" id="Y" for="isCertifedAgent_Y">Posted By Certified Agents</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rfnBlk fltrBlk refinediscountsOffers">
-                                                                <div class="m-filter__sub-heading">Properties with Offers</div>
-                                                                <div class="refDDList more-filter" id="refinediscountsOffers">
-                                                                    <div class="m-filter__ptype clearfix filter-discountsOffers">
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" name="discountsOffers" type="checkbox" id="discountsOffers_11391" value="11391" onchange="updateSelection('discountsOffers','checkbox');getLocValue(this);" text="Properties with Offers">
-                                                                            <label class="m-filter__ptype__item__label" id="11391" for="discountsOffers_11391">Properties with Offers</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rfnBlk fltrBlk refineverified">
-                                                                <div class="m-filter__sub-heading">Verified Properties</div>
-                                                                <div class="refDDList more-filter" id="refineverified">
-                                                                    <div class="m-filter__ptype clearfix filter-verified">
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" name="verified" type="checkbox" id="verified_Y" value="Y" onchange="updateSelection('verified','checkbox');getLocValue(this);" text="Verified Properties">
-                                                                            <label class="m-filter__ptype__item__label" id="Y" for="verified_Y">Verified Properties</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rfnBlk fltrBlk refineisRera">
-                                                                <div class="m-filter__sub-heading">RERA Registered Properties</div>
-                                                                <div class="refDDList more-filter" id="refineisRera">
-                                                                    <div class="m-filter__ptype clearfix filter-isRera">
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" name="isRera" type="checkbox" id="isRera_Y" value="Y" onchange="updateSelection('isRera','checkbox');getLocValue(this);" text="RERA Approved Properties">
-                                                                            <label class="m-filter__ptype__item__label" id="Y" for="isRera_Y">RERA Approved Properties</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="rfnBlk fltrBlk refineisReraAgent">
-                                                                <div class="m-filter__sub-heading">RERA Registered Agents</div>
-                                                                <div class="refDDList more-filter" id="refineisReraAgent">
-                                                                    <div class="m-filter__ptype clearfix filter-isReraAgent">
-                                                                        <div class="m-filter__ptype__item">
-                                                                            <input class="m-filter__ptype__item__input" name="isReraAgent" type="checkbox" id="isReraAgent_Y" value="Y" onchange="updateSelection('isReraAgent','checkbox');getLocValue(this);" text="RERA Approved Agents">
-                                                                            <label class="m-filter__ptype__item__label" id="Y" for="isReraAgent_Y">RERA Approved Agents</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="m-filter__more-fixed">
-                                                        <div class="m-filter__more-fixed__result" id="moreFilterNew">Showing <span id="filterCount">14565 Properties</span></div>
-                                                        <div class="m-filter__more-fixed__btn-sec">
-                                                            <div class="m-filter__more-fixed__clear-filter" onclick="clearAllFilter();">Clear All Filters</div>
-                                                            <div class="m-filter__btn" onclick="showDropDown(this, event);">Done</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <script>
-                                if ("ajax" == "ajax") {
-                                    loadTopLocalityFilter('propertyType_new\x3D10000\x26postedSince\x3D\x2D1\x26city\x3D2060\x26searchType\x3D1\x26propertyType\x3D10000\x26pType\x3D10000\x26category\x3DS\x26callType\x3Dajax\x26upfrontFilterSize\x3D3');
-                                    initRefineSearch('propertyType_new\x3D10000\x26postedSince\x3D\x2D1\x26city\x3D2060\x26searchType\x3D1\x26propertyType\x3D10000\x26pType\x3D10000\x26category\x3DS\x26callType\x3Dajax\x26upfrontFilterSize\x3D3', '');
-                                }
-                        </script>
-                    </div>
-                </div>
-                <div class="clearAll"></div>
-            </div>
-        </div>*@
-
         <br />
 
-        @foreach (var service in @Model)
-        {
-            <div class="flex relative clearfix m-srp-card__container">
-                <div class="m-srp-card__photo flex__item">
-                    <div class="m-srp-card__listing-type">
-                        &nbsp;
-                    </div>
-                    <div class="m-photo" onclick="stopPage=true;">
-                        <div class="m-photo__fig
+      
+
+
+        <div class="flex relative clearfix m-srp-card__container">
+            <div class="m-srp-card__photo flex__item">
+                <div class="m-srp-card__listing-type">
+                    &nbsp;
+                </div>
+                <div class="m-photo" style="max-width:200px !important; width:200px !important; height:150px !important; max-height:150px !important;">
+                    <div class="m-photo__fig
 			zoom-cursor" onclick="getPhotoMapUrl ('46765577','PROJ1667993','11120','null','photoComponent');">
-                            <img class="m-photo__img lazy" src="https://img.staticmb.com/mbimages/project/Photo_h310_w462/2019/12/17/Project-Photo-13-Sai-Gangothri-Hill-Crest-Bangalore-5129271_560_996_310_462.jpg" title="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" alt="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" style="">
-                        </div>
-                        @*<div class="m-photo__caption" id="imageCountProperty46765577" onclick="getPhotoMapUrl ('46765577','PROJ1667993','11120','null','photoComponent');">
-                            12 Photos
-                        </div>*@
+                        <img class="m-photo__img lazy" src="https://img.staticmb.com/mbimages/project/Photo_h310_w462/2019/12/17/Project-Photo-13-Sai-Gangothri-Hill-Crest-Bangalore-5129271_560_996_310_462.jpg" title="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" alt="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" style="">
                     </div>
-                    @*<div class="m-srp-card__post-date" itemscope="" itemtype="//schema.org/DataFeedItem">
-                        Posted:
-                        <span itemprop="dateCreated">Apr 14, '20</span>
-                    </div>*@
-                </div>
-                <div class="m-srp-card__info flex__item">
-
-                    <div id="priceProperty46765577" class="m-srp-card__price">@service.ServiceName</div>
 
                 </div>
-                <div class="m-srp-card__desc flex__item">
-                    <div class="m-srp-card__heading clearfix">
-                        <h3>
-                            <span class="m-srp-card__title" onclick="trackContactForSearch();">
-                                @*<span class="m-srp-card__title__bhk" onclick="sendPropertyImpression(['46765577-1-'],'SrpPropertyClick','S');tagPsmLeadGen('5129271','b');">
-                                    2 BHK Apartment
-                                </span>*@
-                                <b>@service.UserName</b>
-                            </span>
-                        </h3>
-                        @*<div class="m-srp-card__link m-srp-card__link--nearby" id="map_link_46765577" data-link="https://www.magicbricks.com/propertyDetail/poiOnMap.html?lat=12.937459&amp;longt=77.46604&amp;projectOrProp=Project&amp;city=Bangalore&amp;includeJs=y&amp;type=poiMap2017&amp;address=Bangalore, Karnataka" onclick="stopPage=true; getPhotoMapUrl('12.937459','77.46604','Bangalore','Bangalore, Karnataka','poiMap');">
-                            <i class="m-srp-card__ico m-srp-card__link--nearby__ico">
-                                <svg role="icon">
-                                    <use xlink:href="#icon-map"></use>
-                                </svg>
-                            </i>What's near by
-                        </div>*@
-                    </div>
-                    @*<div class="m-srp-card__society">
-                        <span>Society: </span>
-                        <a id="project-link-46765577" class="m-srp-card__link" href="https://www.magicbricks.com/sai-gangothri-hill-crest-kengeri-bangalore-pdpid-4d4235313239323731" target="_blank">Sai Gangothri Hill Crest</a>
-                    </div>*@
-                    <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
-                        <div class="m-srp-card__summary js-collapse__content" data-content="srp-card-summary">
-                            <input type="hidden" id="propertyArea46765577" value="815 sqft">
-                            <div class="m-srp-card__summary__item">
-                                <div class="m-srp-card__summary__title">City</div>
-                                <div class="m-srp-card__summary__info">@service.City</div>
-                            </div>
-                            <div class="m-srp-card__summary__item">
-                                <div class="m-srp-card__summary__title">Pincode</div>
-                                <div class="m-srp-card__summary__info">
-                                    @service.Pincode
-                                </div>
-                            </div>
-                        </div>
-                        <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
-                            <div class="ico m-srp-card__ico">
-                                <svg role="icon">
-                                    <use xlink:href="#icon-caret-down"></use>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    @*<div class="m-srp-card__description js-content-read-more truncated">
-                        Hill Crest is a luxurious and affordable residential apartment project by Sairam Dwellings located next to Vishweshwaraiah Layout 2nd Stage Bangalore OFF NICE ROAD, which is also close proximity to Kengeri Metro Station, Educational institution like Edify School, Chitrakoota School, Hill Rock School, RV Engineering College.
-                        <span class="m-srp-card__link m-srp-card__link--semi-bold js-toggle-read-more m-srp-card__description__link" onclick="stopPage=true;">read more</span>
-                    </div>*@
-                    <div class="m-srp-card__action">
-                        <div class="m-srp-card__action__item relative">
-                            @*<button class="m-srp-card__btn m-srp-card__btn--primary">Contact Details</button>*@
-                            <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices" asp-route-contact=@service>Contact Details</a>
-                            @*<button class="m-srp-card__btn m-srp-card__btn--primary" id="contactBtn46765577" onclick="event.stopPropagation();hideNpsWidget();setSRPTrackCode('Contact Builder'); tagIfollow('5129271');trackSearchResultDetails('', '1', '46765577', 'C','3327' );fireCustomDimension('46765577','1','5129271','Kengeri','','23655337','45 Lac','2','Sale','Builder','Apartment','Contact Builder');
+                <div class="m-srp-card__heading clearfix">
+                    <h3>
+                        <span class="m-srp-card__title">
 
-                                    createCookie('contactTrackCookie', 'SEM', -1);
+                            <b style="color:red; font-size:15px;">Apollo Pharmacy</b>
+                        </span>
+                    </h3>
 
-
-                               setPropCookiesValues('Sale','10002','80345','3327','','2','N');if(validateReqPostCookieProp('46765577','Property','')){_trackContactForm();showPropertyContactForm(this,'46765577','Sai Gangothri Hill Crest','https://cdn.staticmb.com/searchstatic/images/','above','property','Y');seachVersion='-';trackPropertyPositionNSRContact('0', '1', '');trackPropertyPosition('0', '1', '46765577', 'contactButton');};tagPsmLeadGen('5129271','b');">
-                                Contact
-                                Builder
-                            </button>*@
-                            @*<div class="contactForms">
-                                <div class="contactForm contactAgentForm formsWrap" id="aboveContactAgentForm46765577" onclick="stopPage=true;" style="display: none;"></div>
-                            </div>*@
-                        </div>
-                        @*<div class="m-srp-card__action__item">
-                            <button class="m-srp-card__btn m-srp-card__btn--primary-o" id="viewPhoneBtn46765577" onclick="event.stopPropagation(); hideNpsWidget();
-
-                                            setSRPTrackCode('Enquire Now');
-
-
-
-                                         tagIfollow('5129271');trackSearchResultDetails('0', '1', '46765577', 'C', '3327');
-
-                                            createCookie('contactTrackCookie', 'SEM', -1);
-
-
-                                        setPropCookiesValues('Sale','10002','80345','3327','','2','N');if(validateReqPostCookieProp('46765577','Property','')){_trackContactForm();viewPropertyPhoneNumber(this,'46765577','Sai Gangothri Hill Crest','https://cdn.staticmb.com/searchstatic/images/','above','N','property','Y');seachVersion='-';trackPropertyPositionNSRContact('0', '1', ''); trackPropertyPosition('0', '1', '46765577', 'contactButton');};tagPsmLeadGen('5129271','b');	">
-                                Save for Later
-                            </button>
-                            <div class="contactForms">
-                                <div class="contactForm viewPhoneForm formsWrap" id="aboveAgentPhoneForm46765577" onclick="stopPage=true;" style="display: none;"></div>
-                            </div>
-                        </div>*@
-                        @*<div class="m-srp-card__action__item">
-                            <button class="m-srp-card__btn m-srp-card__btn--ico" id="savedShortList46765577" onclick="stopPage=true;shortListCardBuy('46765577','propertyShortList');hideNpsWidget();fireUniversalGA('Shortlist', 'Propertysearch', 'user');<!-- _gaq.push(['_trackPageview','Property-div-Save-Srch' ]); -->">
-                                <svg role="icon">
-                                    <use xlink:href="#icon-shortlist-o"></use>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="m-srp-card__action__item">
-                            <button class="m-srp-card__btn m-srp-card__btn--link" onclick="event.stopPropagation(); showFeedbackBox('feedback_box', '46765577')">Share Feedback</button>
-                        </div>
-                        <div class="m-srp-card__advertiser m-srp-card__advertiser--crisil text-right">
-                            <div class="m-srp-card__advertiser__type m-srp-card__advertiser__type--crisil">Builder</div>
-                            <div class="m-srp-card__advertiser__name">Sai Ram Dwellings</div>
-                        </div>*@
-                    </div>
                 </div>
             </div>
-            <br />
-        }
-        </section>
+
+            <div class="m-srp-card__desc flex__item">
+
+
+                <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
+                    <div class="m-srp-card__summary js-collapse__content" style="background-color:#d8232a;">
+                        <input type="hidden" id="propertyArea46765577" value="815 sqft">
+                        <div class="m-srp-card__summary__item" style="font-weight:bold; color:white;">
+                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Test</div>
+                            @*<div class="m-srp-card__summary__info">815&nbsp;sqft</div>*@
+                        </div>
+                        <div class="m-srp-card__summary__item" style="font-weight:bold">
+                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Groceries</div>
+                            @*<div class="m-srp-card__summary__info">
+                        Possession by Apr '22
+                    </div>*@
+                        </div>
+                        <div class="m-srp-card__summary__item" style="font-weight:bold">
+                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Medicine</div>
+                            @*<div class="m-srp-card__summary__info">6 out of 6 floors</div>*@
+                        </div>
+                        <div class="m-srp-card__summary__item" style="font-weight:bold">
+                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Doctor</div>
+
+                        </div>
+                        <div class="m-srp-card__summary__item" style="font-weight:bold">
+                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Food</div>
+
+                        </div>
+
+                    </div>
+                    <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
+                        <div class="ico m-srp-card__ico">
+                            <svg role="icon">
+                                <use xlink:href="#icon-caret-down"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-srp-card__action">
+                    <div class="m-srp-card__heading clearfix">
+                        <h3>
+                            <span class="m-srp-card__title">
+
+                                <b style="color:white; font-size:15px;">Miyapur, Hyderabad - 500049</b>
+                            </span>
+                        </h3>
+
+                    </div>
+                </div>
+                <br/>
+                <div class="m-srp-card__action">
+                    <div class="m-srp-card__action__item relative">
+
+                        <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices">Contact Agent</a>
+
+                    </div>
+
+                </div>
+                <br/>
+                <div class="m-srp-card__action" style="float:right;">
+                    <div class="m-srp-card__action__item relative">
+
+                        <a class="m-srp-card__btn m-srp-card__btn--primary"  asp-action="ServiceDetails" asp-controller="UserServices">Read More...</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <br />
+
+        <div class="flex relative clearfix m-srp-card__container">
+            <div class="m-srp-card__photo flex__item">
+                <div class="m-srp-card__listing-type">
+                    &nbsp;
+                </div>
+                <div class="m-photo" style="max-width:200px !important; width:200px !important; height:150px !important; max-height:150px !important;">
+                    <div class="m-photo__fig
+			zoom-cursor" onclick="getPhotoMapUrl ('46765577','PROJ1667993','11120','null','photoComponent');">
+                        <img class="m-photo__img lazy" src="https://img.staticmb.com/mbimages/project/Photo_h310_w462/2019/12/17/Project-Photo-13-Sai-Gangothri-Hill-Crest-Bangalore-5129271_560_996_310_462.jpg" title="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" alt="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" style="">
+                    </div>
+
+                </div>
+                <div class="m-srp-card__heading clearfix">
+                    <h3>
+                        <span class="m-srp-card__title">
+
+                            <b style="color:red; font-size:15px;">Apollo Pharmacy</b>
+                        </span>
+                    </h3>
+
+                </div>
+            </div>
+
+            <div class="m-srp-card__desc flex__item">
+
+
+                <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
+                    <div class="m-srp-card__summary js-collapse__content" style="background-color:#d8232a;">
+                        <input type="hidden" id="propertyArea46765577" value="815 sqft">
+                        <div class="m-srp-card__summary__item" style="font-weight:bold; color:white;">
+                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Test</div>
+                            @*<div class="m-srp-card__summary__info">815&nbsp;sqft</div>*@
+                        </div>
+                        <div class="m-srp-card__summary__item" style="font-weight:bold">
+                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Groceries</div>
+                            @*<div class="m-srp-card__summary__info">
+                            Possession by Apr '22
+                        </div>*@
+                        </div>
+                        <div class="m-srp-card__summary__item" style="font-weight:bold">
+                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Medicine</div>
+                            @*<div class="m-srp-card__summary__info">6 out of 6 floors</div>*@
+                        </div>
+                        <div class="m-srp-card__summary__item" style="font-weight:bold">
+                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Doctor</div>
+
+                        </div>
+                        <div class="m-srp-card__summary__item" style="font-weight:bold">
+                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Food</div>
+
+                        </div>
+
+                    </div>
+                    <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
+                        <div class="ico m-srp-card__ico">
+                            <svg role="icon">
+                                <use xlink:href="#icon-caret-down"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-srp-card__action">
+                    <div class="m-srp-card__heading clearfix">
+                        <h3>
+                            <span class="m-srp-card__title">
+
+                                <b style="color:white; font-size:15px;">Miyapur, Hyderabad - 500049</b>
+                            </span>
+                        </h3>
+
+                    </div>
+                </div>
+                <br />
+                <div class="m-srp-card__action">
+                    <div class="m-srp-card__action__item relative">
+
+                        <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices">Contact Agent</a>
+
+                    </div>
+
+                </div>
+                <br />
+                <div class="m-srp-card__action" style="float:right;">
+                    <div class="m-srp-card__action__item relative">
+
+                        <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices">Read More...</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
 </div>
