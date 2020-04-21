@@ -23,9 +23,11 @@ namespace NeedyBuddy.Data.Model
 
         public string ServiceName { get; set; }
 
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string ProfileImage { get; set; }
+
         public string Address { get; set; }
     }
 }
