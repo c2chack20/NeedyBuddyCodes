@@ -25,9 +25,13 @@ namespace NeedyBuddy.Controllers
         }
 
         
-        public ViewResult UserServices(string area, string serviceList)
+        public ActionResult UserServices(string area, string serviceList)
         {
-            var userServicesViewModel = from p in _context.Users
+            if(String.IsNullOrEmpty(User.Identity.Name))
+            {
+                return Redirect("/Identity/Account/Login");
+            }
+                var userServicesViewModel = from p in _context.Users
                                         join q in _context.Service on p.Id equals q.User.Id
                                         join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
                                         where p.City.Equals(area) && r.ServiceName.Equals(serviceList)

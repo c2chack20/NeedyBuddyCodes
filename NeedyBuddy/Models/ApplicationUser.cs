@@ -16,6 +16,8 @@ namespace NeedyBuddy.Models
 
         public UserType UserType { get; set; }
 
+        public string Description { get; set; }
+
         public List<Service> Services { get; set; }
     }
 
