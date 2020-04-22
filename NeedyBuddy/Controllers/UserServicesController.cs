@@ -42,9 +42,6 @@ namespace NeedyBuddy.Controllers
                                             ServiceName = r.ServiceName,
                                             Descriptions = q.Descriptions,
                                             Address = p.Address,
-                                            LastName = null,
-                                             ProfileImage = null,
-                                              UserName = p.UserName
                                         };
             return View(userServicesViewModel.ToList());
         }
