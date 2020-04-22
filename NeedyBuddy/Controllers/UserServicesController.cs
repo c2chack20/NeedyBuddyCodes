@@ -45,9 +45,11 @@ namespace NeedyBuddy.Controllers
                                             Pincode = p.Pincode,
                                             ServiceName = r.ServiceName,
                                             Descriptions = q.Descriptions,
-                                            Address = p.Address
+                                            Address = p.Address,
+                                            ServiceCategoryId = r.ServiceCategoryId.ToString()
                                         };
-            ViewBag.result = area;
+            ViewBag.area = area;
+            ViewBag.serviceList = serviceList;
             return View(userServicesViewModel.ToList());
         }
 
