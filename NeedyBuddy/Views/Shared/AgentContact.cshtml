@@ -1,10 +1,10 @@
-﻿
+﻿@model AgentContactViewModel
 @{
     ViewData["Title"] = "PopUpPartial";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="modal fade bootstrapModal">
+<div class="modal fade bootstrapModal" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -16,34 +16,34 @@
 
             </div>
             <div class="modal-body">
-                
-                    <div class="form-group">
-                        <a>Name</a>
-                        <input asp-for="@User.Identity.Name" class="form-control" placeholder="Name" />
-                        <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <a>Email</a>
-                        <input asp-for="@User.Identity.Name" class="form-control" placeholder="Email" />
-                        <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <a>Phone Number</a>
-                        <input asp-for="@User.Identity.Name" class="form-control" placeholder="Phone Number" />
-                        <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <a>Intrested In</a>
-                        <input asp-for="@User.Identity.Name" class="form-control" placeholder="Interested In" />
-                        <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
-                    </div>
+
+                <div class="form-group">
+                    <a>Name</a>
+                    <input asp-for=@Model.Name class="form-control" placeholder="Name" />
+                    <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <a>Email</a>
+                    <input asp-for=@Model.Email class="form-control" placeholder="Email" />
+                    <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <a>Phone Number</a>
+                    <input asp-for=@Model.ContactNumber class="form-control" placeholder="Phone Number" />
+                    <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <a>Intrested In</a>
+                    <input asp-for=@Model.RequestDescription class="form-control" placeholder="Interested In" />
+                    <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
+                </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" asp-controller="UserServices" asp-action="ContactAgent" formmethod="post" >Contact for help</button>
+                <button class="btn btn-primary" asp-controller="UserServices" asp-action="ContactAgent" formmethod="post">Contact for help</button>
                 <button class="btn btn-default bg-danger text-white" data-dismiss="modal">Cancel</button>
 
             </div>
-           
+
         </div>
     </div>
 </div>
