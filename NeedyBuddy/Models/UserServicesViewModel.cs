@@ -30,5 +30,7 @@ namespace NeedyBuddy.Data.Model
 
         public string Address { get; set; }
         public string UserType { get; set; }
+
+        public string UserTypeName { get; set; }
     }
 }

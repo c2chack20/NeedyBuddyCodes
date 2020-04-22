@@ -47,6 +47,7 @@ namespace NeedyBuddy.Controllers
                                             Descriptions = q.Descriptions,
                                             Address = p.Address
                                         };
+            ViewBag.result = area;
             return View(userServicesViewModel.ToList());
         }
 
