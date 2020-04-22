@@ -10,30 +10,87 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
+<script type="text/javascript" >
+    $(document).ready(function() {
+        $('#nonSelectedServices li').click(function () {
+            //Get the id of list items
+            var ID = $(this).attr('id');
+            //alert(ID);
+            document.getElementById("mytext").value = ID;
+            //alert(document.getElementById("mytext").value);
+            submit(ID, document.getElementById("comment"));
+        });
+    });
+
+
+    function submit(id, comments) {
+        $.ajax({
+            url: '<%: Url.Action("AddServices")%>',
+            data: { 'id': selectedId, 'comments': comments },
+            type: "post",
+            cache: false,
+            success: function (savingStatus) {
+                $("#hdnOrigComments").val($('#comment').val());
+                $('#lblCommentsNotification').text(savingStatus);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                $('#lblCommentsNotification').text("Error encountered while saving the comments.");
+            }
+        });
+    }
+
+    $('#btnSaveComments').click(function () {
+        var comments = $('#comment').val();
+        var selectedId = 12;
+        alert(comments)
+        $.ajax({
+            url: '<%: Url.Action("AddServices")%>',
+            data: { 'id': selectedId, 'comments': comments },
+            type: "post",
+            cache: false,
+            success: function (savingStatus) {
+                $("#hdnOrigComments").val($('#comment').val());
+                $('#lblCommentsNotification').text(savingStatus);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                $('#lblCommentsNotification').text("Error encountered while saving the comments.");
+            }
+        });
+    });
+
+
+    $(function () {
+        $("#profilesave").click(function () {
+            alert("successfully updated");
+    });
+    });
+</script>
+
+<p>@ViewBag.message</p>
 <div class="profile-main">
     <div class="profile-header">
         <div class="user-detail">
             <div class="user-image">
                 @*<img src="http://nicesnippets.com/demo/up-profile.jpg">*@
-                <img src="@ViewBag.Foto" alt="IMAGES" />
+                <img src="@ViewBag.Foto" alt="IMAGES" style="width: 100%;height: 100%;border-radius: 50%;" />
             </div>
             <div class="user-data">
-                <h2 class="text-danger">@ViewBag.loggedinUser.FirstName</h2>
-                <span class="post-label">@ViewBag.loggedinUser.ServiceName</span>
+                <h2 class="text-danger">@ViewBag.loggedinUser.FirstName @ViewBag.loggedinUser.LastName</h2>
+                @*<span class="post-label">@ViewBag.loggedinUser.ServiceName</span>*@
 
                 <p class="text-white">
-                    @ViewBag.loggedinUser.Descriptions <br />
+                    @ViewBag.loggedinUser.UserTypeName <br />
                     <i class="fa fa-map-marker" aria-hidden="true"></i>  @ViewBag.loggedinUser.City,  @ViewBag.loggedinUser.Pincode
                 </p>
 
                 <ul class="tabs">
                     <li class="tab-link current" data-tab="Basic-detail">Basic Detail</li>
                     <li class="tab-link" data-tab="Edu-detail">Service provides</li>
+                    <li style="display:none">
+                        @Html.ActionLink("Provided Services", "MyServicesDetails", "MyServices", new { @class = "tab-link" }, null)
+                    </li>
                 </ul>
             </div>
-
-
-
         </div>
 
     </div>
@@ -49,7 +106,7 @@
                             <input value="@ViewBag.loggedinUser.FirstName" class="form-control" name="FirstName" placeholder="FirstName" />
                         </div>
                         <div class="form-group">
-                            <input value="@ViewBag.loggedinUser.Descriptions" class="form-control" name="Descriptions" placeholder="Descriptions" />
+                            <input value="@ViewBag.loggedinUser.UserTypeName" class="form-control" name="UserTypeName" placeholder="UserTypeName" disabled />
                         </div>
                         <div class="form-group">
                             <input value="@ViewBag.loggedinUser.ContactNumber" class="form-control" name="ContactNumber" placeholder="Contact Number" />
@@ -57,9 +114,11 @@
                         <div class="form-group">
                             <input type="text" value="@ViewBag.loggedinUser.City" name="City" class="form-control" placeholder="City" />
                         </div>
-                        <div class="form-group">
-                            <input type="text" value="@ViewBag.loggedinUser.ProfileImage" name="ProfileImage" class="form-control" placeholder="your ProfileImage" />
-                        </div>
+                        @*<div class="form-group">
+                    <input type="text" value="@ViewBag.loggedinUser.ProfileImage" name="ProfileImage" class="form-control" placeholder="your ProfileImage" />
+                </div>*@
+
+
                     </div>
 
                     <div class="col-md-6">
@@ -75,18 +134,26 @@
                         <div class="form-group">
                             <input type="text" value="@ViewBag.loggedinUser.Pincode" class="form-control" name="PinCode" placeholder="Pincode" />
                         </div>
+                        @*<div class="form-group">
+                    <input type="text" value="@ViewBag.loggedinUser.Descriptions" class="form-control" name="Descriptions" placeholder="Descriptions" />
+                </div>*@
                     </div>
 
                 </div>
+                <div class="form-group">
+                    <input type="text" value="@ViewBag.loggedinUser.ProfileImage" name="ProfileImage" class="form-control" placeholder="your ProfileImage" />
+                </div>
+                <div>
+                    @Html.TextArea("Descriptions", (string)ViewBag.loggedinUser.Descriptions, new { @class = "form-control" })
+                </div>
+                <br />
 
                 <div class="row text-white" style="display: flex;  align-items: center;  justify-content: center;">
-                    <button type="submit" asp-action="Save" asp-controller="Profile" class="btn btn-primary bg-danger border-danger" style="width:20%;">Save</button>
-                    @*<button type="submit" class="btn btn-primary bg-danger border-danger" style="width:20%;">Edit</button>*@
+                    <button type="submit" id="profilesave" asp-action="Save" asp-controller="Profile" class="btn btn-primary bg-danger border-danger" style="width:20%;">Save</button>
+
                 </div>
-
-
-
             </form>
+
         </div>
         <div id="Edu-detail" class="tab-content">
             <div class="Edu-box-main text-danger">
@@ -94,7 +161,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h4 class="text-danger">Non-selected Services</h4>
-                        <ul id="nonSelectedServices">
+                        <ul id="nonSelectedServices" name="ntservices">
                             @foreach (var service in ViewBag.nonSelectedServicesList)
                             {
 
@@ -130,11 +197,12 @@
                     </div>
                     <br />
 
-                    <input type="text" name="description" placeholder="Description">
-
-
-                    <button class="site-btn" asp-action="AddServices" asp-controller="Profile">Search</button>
-                    @*<button type="submit" asp-action="AddServices" asp-controller="Profile" class="btn btn-primary bg-danger border-danger">Save</button>*@
+                    @*<input type="text" name="description" placeholder="Description">*@
+                    <textarea class="form-control" rows="5" id="comment" name="description" placeholder="Add Service Description"></textarea>
+                    <input type="text" id="mytext" name="selectedvalue" style="display:none">
+                    @*<button class="site-btn" asp-action="AddServices" asp-controller="Profile">Search</button>*@
+                    <button type="submit" id="btnSaveComments" class="btn btn-primary bg-danger border-danger">Save</button>
+                    @*<button class="site-btn" asp-action="MyServicesDetails" asp-controller="MyServices">details</button>*@
                 </form>
 
 

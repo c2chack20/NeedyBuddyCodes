@@ -7,6 +7,7 @@ using NeedyBuddy.Models;
 using NeedyBuddy.Data.Model;
 using NeedyBuddy.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace NeedyBuddy.Controllers
 {
@@ -29,7 +30,7 @@ namespace NeedyBuddy.Controllers
         public List<ServiceCategory> selectedServicesList = new List<ServiceCategory>();
         public List<ServiceCategory> nonSelectedServicesList = new List<ServiceCategory>();
         public UserServicesViewModel loggedinUser = new UserServicesViewModel();
-
+     
 
 
         public IActionResult Index()
@@ -42,11 +43,12 @@ namespace NeedyBuddy.Controllers
             ViewBag.nonSelectedServicesList = nonSelectedServicesList;
             ViewBag.loggedinUser = loggedinUser;
 
-       
-           
+            ViewBag.Message = "Successful";
+
             return View();
         }
-public void getProfileDetails()
+        [HttpPost]
+        public void getProfileDetails()
         {
             var currentUserName = User.Identity.Name;
             var use = _context.Users.Where(c => c.UserName == currentUserName).FirstOrDefault();
@@ -68,7 +70,7 @@ public void getProfileDetails()
                                      City = p.City,
                                      Pincode = p.Pincode,
                                      //ServiceName = r.ServiceName,
-                                     //Descriptions = q.Descriptions,
+                                     Descriptions = p.Descriptions,
                                      ProfileImage = p.ProfileImage,
                                      FirstName = p.FirstName,
                                      LastName = p.LastName,
@@ -86,11 +88,21 @@ public void getProfileDetails()
             loggedinUser.LastName = servicedetails.FirstOrDefault().LastName;
             loggedinUser.Address = servicedetails.FirstOrDefault().Address;
             loggedinUser.ProfileImage = servicedetails.FirstOrDefault().ProfileImage;
-            loggedinUser.Descriptions = "helper";
-            loggedinUser.ServiceName = "Food";
-
-            //ViewBag.Logo = Url.Content(loggedinUser.ProfileImage);
+            loggedinUser.Descriptions = servicedetails.FirstOrDefault().Descriptions;
+            loggedinUser.UserType = servicedetails.FirstOrDefault().UserType;
+            if (loggedinUser.UserType == "1")
+            {
+                loggedinUser.UserTypeName = "Provider";
+            }
+            else
+            {
+                loggedinUser.UserTypeName = "Needy";
+            }
+           
+   
             ViewBag.Foto = @servicedetails.FirstOrDefault().ProfileImage;
+            //ViewBag.Message = "Successful";
+            //ViewData["error"] = "Customer Data Update successfully";
 
         } 
         public void getServicesList()
@@ -116,7 +128,8 @@ public void getProfileDetails()
                 
             }
         }
-        public async Task<IActionResult> Save(string FirstName,string LastName,string Email,string ContactNumber,string City,string Pincode,string Address,string ProfileImage)
+        public async Task<IActionResult> Save(string FirstName,string LastName,
+            string Email,string ContactNumber,string City,string Pincode,string Address,string ProfileImage,string Descriptions)
         {
 
             string currentUserName = User.Identity.Name;
@@ -132,7 +145,7 @@ public void getProfileDetails()
                 newsPost.Pincode = Pincode;
                 newsPost.Address = Address;
                 newsPost.ProfileImage = ProfileImage;
-
+                newsPost.Descriptions = Descriptions;
                 try
                 {
                     _context.Entry(newsPost).State = EntityState.Modified;
@@ -159,27 +172,12 @@ public void getProfileDetails()
         {
             return _context.Users.Any(e => e.Id == id);
         }
-        public async Task<ActionResult> AddServices(string description, long services)
+        public async Task<ActionResult> AddServices(string description, string selectedvalue)
         {
-            string currentUserName = User.Identity.Name;
-            var userid = _context.Users.SingleOrDefault(u => u.UserName == currentUserName);
-
-            Service s = new Service();
-            //ServiceCategory sc = new ServiceCategory();
-            //ApplicationUser u = new ApplicationUser();
-            s.Descriptions = description;
-            
-            s.ServiceCategory.ServiceCategoryId = services;
-            //u.Id = "1";
-            //s.ServiceCategory = sc;
-            //s.User = u;
-
-            await _repository.CreateAsync<Service>(s);
-            //_context.Entry(Service).State = EntityState.Modified;
-            //await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index", "Profile");
+           
+            return RedirectToAction("Index", "Home");
             //return View();
         }
+
     }
 }
