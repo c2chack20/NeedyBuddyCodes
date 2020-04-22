@@ -20,15 +20,14 @@
 
     <script>
         $(document).ready(function () {
-            $("a").click(function () {               
+            $("a").click(function () {
                 $("a").removeClass("active");
                 $(this).addClass("active");
             });
         });
     </script>
 
-
- 
+  
 
 
 </head>
@@ -39,47 +38,52 @@
 
         <nav class="header-nav">
             <ul class="main-menu">
-                <li class="nav-item">
-                    <a class="active" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a asp-area="" asp-controller="AboutUs" asp-action="Index">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a asp-area="" asp-controller="News" asp-action="Index">News</a>
-                </li>
-                <li class="nav-item">
-                    <a asp-area="" asp-controller="ContactUs" asp-action="Index">Contact Us</a>
-                </li>
-                @if (!String.IsNullOrEmpty(User.Identity.Name))
-                {
+                @{
+                    string pageUrl = Context.Request.Path.ToString();
+
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Home/Index">Hello @User.Identity.Name..!</a>
+                        <a class="@(pageUrl.ToLower().Equals("/") ? "active" : string.Empty)" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="@(pageUrl.ToLower().Contains("/aboutus") ? "active" : string.Empty)" asp-area="" asp-controller="AboutUs" asp-action="Index"> About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="@(pageUrl.ToLower().Contains("/news") ? "active" : string.Empty)" asp-area="" asp-controller="News" asp-action="Index">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="@(pageUrl.ToLower().Contains("/contactus") ? "active" : string.Empty)" asp-area="" asp-controller="ContactUs" asp-action="Index">Contact Us</a>
+                    </li>
 
-                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                            <button class="register border-danger">Logout</button>
-                        </form>
+                    @if (!String.IsNullOrEmpty(User.Identity.Name))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="Identity" asp-page="/Home/Index">Hello @User.Identity.Name..!</a>
+                        </li>
+                        <li class="nav-item">
 
-                    </li>
-                }
-                else
-                {
-                    <li>
-                        <div class="header-right">
-                            <div class="user-panel">
-                                <a class="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                            <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <button class="register border-danger">Logout</button>
+                            </form>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <div class="header-right">
+                                <div class="user-panel">
+                                    <a class="@(pageUrl.ToLower().Contains("/login") ? "active login" : "login")" class="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="header-right">
-                            <div class="user-panel">
-                                <a class="register border-danger" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
+                        </li>
+                        <li>
+                            <div class="header-right">
+                                <div class="user-panel">
+                                    <a class="register border-danger" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    }
                 }
             </ul>
         </nav>
@@ -100,59 +104,59 @@
         <div class="container">
 
             @*<div class="row text-white">
-                    <div class="col-lg-4">
-                        <div class="footer-widger">
-                            <div class="about-widget">
-                                <div class="aw-text">
-                                    <p>
-                                        Here at NeedyBuddy, we are responsible for smooth running of application. If you encounter any technical issue with the application/transaction, reach out to us directly to resolve the issue.
-                                    </p>
-                                    <a class="site-btn" asp-controller="ContactUs" asp-action="Index">Help us improve</a>
-                                </div>
+                <div class="col-lg-4">
+                    <div class="footer-widger">
+                        <div class="about-widget">
+                            <div class="aw-text">
+                                <p>
+                                    Here at NeedyBuddy, we are responsible for smooth running of application. If you encounter any technical issue with the application/transaction, reach out to us directly to resolve the issue.
+                                </p>
+                                <a class="site-btn" asp-controller="ContactUs" asp-action="Index">Help us improve</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6">
-                        <div class="footer-widger">
-                            <h2>Company</h2>
-                            <ul>
-                                <li><a asp-controller="AboutUs" asp-action="Index">About us</a></li>
-                                <li><a asp-controller="Home" asp-action="Index">Services</a></li>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer-widger">
+                        <h2>Company</h2>
+                        <ul>
+                            <li><a asp-controller="AboutUs" asp-action="Index">About us</a></li>
+                            <li><a asp-controller="Home" asp-action="Index">Services</a></li>
 
-                            </ul>
-                        </div>
+                        </ul>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6">
-                        <div class="footer-widger">
-                            <h2>Help</h2>
-                            <ul>
-                                <li><a asp-controller="ContactUs" asp-action="Index">Contact Us</a></li>
-                                <li><a asp-controller="News" asp-action="Index">Latest News</a></li>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer-widger">
+                        <h2>Help</h2>
+                        <ul>
+                            <li><a asp-controller="ContactUs" asp-action="Index">Contact Us</a></li>
+                            <li><a asp-controller="News" asp-action="Index">Latest News</a></li>
 
-                            </ul>
-                        </div>
+                        </ul>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6">
-                        <div class="footer-widger">
-                            <h2>Authenticate</h2>
-                            <ul>
-                                <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
-                                <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer-widger">
+                        <h2>Authenticate</h2>
+                        <ul>
+                            <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+                            <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
 
-                            </ul>
-                        </div>
+                        </ul>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6">
-                        <div class="footer-widger">
-                            <h2>Others</h2>
-                            <ul>
-                                <li><a href="#">volunteer</a></li>
-                                <li><a href="#">Career</a></li>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer-widger">
+                        <h2>Others</h2>
+                        <ul>
+                            <li><a href="#">volunteer</a></li>
+                            <li><a href="#">Career</a></li>
 
-                            </ul>
-                        </div>
+                        </ul>
                     </div>
-                </div>*@
+                </div>
+            </div>*@
             <div class="copyright">
                 Copyright &copy; NeedyBuddy
                 <script>document.write(new Date().getFullYear());</script> -  All rights reserved
@@ -165,9 +169,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     <script src="~/lib/jquery/dist/jquery.js"></script>
-
-   
     @RenderSection("Scripts", required: false)
-   
 </body>
 </html>

@@ -1,70 +1,92 @@
-﻿@{
+﻿@model IEnumerable<NeedyBuddy.Models.ServiceCategory>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<form asp-controller="Home" asp-action="Index" method="post" class="form-horizontal" role="form">
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
 
-    <!-- Header Section end -->
-    <!-- Hero Section end -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-warp">
+    $(document).ready(function () {
+        $(function () {
+
+
+            $('.select-service, input[name="serviceList"]').change(updateServiceElements);
+
+            function updateServiceElements(e) {
+                var serviceValueAttribute = '[value="' + e.target.value + '"]';
+                //$('input:checked').removeAttr('checked');
+                $(':radio').each(function () {
+                    $('input[type="radio"]').prop('checked', false);
+                })
+                $('.select-service option' + serviceValueAttribute).prop('selected', true);
+                $('input[name="serviceList"]' + serviceValueAttribute).prop('checked', true);
+            }
+
+        });
+    });
+</script>
+
+
+<!-- Header Section end -->
+<!-- Hero Section end -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-warp">
+            <form class="main-search-form" asp-action="UserServices">
                 <div class="search-type">
-                    <div class="st-item">
-                        <input type="radio" name="st" id="Test" checked>
-                        <label for="Test">Test</label>
-                    </div>
-                    <div class="st-item">
-                        <input type="radio" name="st" id="Food">
-                        <label for="Food">Food</label>
-                    </div>
-                    <div class="st-item">
-                        <input type="radio" name="st" id="Medicine">
-                        <label for="Medicine">Medicine</label>
-                    </div>
-                    <div class="st-item">
-                        <input type="radio" name="st" id="Grocessary">
-                        <label for="Grocessary">Glossary</label>
-                    </div>
-                    <div class="st-item">
-                        <input type="radio" name="st" id="Doctor">
-                        <label for="Doctor">Doctor</label>
-                    </div>
+                    @{
+                        var isFirstChecked = false;
+                    }
+
+                    @foreach (var item in Model.Take(5))
+                    {
+                        <div class="st-item">
+                            <input @(isFirstChecked ? "" : "checked") type="radio" name="serviceList" id="@item.ServiceName" value="@item.ServiceCategoryId">
+                            <label for="@item.ServiceName" id="@item.ServiceCategoryId">@item.ServiceName</label>
+                        </div>
+                        isFirstChecked = true;
+                    }
                 </div>
                 <div class="search-input">
-                    <input type="text" placeholder="Search by postalcode or area">
-                    <select id="ServicesDropdown" name="ServicesDropdown">
-                        @foreach (var service in ViewBag.servicesList)
+                    <input type="text" name="area" placeholder="Search by postalcode or area">
+                    @*************Populating the dropdown List**********@
+
+                    <select name="serviceList" id="serviceList" class="select-service">
+                        @foreach (var item in Model)
                         {
-                            <option value="@service.ServiceCategoryId">@service.ServiceName</option>
+                            <option value="@item.ServiceCategoryId">
+                                @item.ServiceName
+                            </option>
                         }
                     </select>
+
+                    @********************************@
                     <button class="site-btn" asp-action="UserServices" asp-controller="UserServices">Search</button>
                 </div>
                 <p> Search with your postal code or location to get help from volunteers or to help people nearby  </p>
-            </div>
+            </form>
         </div>
-    </section>
-    <!-- Hero Section end -->
-    <!-- Stories Section end -->
-    <section class="stories-section spad">
-        <div class="container">
-            <div class="row ">
-                @*<div class="col-lg-5 order-lg-2">
+    </div>
+</section>
+<!-- Hero Section end -->
+<!-- Stories Section end -->
+<section class="stories-section spad">
+    <div class="container">
+        <div class="row ">
+            @*<div class="col-lg-5 order-lg-2">
                     <img class="w-100" src="~/img/about/3.jpg" alt="">
                 </div>*@
-                <div class="col-lg-12 order-lg-1">
-                    <div class="about-text">
-                        <h2 class="text-white">Success Stories</h2>
-                        <hr />
-                        <h4 class="text-danger">What the world can learn from Kerala about how to fight covid-19</h4><br />
-                        <p class="text-white">The sun had already set on March 7 when Nooh Pullichalil Bava received the call. “I have bad news,” his boss warned. On February 29, a family of three had arrived in the Indian state of Kerala from Italy, where they lived. The trio skipped a voluntary screening for covid-19 at the airport and took a taxi 125 miles (200 kilometers) to their home in the town of Ranni. When they started developing symptoms soon afterward, they didn’t alert the hospital. Now, a whole week after taking off from Venice, all three—a middle-­aged man and woman and their adult son—had tested positive for the virus, and so had two of their elderly relatives. </p>
-                    </div>
-                    <a target="_blank" href="https://www.technologyreview.com/2020/04/13/999313/kerala-fight-covid-19-india-coronavirus/" class="readmore-btn">Find out more</a>
-
+            <div class="col-lg-12 order-lg-1">
+                <div class="about-text">
+                    <h2 class="text-white">Success Stories</h2>
+                    <hr />
+                    <h4 class="text-danger">What the world can learn from Kerala about how to fight covid-19</h4><br />
+                    <p class="text-white">The sun had already set on March 7 when Nooh Pullichalil Bava received the call. “I have bad news,” his boss warned. On February 29, a family of three had arrived in the Indian state of Kerala from Italy, where they lived. The trio skipped a voluntary screening for covid-19 at the airport and took a taxi 125 miles (200 kilometers) to their home in the town of Ranni. When they started developing symptoms soon afterward, they didn’t alert the hospital. Now, a whole week after taking off from Venice, all three—a middle-­aged man and woman and their adult son—had tested positive for the virus, and so had two of their elderly relatives. </p>
                 </div>
+                <a target="_blank" href="https://www.technologyreview.com/2020/04/13/999313/kerala-fight-covid-19-india-coronavirus/" class="readmore-btn">Find out more</a>
+
             </div>
         </div>
-    </section>
-    <!-- Stories Section end -->
-</form>
+    </div>
+</section>
+<!-- Stories Section end -->
