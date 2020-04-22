@@ -41,7 +41,10 @@ namespace NeedyBuddy.Controllers
                                             Pincode = p.Pincode,
                                             ServiceName = r.ServiceName,
                                             Descriptions = q.Descriptions,
-                                            Address = p.Address
+                                            Address = p.Address,
+                                            LastName = null,
+                                             ProfileImage = null,
+                                              UserName = p.UserName
                                         };
             return View(userServicesViewModel.ToList());
         }
@@ -52,7 +55,7 @@ namespace NeedyBuddy.Controllers
             List<DetailsViewModel> detailsViewModels = new List<DetailsViewModel>();
 
             List<ServiceDetailsViewModel> serviceDetailsViewModel = new List<ServiceDetailsViewModel>();
-            var detailsViewModel = from p in _context.Users where p.Id.Equals(userId)
+            var detailsViewModel1 = from p in _context.Users where p.Id.Equals(userId)
                                    select new DetailsViewModel
                                    {
                             Id = p.Id,
@@ -61,9 +64,11 @@ namespace NeedyBuddy.Controllers
                             Email = p.Email,
                             City = p.City,
                             Pincode = p.Pincode,
-                            Address = p.Address
+                            Address = p.Address,
+                             serviceDetailsViewModel= new List<ServiceDetailsViewModel>()
                         };
-            
+            var detailsViewModel = detailsViewModel1.FirstOrDefault();
+
             var servicedetails = from p in _context.Users
                                    join q in _context.Service on p.Id equals q.User.Id
                                    join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
@@ -73,15 +78,17 @@ namespace NeedyBuddy.Controllers
                                        ServiceName = r.ServiceName,
                                        Descriptions = q.Descriptions
                                    };
-            foreach (ServiceDetailsViewModel sd in servicedetails.ToList())
-            {
-                detailsViewModels.SingleOrDefault().serviceDetailsViewModel.Add(sd);
-                //detailsViewModel.SingleOrDefault().serviceDetailsViewModel.SingleOrDefault().Descriptions = sd.Descriptions;
-                //detailsViewModel.SingleOrDefault().serviceDetailsViewModel.SingleOrDefault().ServiceName= sd.ServiceName;
-                detailsViewModels.SingleOrDefault().serviceDetailsViewModel.Add(new ServiceDetailsViewModel() { Descriptions = sd.Descriptions, ServiceName = sd.ServiceName });
-            }
 
-            return View(detailsViewModel.SingleOrDefault());
+            ViewBag.ServiceDetails = servicedetails.ToList();
+            //foreach (ServiceDetailsViewModel sd in servicedetails.ToList())
+            //{
+            //    detailsViewModel.serviceDetailsViewModel.Append(sd);
+            //    //detailsViewModel.SingleOrDefault().serviceDetailsViewModel.SingleOrDefault().Descriptions = sd.Descriptions;
+            //    //detailsViewModel.SingleOrDefault().serviceDetailsViewModel.SingleOrDefault().ServiceName= sd.ServiceName;
+            //    //detailsViewModels.SingleOrDefault().serviceDetailsViewModel.Add(new ServiceDetailsViewModel() { Descriptions = sd.Descriptions, ServiceName = sd.ServiceName });
+            //}
+
+            return View(detailsViewModel);
         }
     }
 }
