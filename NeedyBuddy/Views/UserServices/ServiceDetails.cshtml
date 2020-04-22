@@ -12,14 +12,17 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="property-header">
-                                <h3 style="color:red">@Model.FirstName</h3>
+                                <h3 style="color:red">@Model.FirstName &nbsp; @Model.LastName</h3>
 
                             </div>
                         </div>
                         <div class="col-lg-4 text-left text-lg-right">
                             <div class="property-header">
-                                <h3 style="color:white">@Model.Address</h3>
+                                <p style="color:white">@Model.Address</p>
                                 <p style="color:white">@Model.City</p>
+                                <p style="color:white">@Model.Pincode</p>
+                                <p style="color:white">@Model.ContactNumber</p>
+                                <p style="color:white">@Model.Email</p>
                             </div>
                         </div>
                     </div>
@@ -34,13 +37,13 @@
                                 </div>
                             </div>
                             <div class="col-lg-5 text-left text-lg-right">
-                                <a href="#" class="offer-btn" style="background-color:#d8232a; color:white">Contact Agent</a>
+                                <a class="offer-btn"  style="background-color:#d8232a; color:white" asp-controller="UserServices" asp-action="AgentContact" asp-route-Email=@Model.Email>Contact Agent</a>
                             </div>
                         </div>
                     </div>
                     <div class="property-text">
                         <h4 style="color:red;">Description</h4>
-                        <p>Donec eget efficitur ex. Donec eget dolor vitae eros feugiat tristique id vitae massa. Proin vulputate congue rutrum. Fusce lobortis a enim eget tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse potenti. Ut gravida mattis magna, non varius lorem sodales nec. In libero orci, ornare non nisl a, auctor euismod purus. Morbi pretium interdum vestibulum. Fusce nec eleifend ipsum. Sed non blandit tellus. </p>
+                        <p>@Model.Description</p>
                         <h4 style="color:red;">Details</h4>
                         <p>Proin vulputate congue rutrum. Fusce lobortis a enim eget tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse potenti. Ut gravida mattis magna, non varius lorem sodales nec. In libero orci, ornare non nisl a, auctor euismod purus. Morbi pretium interdum vestibulum. Fusce nec eleifend ipsum. Sed non blandit tellus. </p>
                     </div>
@@ -62,3 +65,5 @@
     </div>
 
 </section>
+
+@*<partial name="AgentContact"/>*@
