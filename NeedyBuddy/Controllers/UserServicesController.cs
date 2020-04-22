@@ -49,7 +49,7 @@ namespace NeedyBuddy.Controllers
                                             ServiceCategoryId = r.ServiceCategoryId.ToString()
                                         };
             ViewBag.area = area;
-            ViewBag.serviceList = "Medicine";
+            ViewBag.serviceList = serviceList;
             return View(userServicesViewModel.ToList());
         }
 
