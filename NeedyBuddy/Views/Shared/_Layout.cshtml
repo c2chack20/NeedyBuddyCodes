@@ -56,15 +56,19 @@
 
                     @if (!String.IsNullOrEmpty(User.Identity.Name))
                     {
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="Identity" asp-page="/Home/Index">Hello @User.Identity.Name..!</a>
-                        </li>
-                        <li class="nav-item">
-
-                            <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                <button class="register border-danger">Logout</button>
-                            </form>
-
+                        <li>
+                            <div class="header-right">
+                                <div class="user-panel">
+                                    <a class="register border-danger" asp-area="Identity" asp-page="/Home/Index">Hello @User.Identity.Name</a>
+                                </div>
+                            </div>
+                            <ul class="sub-menu">
+                                <li><a asp-area="" asp-controller="Profile" asp-action="Index">Profile</a></li>
+                                <li>
+                                    <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Logout</a>
+                                </li>
+                        
+                            </ul>
                         </li>
                     }
                     else
@@ -103,7 +107,7 @@
 
         <div class="container">
 
-            @*<div class="row text-white">
+            <div class="row text-white">
                     <div class="col-lg-4">
                         <div class="footer-widger">
                             <div class="about-widget">
@@ -156,7 +160,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>*@
+                </div>
             <div class="copyright">
                 Copyright &copy; NeedyBuddy
                 <script>document.write(new Date().getFullYear());</script> -  All rights reserved
