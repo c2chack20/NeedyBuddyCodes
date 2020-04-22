@@ -34,11 +34,12 @@ namespace NeedyBuddy.Controllers
             var userServicesViewModel = from p in _context.Users
                                         join q in _context.Service on p.Id equals q.User.Id
                                         join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
-                                        where p.Pincode.Equals(area) && r.ServiceCategoryId.Equals(serviceList)
+                                        where (p.Pincode.Equals(area)|| p.City.Equals(area))&& r.ServiceCategoryId.Equals(serviceList)
                                         select new UserServicesViewModel
                                         {
                                             Id = p.Id,
-                                            FirstName = p.UserName,
+                                            FirstName = p.FirstName,
+                                            LastName = p.LastName,
                                             ContactNumber = p.PhoneNumber,
                                             Email = p.Email,
                                             City = p.City,
@@ -46,49 +47,67 @@ namespace NeedyBuddy.Controllers
                                             ServiceName = r.ServiceName,
                                             Descriptions = q.Descriptions,
                                             Address = p.Address,
-                                            ServiceCategoryId = r.ServiceCategoryId.ToString()
                                         };
+
             ViewBag.area = area;
             ViewBag.serviceList = serviceList;
             return View(userServicesViewModel.ToList());
         }
 
-
-        public IActionResult ServiceDetails(string userId="1")
+        //string userId = "c91daa76-275f-4c2e-9b58-f1e266ceedf7"
+        public IActionResult ServiceDetails(string usermodel)
         {
             List<DetailsViewModel> detailsViewModels = new List<DetailsViewModel>();
 
             List<ServiceDetailsViewModel> serviceDetailsViewModel = new List<ServiceDetailsViewModel>();
-            var detailsViewModel = from p in _context.Users where p.Id.Equals(userId)
+            var detailsViewModel1 = from p in _context.Users where p.Id.Equals(usermodel)
                                    select new DetailsViewModel
                                    {
                             Id = p.Id,
-                            FirstName = p.UserName,
+                            FirstName = p.FirstName,
+                            LastName = p.LastName,
                             ContactNumber = p.PhoneNumber,
                             Email = p.Email,
                             City = p.City,
                             Pincode = p.Pincode,
-                            Address = p.Address
+                            Address = p.Address,
+                            Description = p.Descriptions,
+                            serviceDetailsViewModel= new List<ServiceDetailsViewModel>()
                         };
-            
+            var detailsViewModel = detailsViewModel1.FirstOrDefault();
+
             var servicedetails = from p in _context.Users
                                    join q in _context.Service on p.Id equals q.User.Id
                                    join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
-                                   where p.Id.Equals(userId)
+                                   where p.Id.Equals(usermodel)
                                    select new ServiceDetailsViewModel
                                    {
                                        ServiceName = r.ServiceName,
                                        Descriptions = q.Descriptions
-                                   };
-            foreach (ServiceDetailsViewModel sd in servicedetails.ToList())
-            {
-                detailsViewModels.SingleOrDefault().serviceDetailsViewModel.Add(sd);
-                //detailsViewModel.SingleOrDefault().serviceDetailsViewModel.SingleOrDefault().Descriptions = sd.Descriptions;
-                //detailsViewModel.SingleOrDefault().serviceDetailsViewModel.SingleOrDefault().ServiceName= sd.ServiceName;
-                detailsViewModels.SingleOrDefault().serviceDetailsViewModel.Add(new ServiceDetailsViewModel() { Descriptions = sd.Descriptions, ServiceName = sd.ServiceName });
-            }
 
-            return View(detailsViewModel.SingleOrDefault());
+                                   };
+
+            ViewBag.ServiceDetails = servicedetails.ToList();
+
+            return View(detailsViewModel);
         }
+
+        public ActionResult AgentContact(string Email)
+        {
+            var currentUserName = User.Identity.Name;
+            var use = _context.Users.Where(c => c.UserName == currentUserName).FirstOrDefault();
+            AgentContactViewModel agentContactViewModel = new AgentContactViewModel()
+            {  Name = use.FirstName,
+               Email = use.Email,
+               ContactNumber = use.PhoneNumber,
+               AgentEmail = Email
+            };
+            return PartialView(agentContactViewModel);
+        }
+        //public ViewResult ContactAgent()
+        //{
+
+        //    return view();
+        //}
     }
 }
