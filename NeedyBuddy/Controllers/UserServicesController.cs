@@ -104,10 +104,11 @@ namespace NeedyBuddy.Controllers
             };
             return PartialView(agentContactViewModel);
         }
-        //public ViewResult ContactAgent()
-        //{
 
-        //    return view();
-        //}
+        public ViewResult ContactAgent(AgentContactViewModel agentContactViewModel)
+        {
+
+            return View();
+        }
     }
 }
