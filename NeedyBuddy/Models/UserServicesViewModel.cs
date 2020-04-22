@@ -22,7 +22,7 @@ namespace NeedyBuddy.Data.Model
         public string Descriptions { get; set; }
 
         public string ServiceName { get; set; }
-
+        public string ServiceCategoryId { get; set; }
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -30,5 +30,7 @@ namespace NeedyBuddy.Data.Model
 
         public string Address { get; set; }
         public string UserType { get; set; }
+
+        public string UserTypeName { get; set; }
     }
 }

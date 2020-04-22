@@ -48,6 +48,9 @@ namespace NeedyBuddy.Controllers
                                             Descriptions = q.Descriptions,
                                             Address = p.Address,
                                         };
+
+            ViewBag.area = area;
+            ViewBag.serviceList = serviceList;
             return View(userServicesViewModel.ToList());
         }
 
@@ -68,7 +71,7 @@ namespace NeedyBuddy.Controllers
                             City = p.City,
                             Pincode = p.Pincode,
                             Address = p.Address,
-                            Description = p.Description,
+                            Description = p.Descriptions,
                             serviceDetailsViewModel= new List<ServiceDetailsViewModel>()
                         };
             var detailsViewModel = detailsViewModel1.FirstOrDefault();
