@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using NeedyBuddy.Data;
 using NeedyBuddy.Data.Model;
 using NeedyBuddy.Models;
+using NeedyBuddy.Services;
 
 namespace NeedyBuddy.Controllers
 {
@@ -13,10 +15,12 @@ namespace NeedyBuddy.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IRepository _repository;
-        public UserServicesController(ApplicationDbContext context, IRepository repository)
+        private IConfiguration _configuration;
+        public UserServicesController(ApplicationDbContext context, IRepository repository,IConfiguration configuration)
         {
             _context = context;
             _repository = repository;
+            _configuration = configuration;
         }
 
 
@@ -105,10 +109,13 @@ namespace NeedyBuddy.Controllers
             return PartialView(agentContactViewModel);
         }
 
-        public ViewResult ContactAgent(AgentContactViewModel agentContactViewModel)
+        public Task ContactAgent(AgentContactViewModel agentContactViewModel)
         {
+            SendMail objmail = new SendMail();
 
-            return View();
+            string key = _configuration.GetSection("Appsettings").GetSection("Apikey").Value;
+            Task response = objmail.MailSend(agentContactViewModel.AgentEmail, key);
+            return response;
         }
     }
 }
