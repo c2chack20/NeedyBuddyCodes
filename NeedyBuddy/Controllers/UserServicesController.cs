@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NeedyBuddy.Data;
 using NeedyBuddy.Data.Model;
@@ -48,6 +49,18 @@ namespace NeedyBuddy.Controllers
         public IActionResult ServiceDetails(UserServicesViewModel contact)
         {
 
+            return View();
+        }
+
+
+        //public ActionResult AgentContact()
+        //{
+        //    return PartialView();
+        //}
+
+        [HttpPost]
+        public ActionResult ContactAgent()
+        {
             return View();
         }
     }

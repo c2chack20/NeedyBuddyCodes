@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "PopUpPartial";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="modal fade bootstrapModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <div class="modal-title">
+                    <h4>Fill out this contact form</h4>
+                </div>
+                <button data-dismiss="modal" style="color:red;"> <span class="h5"> &times; </span> </button>
+
+            </div>
+            <div class="modal-body">
+                
+                    <div class="form-group">
+                        <a>Name</a>
+                        <input asp-for="@User.Identity.Name" class="form-control" placeholder="Name" />
+                        <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <a>Email</a>
+                        <input asp-for="@User.Identity.Name" class="form-control" placeholder="Email" />
+                        <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <a>Phone Number</a>
+                        <input asp-for="@User.Identity.Name" class="form-control" placeholder="Phone Number" />
+                        <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <a>Intrested In</a>
+                        <input asp-for="@User.Identity.Name" class="form-control" placeholder="Interested In" />
+                        <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" asp-controller="UserServices" asp-action="ContactAgent" formmethod="post" >Contact for help</button>
+                <button class="btn btn-default bg-danger text-white" data-dismiss="modal">Cancel</button>
+
+            </div>
+           
+        </div>
+    </div>
+</div>
+

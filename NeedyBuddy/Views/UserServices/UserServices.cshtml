@@ -4,219 +4,222 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div style="padding-top:58px; background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg');">
-    <section>
+    <div style="padding-top:58px; background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg');">
+        <section>
 
 
 
-    
-
-        <div class="search-input" style="background-color:#d8232a;">
-
-            <input type="text" style="font-size:medium;" placeholder="Search by state, postcode or suburb">
-            <select id="ServicesDropdown" name="ServicesDropdown"  style="font-size:medium;">
 
 
-                <option value="Test">Test</option>
-                <option value="Medicine">Medicine</option>
+            <div class="search-input" style="background-color:#d8232a;">
 
-            </select>
-            <button class="site-btn" asp-action="UserServices" asp-controller="UserServices">Search</button>
-
-        </div>
-        <br />
-
-      
+                <input type="text" style="font-size:medium;" placeholder="Search by state, postcode or suburb">
+                <select id="ServicesDropdown" name="ServicesDropdown" style="font-size:medium;">
 
 
-        <div class="flex relative clearfix m-srp-card__container">
-            <div class="m-srp-card__photo flex__item">
-                <div class="m-srp-card__listing-type">
-                    &nbsp;
-                </div>
-                <div class="m-photo" style="max-width:200px !important; width:200px !important; height:150px !important; max-height:150px !important;">
-                    <div class="m-photo__fig
-			zoom-cursor" onclick="getPhotoMapUrl ('46765577','PROJ1667993','11120','null','photoComponent');">
-                        <img class="m-photo__img lazy" src="https://img.staticmb.com/mbimages/project/Photo_h310_w462/2019/12/17/Project-Photo-13-Sai-Gangothri-Hill-Crest-Bangalore-5129271_560_996_310_462.jpg" title="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" alt="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" style="">
-                    </div>
+                    <option value="Test">Test</option>
+                    <option value="Medicine">Medicine</option>
 
-                </div>
-                <div class="m-srp-card__heading clearfix">
-                    <h3>
-                        <span class="m-srp-card__title">
+                </select>
+                <button class="site-btn" asp-action="UserServices" asp-controller="UserServices">Search</button>
 
-                            <b style="color:red; font-size:15px;">Apollo Pharmacy</b>
-                        </span>
-                    </h3>
-
-                </div>
             </div>
+            <br />
 
-            <div class="m-srp-card__desc flex__item">
 
 
-                <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
-                    <div class="m-srp-card__summary js-collapse__content" style="background-color:#d8232a;">
-                        <input type="hidden" id="propertyArea46765577" value="815 sqft">
-                        <div class="m-srp-card__summary__item" style="font-weight:bold; color:white;">
-                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Test</div>
-                            @*<div class="m-srp-card__summary__info">815&nbsp;sqft</div>*@
-                        </div>
-                        <div class="m-srp-card__summary__item" style="font-weight:bold">
-                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Groceries</div>
-                            @*<div class="m-srp-card__summary__info">
-                        Possession by Apr '22
-                    </div>*@
-                        </div>
-                        <div class="m-srp-card__summary__item" style="font-weight:bold">
-                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Medicine</div>
-                            @*<div class="m-srp-card__summary__info">6 out of 6 floors</div>*@
-                        </div>
-                        <div class="m-srp-card__summary__item" style="font-weight:bold">
-                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Doctor</div>
 
-                        </div>
-                        <div class="m-srp-card__summary__item" style="font-weight:bold">
-                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Food</div>
-
+            <div class="flex relative clearfix m-srp-card__container">
+                <div class="m-srp-card__photo flex__item">
+                    <div class="m-srp-card__listing-type">
+                        &nbsp;
+                    </div>
+                    <div class="m-photo" style="max-width:200px !important; width:200px !important; height:150px !important; max-height:150px !important;">
+                        <div class="m-photo__fig
+			zoom-cursor" onclick="getPhotoMapUrl ('46765577','PROJ1667993','11120','null','photoComponent');">
+                            <img class="m-photo__img lazy" src="https://img.staticmb.com/mbimages/project/Photo_h310_w462/2019/12/17/Project-Photo-13-Sai-Gangothri-Hill-Crest-Bangalore-5129271_560_996_310_462.jpg" title="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" alt="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" style="">
                         </div>
 
                     </div>
-                    <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
-                        <div class="ico m-srp-card__ico">
-                            <svg role="icon">
-                                <use xlink:href="#icon-caret-down"></use>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="m-srp-card__action">
                     <div class="m-srp-card__heading clearfix">
                         <h3>
                             <span class="m-srp-card__title">
 
-                                <b style="color:white; font-size:15px;">Miyapur, Hyderabad - 500049</b>
+                                <b style="color:red; font-size:15px;">Apollo Pharmacy</b>
                             </span>
                         </h3>
 
                     </div>
                 </div>
-                <br/>
-                <div class="m-srp-card__action">
-                    <div class="m-srp-card__action__item relative">
 
-                        <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices">Contact Agent</a>
+                <div class="m-srp-card__desc flex__item">
+
+
+                    <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
+                        <div class="m-srp-card__summary js-collapse__content" style="background-color:#d8232a;">
+                            <input type="hidden" id="propertyArea46765577" value="815 sqft">
+                            <div class="m-srp-card__summary__item" style="font-weight:bold; color:white;">
+                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Test</div>
+                                @*<div class="m-srp-card__summary__info">815&nbsp;sqft</div>*@
+                            </div>
+                            <div class="m-srp-card__summary__item" style="font-weight:bold">
+                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Groceries</div>
+                                @*<div class="m-srp-card__summary__info">
+                                    Possession by Apr '22
+                                </div>*@
+                            </div>
+                            <div class="m-srp-card__summary__item" style="font-weight:bold">
+                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Medicine</div>
+                                @*<div class="m-srp-card__summary__info">6 out of 6 floors</div>*@
+                            </div>
+                            <div class="m-srp-card__summary__item" style="font-weight:bold">
+                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Doctor</div>
+
+                            </div>
+                            <div class="m-srp-card__summary__item" style="font-weight:bold">
+                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Food</div>
+
+                            </div>
+
+                        </div>
+                        <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
+                            <div class="ico m-srp-card__ico">
+                                <svg role="icon">
+                                    <use xlink:href="#icon-caret-down"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-srp-card__action">
+                        <div class="m-srp-card__heading clearfix">
+                            <h3>
+                                <span class="m-srp-card__title">
+
+                                    <b style="color:white; font-size:15px;">Miyapur, Hyderabad - 500049</b>
+                                </span>
+                            </h3>
+
+                        </div>
+                    </div>
+                    <br />
+                    <div class="m-srp-card__action">
+                        <div class="m-srp-card__action__item relative">
+
+                            <a class="m-srp-card__btn m-srp-card__btn--primary" data-toggle="modal" data-target=".bootstrapModal">Contact Agent</a>
+
+                        </div>
 
                     </div>
+                    <br />
+                    <div class="m-srp-card__action" style="float:right;">
+                        <div class="m-srp-card__action__item relative">
 
-                </div>
-                <br/>
-                <div class="m-srp-card__action" style="float:right;">
-                    <div class="m-srp-card__action__item relative">
+                            <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices">Read More...</a>
 
-                        <a class="m-srp-card__btn m-srp-card__btn--primary"  asp-action="ServiceDetails" asp-controller="UserServices">Read More...</a>
+                        </div>
 
                     </div>
-
                 </div>
             </div>
-        </div>
 
-        <hr />
-        <br />
+            <hr />
+            <br />
 
-        <div class="flex relative clearfix m-srp-card__container">
-            <div class="m-srp-card__photo flex__item">
-                <div class="m-srp-card__listing-type">
-                    &nbsp;
-                </div>
-                <div class="m-photo" style="max-width:200px !important; width:200px !important; height:150px !important; max-height:150px !important;">
-                    <div class="m-photo__fig
+            <div class="flex relative clearfix m-srp-card__container">
+                <div class="m-srp-card__photo flex__item">
+                    <div class="m-srp-card__listing-type">
+                        &nbsp;
+                    </div>
+                    <div class="m-photo" style="max-width:200px !important; width:200px !important; height:150px !important; max-height:150px !important;">
+                        <div class="m-photo__fig
 			zoom-cursor" onclick="getPhotoMapUrl ('46765577','PROJ1667993','11120','null','photoComponent');">
-                        <img class="m-photo__img lazy" src="https://img.staticmb.com/mbimages/project/Photo_h310_w462/2019/12/17/Project-Photo-13-Sai-Gangothri-Hill-Crest-Bangalore-5129271_560_996_310_462.jpg" title="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" alt="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" style="">
-                    </div>
-
-                </div>
-                <div class="m-srp-card__heading clearfix">
-                    <h3>
-                        <span class="m-srp-card__title">
-
-                            <b style="color:red; font-size:15px;">Apollo Pharmacy</b>
-                        </span>
-                    </h3>
-
-                </div>
-            </div>
-
-            <div class="m-srp-card__desc flex__item">
-
-
-                <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
-                    <div class="m-srp-card__summary js-collapse__content" style="background-color:#d8232a;">
-                        <input type="hidden" id="propertyArea46765577" value="815 sqft">
-                        <div class="m-srp-card__summary__item" style="font-weight:bold; color:white;">
-                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Test</div>
-                            @*<div class="m-srp-card__summary__info">815&nbsp;sqft</div>*@
-                        </div>
-                        <div class="m-srp-card__summary__item" style="font-weight:bold">
-                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Groceries</div>
-                            @*<div class="m-srp-card__summary__info">
-                            Possession by Apr '22
-                        </div>*@
-                        </div>
-                        <div class="m-srp-card__summary__item" style="font-weight:bold">
-                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Medicine</div>
-                            @*<div class="m-srp-card__summary__info">6 out of 6 floors</div>*@
-                        </div>
-                        <div class="m-srp-card__summary__item" style="font-weight:bold">
-                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Doctor</div>
-
-                        </div>
-                        <div class="m-srp-card__summary__item" style="font-weight:bold">
-                            <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Food</div>
-
+                            <img class="m-photo__img lazy" src="https://img.staticmb.com/mbimages/project/Photo_h310_w462/2019/12/17/Project-Photo-13-Sai-Gangothri-Hill-Crest-Bangalore-5129271_560_996_310_462.jpg" title="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" alt="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" style="">
                         </div>
 
                     </div>
-                    <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
-                        <div class="ico m-srp-card__ico">
-                            <svg role="icon">
-                                <use xlink:href="#icon-caret-down"></use>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="m-srp-card__action">
                     <div class="m-srp-card__heading clearfix">
                         <h3>
                             <span class="m-srp-card__title">
 
-                                <b style="color:white; font-size:15px;">Miyapur, Hyderabad - 500049</b>
+                                <b style="color:red; font-size:15px;">Apollo Pharmacy</b>
                             </span>
                         </h3>
 
                     </div>
                 </div>
-                <br />
-                <div class="m-srp-card__action">
-                    <div class="m-srp-card__action__item relative">
 
-                        <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices">Contact Agent</a>
+                <div class="m-srp-card__desc flex__item">
+
+
+                    <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
+                        <div class="m-srp-card__summary js-collapse__content" style="background-color:#d8232a;">
+                            <input type="hidden" id="propertyArea46765577" value="815 sqft">
+                            <div class="m-srp-card__summary__item" style="font-weight:bold; color:white;">
+                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Test</div>
+                                @*<div class="m-srp-card__summary__info">815&nbsp;sqft</div>*@
+                            </div>
+                            <div class="m-srp-card__summary__item" style="font-weight:bold">
+                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Groceries</div>
+                                @*<div class="m-srp-card__summary__info">
+                                    Possession by Apr '22
+                                </div>*@
+                            </div>
+                            <div class="m-srp-card__summary__item" style="font-weight:bold">
+                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Medicine</div>
+                                @*<div class="m-srp-card__summary__info">6 out of 6 floors</div>*@
+                            </div>
+                            <div class="m-srp-card__summary__item" style="font-weight:bold">
+                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Doctor</div>
+
+                            </div>
+                            <div class="m-srp-card__summary__item" style="font-weight:bold">
+                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">Food</div>
+
+                            </div>
+
+                        </div>
+                        <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
+                            <div class="ico m-srp-card__ico">
+                                <svg role="icon">
+                                    <use xlink:href="#icon-caret-down"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-srp-card__action">
+                        <div class="m-srp-card__heading clearfix">
+                            <h3>
+                                <span class="m-srp-card__title">
+
+                                    <b style="color:white; font-size:15px;">Miyapur, Hyderabad - 500049</b>
+                                </span>
+                            </h3>
+
+                        </div>
+                    </div>
+                    <br />
+                    <div class="m-srp-card__action">
+                        <div class="m-srp-card__action__item relative">
+
+                            <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices">Contact Agent</a>
+                            @*<a class="offer-btn" data-toggle="modal" data-target=".bootstrapModal" style="background-color:#d8232a; color:white">Contact Agent</a>*@
+
+                        </div>
 
                     </div>
+                    <br />
+                    <div class="m-srp-card__action" style="float:right;">
+                        <div class="m-srp-card__action__item relative">
 
-                </div>
-                <br />
-                <div class="m-srp-card__action" style="float:right;">
-                    <div class="m-srp-card__action__item relative">
+                            <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices">Read More...</a>
 
-                        <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices">Read More...</a>
+                        </div>
 
                     </div>
-
                 </div>
             </div>
-        </div>
 
-    </section>
-</div>
+        </section>
+        <partial name="AgentContact" />
+    </div>
+
