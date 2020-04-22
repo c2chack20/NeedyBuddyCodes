@@ -29,5 +29,6 @@ namespace NeedyBuddy.Data.Model
         public string ProfileImage { get; set; }
 
         public string Address { get; set; }
+        public string UserType { get; set; }
     }
 }

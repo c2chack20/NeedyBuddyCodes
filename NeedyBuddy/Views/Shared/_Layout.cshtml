@@ -27,8 +27,7 @@
         });
     </script>
 
-
-    <link rel="stylesheet" href="~/css/srp.css" />
+  
 
 
 </head>
@@ -39,47 +38,52 @@
 
         <nav class="header-nav">
             <ul class="main-menu">
-                <li class="nav-item">
-                    <a class="active" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a asp-area="" asp-controller="AboutUs" asp-action="Index">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a asp-area="" asp-controller="News" asp-action="Index">News</a>
-                </li>
-                <li class="nav-item">
-                    <a asp-area="" asp-controller="ContactUs" asp-action="Index">Contact Us</a>
-                </li>
-                @if(!String.IsNullOrEmpty(User.Identity.Name))
-                {
+                @{
+                    string pageUrl = Context.Request.Path.ToString();
+
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Home/Index">Hello @User.Identity.Name..!</a>
+                        <a class="@(pageUrl.ToLower().Equals("/") ? "active" : string.Empty)" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                            
-                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                            <button class="register border-danger">Logout</button>
-                        </form>
-                                
+                        <a class="@(pageUrl.ToLower().Contains("/aboutus") ? "active" : string.Empty)" asp-area="" asp-controller="AboutUs" asp-action="Index"> About Us</a>
                     </li>
-                }
-                else
-                {
-                    <li>
-                        <div class="header-right">
-                            <div class="user-panel">
-                                <a class="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    <li class="nav-item">
+                        <a class="@(pageUrl.ToLower().Contains("/news") ? "active" : string.Empty)" asp-area="" asp-controller="News" asp-action="Index">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="@(pageUrl.ToLower().Contains("/contactus") ? "active" : string.Empty)" asp-area="" asp-controller="ContactUs" asp-action="Index">Contact Us</a>
+                    </li>
+
+                    @if (!String.IsNullOrEmpty(User.Identity.Name))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="Identity" asp-page="/Home/Index">Hello @User.Identity.Name..!</a>
+                        </li>
+                        <li class="nav-item">
+
+                            <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <button class="register border-danger">Logout</button>
+                            </form>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <div class="header-right">
+                                <div class="user-panel">
+                                    <a class="@(pageUrl.ToLower().Contains("/login") ? "active login" : "login")" class="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="header-right">
-                            <div class="user-panel">
-                                <a class="register border-danger" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
+                        </li>
+                        <li>
+                            <div class="header-right">
+                                <div class="user-panel">
+                                    <a class="register border-danger" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    }
                 }
             </ul>
         </nav>
