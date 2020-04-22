@@ -16,17 +16,19 @@ namespace NeedyBuddy.Controllers
         public UserServicesController(ApplicationDbContext context, IRepository repository)
         {
             _context = context;
-            _repository = repository;
+            _repository = repository;           
         }
 
-
+        public List<ServiceCategory> servicesList = new List<ServiceCategory>();
         public IActionResult Index()
         {
             return View();
         }
-
-        public ActionResult UserServices(string area,int serviceList)
+        [HttpPost]
+        public ActionResult UserServices(string area,string serviceList)
         {
+           
+           
             if (String.IsNullOrEmpty(User.Identity.Name))
             {
                 return Redirect("/Identity/Account/Login");
@@ -34,7 +36,7 @@ namespace NeedyBuddy.Controllers
             var userServicesViewModel = from p in _context.Users
                                         join q in _context.Service on p.Id equals q.User.Id
                                         join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
-                                        where p.Pincode.Equals(area) && r.ServiceCategoryId.Equals(serviceList)
+                                        where p.Pincode.Equals(area) && r.ServiceCategoryId.Equals(Convert.ToInt64(serviceList))
                                         select new UserServicesViewModel
                                         {
                                             Id = p.Id,
@@ -47,13 +49,14 @@ namespace NeedyBuddy.Controllers
                                             Descriptions = q.Descriptions,
                                             Address = p.Address,
                                             ServiceCategoryId = r.ServiceCategoryId.ToString()
-                                        };
+                                        };           
             ViewBag.area = area;
             ViewBag.serviceList = serviceList;
+            getServicesList();
             return View(userServicesViewModel.ToList());
         }
 
-
+       
         public IActionResult ServiceDetails(string userId="1")
         {
             List<DetailsViewModel> detailsViewModels = new List<DetailsViewModel>();
@@ -89,6 +92,12 @@ namespace NeedyBuddy.Controllers
             }
 
             return View(detailsViewModel.SingleOrDefault());
+        }
+        public void getServicesList()
+        {
+
+            servicesList = _context.ServiceCategory.ToList();
+            ViewBag.servicesList = servicesList;
         }
     }
 }

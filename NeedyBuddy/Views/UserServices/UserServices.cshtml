@@ -5,47 +5,30 @@
 }
 
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        var s = "@ViewBag.serviceList";
-        //$('[name=searchvalue]']).val(s);
-        
-        $('[name=ServicesDropdown]').val(s);
-        //$('select[name="ServicesDropdown"]').find('option[value=s]').attr("selected", true);
-});
-
-</script>
 
 
 <div style="padding-top:58px; background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg');">
     <section>
+        <form asp-action="UserServices">
+            <div class="search-input" style="background-color:#d8232a;">
 
-
-
-
-
-        <div class="search-input" style="background-color:#d8232a;">
-
-            <input type="text" style="font-size:medium;" id="searchvalue" name="searchvalue" value="@ViewBag.area" placeholder="Search by state, postcode or suburb">
-            <select id="ServicesDropdown" name="ServicesDropdown" style="font-size:medium;">
-                @*<option value="Test">Test</option>
-        <option value="Medicine">Medicine</option>*@
-                @foreach (var item in Model)
+                <input type="text" style="font-size:medium;" id="area" name="area" value="@ViewBag.area" placeholder="Search by state, postcode or suburb">
+                <select id="serviceList" name="serviceList" style="font-size:medium;">
+                @foreach (var item in ViewBag.servicesList)
                 {
                     <option value="@item.ServiceCategoryId">
                         @item.ServiceName
                     </option>
-
                 }
             </select>
-            <button class="site-btn" asp-action="UserServices" asp-controller="UserServices">Search</button>
-
-        </div>
+                <button class="site-btn" asp-action="UserServices" asp-controller="UserServices">Search</button>
+            </div>
+        </form>
         <br />
 
         @for (int i = 0; i < Model.Count; i++)
         {
+           
             <div class="flex relative clearfix m-srp-card__container">
                 <div class="m-srp-card__photo flex__item">
                     <div class="m-srp-card__listing-type">
@@ -78,8 +61,8 @@
                             <div class="m-srp-card__summary__item" style="font-weight:bold">
                                 <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">@Model[i].ServiceName</div>
                                 @*<div class="m-srp-card__summary__info">
-                                    Possession by Apr '22
-                                </div>*@
+                                        Possession by Apr '22
+                                    </div>*@
                             </div>
                             <div class="m-srp-card__summary__item" style="font-weight:bold">
                                 <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">@Model[i].Descriptions</div>
@@ -137,4 +120,14 @@
         <br />
 
     </section>
-        </div>
+</div>
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var s = "@ViewBag.serviceList";
+        $('[name=serviceList]').val(s);
+    });
+</script>
