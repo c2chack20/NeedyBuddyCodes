@@ -57,6 +57,13 @@
             }
         });
     });
+
+
+    $(function () {
+        $("#profilesave").click(function () {
+            alert("successfully updated");
+    });
+    });
 </script>
 
 <p>@ViewBag.message</p>
@@ -142,7 +149,7 @@
                 <br />
 
                 <div class="row text-white" style="display: flex;  align-items: center;  justify-content: center;">
-                    <button type="submit" asp-action="Save" asp-controller="Profile" class="btn btn-primary bg-danger border-danger" style="width:20%;">Save</button>
+                    <button type="submit" id="profilesave" asp-action="Save" asp-controller="Profile" class="btn btn-primary bg-danger border-danger" style="width:20%;">Save</button>
 
                 </div>
             </form>
