@@ -1,0 +1,85 @@
+﻿@model List<NeedyBuddy.Data.Model.UserServicesViewModel>
+@{
+    ViewData["Title"] = "MyServicesDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>MyServicesDetails</h1>
+
+<div id="dvPassport" style="padding-top:58px;">
+    <section>
+        <br />
+        
+        @foreach (var service in @Model)
+        {
+            <div class="flex relative clearfix m-srp-card__container">
+                <div class="m-srp-card__photo flex__item">
+                    <div class="m-srp-card__listing-type">
+                        &nbsp;
+                    </div>
+                    <div class="m-photo" onclick="stopPage=true;">
+                        <div class="m-photo__fig
+			zoom-cursor" onclick="getPhotoMapUrl ('46765577','PROJ1667993','11120','null','photoComponent');">
+                            <img class="m-photo__img lazy" src="https://img.staticmb.com/mbimages/project/Photo_h310_w462/2019/12/17/Project-Photo-13-Sai-Gangothri-Hill-Crest-Bangalore-5129271_560_996_310_462.jpg" title="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" alt="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" style="">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="m-srp-card__info flex__item">
+
+                    <div id="priceProperty46765577" class="m-srp-card__price">@service.ServiceName</div>
+
+                </div>
+
+                <div class="m-srp-card__desc flex__item">
+
+
+                    <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
+                        <div class="m-srp-card__summary js-collapse__content" data-content="srp-card-summary">
+                            <input type="hidden" id="propertyArea46765577" value="815 sqft">
+                            <div class="m-srp-card__summary__item">
+                                <div class="m-srp-card__summary__title">Service Name</div>
+                                <div class="m-srp-card__summary__info">@service.ServiceName</div>
+                            </div>
+                            <div class="m-srp-card__summary__item">
+                                <div class="m-srp-card__summary__title" style="display:none">Service Id</div>
+                                <div class="m-srp-card__summary__info" style="display:none">@service.Id</div>
+                            </div>
+                            <div class="m-srp-card__summary__item">
+                                <div class="m-srp-card__summary__title">Description</div>
+                                <div class="m-srp-card__summary__info">
+                                    @service.Descriptions
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
+                            <div class="ico m-srp-card__ico">
+                                <svg role="icon">
+                                    <use xlink:href="#icon-caret-down"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="m-srp-card__action">
+                        <div class="m-srp-card__action__item relative">
+
+                            <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices" asp-route-contact=@service>Edit Description</a>
+
+                        </div>
+
+                        @*<div class="form-group">
+                                <a asp-action="Editme" class="ids" data-id="@Service.ServiceId" asp-route-id="@Model.servicedetails.FirstOrDefault().ServiceId">Edit</a>
+                            </div>*@
+                    </div>
+                </div>
+                <br />
+            </div>
+        }
+    </section>
+</div>
+
+
+<br />
+<br />
