@@ -4,47 +4,60 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="modal fade bootstrapModal" id="myModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+<div class="modal-dialog" id="mdclose">
+    <div class="modal-content">
+        <div class="modal-header">
 
-                <div class="modal-title">
-                    <h4>Fill out this contact form</h4>
-                </div>
-                <button data-dismiss="modal" style="color:red;"> <span class="h5"> &times; </span> </button>
-
+            <div class="modal-title">
+                <h4>Fill out this contact form</h4>
             </div>
-            <div class="modal-body">
-
-                <div class="form-group">
-                    <a>Name</a>
-                    <input asp-for=@Model.Name class="form-control" placeholder="Name" />
-                    <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <a>Email</a>
-                    <input asp-for=@Model.Email class="form-control" placeholder="Email" />
-                    <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <a>Phone Number</a>
-                    <input asp-for=@Model.ContactNumber class="form-control" placeholder="Phone Number" />
-                    <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <a>Intrested In</a>
-                    <input asp-for=@Model.RequestDescription class="form-control" placeholder="Interested In" />
-                    <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" asp-controller="UserServices" asp-action="ContactAgent" formmethod="post">Contact for help</button>
-                <button class="btn btn-default bg-danger text-white" data-dismiss="modal">Cancel</button>
-
-            </div>
+            <button data-dismiss="modal" style="color:red;"> <span class="h5"> &times; </span> </button>
 
         </div>
+        <div class="modal-body">
+
+            <div class="form-group">
+                <a>Name</a>
+                <input asp-for=@Model.Name class="form-control" placeholder="Name" />
+                <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a>Email</a>
+                <input asp-for=@Model.Email class="form-control" placeholder="Email" />
+                <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a>Phone Number</a>
+                <input asp-for=@Model.ContactNumber class="form-control" placeholder="Phone Number" />
+                <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a>Intrested In</a>
+                <input asp-for=@Model.RequestDescription class="form-control" placeholder="Interested In" />
+                <span asp-validation-for="@User.Identity.Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" asp-controller="UserServices" asp-action="ContactAgent" formmethod="post">Contact for help</button>
+            <button id="closbtn" class="btn btn-default bg-danger text-white"  onclick="CloseModalPopup()">Cancel</button>
+
+        </div>
+
     </div>
 </div>
+
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+    
+    function CloseModalPopup() {
+        alert(123);
+    $("#mdclose").close();} 
+
+   
+
+</script>
 

@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using NeedyBuddy.Data;
 using NeedyBuddy.Data.Model;
 using NeedyBuddy.Models;
+using NeedyBuddy.Services;
 
 namespace NeedyBuddy.Controllers
 {
@@ -15,10 +16,16 @@ namespace NeedyBuddy.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IRepository _repository;
 
-        public UserServicesController(ApplicationDbContext context, IRepository repository)
+
+        //public UserServicesController(ApplicationDbContext context, IRepository repository)
+
+        private IConfiguration _configuration;
+        public UserServicesController(ApplicationDbContext context, IRepository repository,IConfiguration configuration)
+
         {
             _context = context;
             _repository = repository;
+            _configuration = configuration;
         }
 
 
@@ -114,6 +121,7 @@ namespace NeedyBuddy.Controllers
 
         }
 
+
         //public ActionResult AgentContact(string Email)
         //{
         //    var currentUserName = User.Identity.Name;
@@ -136,6 +144,14 @@ namespace NeedyBuddy.Controllers
             var test = objmail.MailSend(agentContact.Email, agentContact.AgentEmail, "Comunity Service Help", "Hi volunteer, <br/> My name is "+ agentContact.Name + " and I stay near to your are. I urgently needs your help. Below are the contact information for your reference. <br/> Contact number: " + agentContact.ContactNumber + " <br/> Request Description: " + agentContact.RequestDescription, apiKey);
             
             return View();
+
+        public Task ContactAgent(AgentContactViewModel agentContactViewModel)
+        {
+            SendMail objmail = new SendMail();
+
+            string key = _configuration.GetSection("Appsettings").GetSection("Apikey").Value;
+            Task response = objmail.MailSend(agentContactViewModel.AgentEmail, key);
+            return response;
         }
     }
 }
