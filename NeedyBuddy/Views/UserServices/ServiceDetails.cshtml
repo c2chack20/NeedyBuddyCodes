@@ -2,7 +2,7 @@
     ViewData["Title"] = "ServiceDetails";
 Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<section class="single-property-section spad">
+<section class="single-property-section spad" style="background-color:#8080805c;">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
@@ -46,9 +46,9 @@ Layout = "~/Views/Shared/_Layout.cshtml";
                     </div>
                     <div class="property-text">
                         <h4 style="color:red;">Description</h4>
-                        <p>@ViewBag.loggedinUserDetails.Description</p>
-                        <h4 style="color:red;">Details</h4>
-                        <p>Proin vulputate congue rutrum. Fusce lobortis a enim eget tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse potenti. Ut gravida mattis magna, non varius lorem sodales nec. In libero orci, ornare non nisl a, auctor euismod purus. Morbi pretium interdum vestibulum. Fusce nec eleifend ipsum. Sed non blandit tellus. </p>
+                        <p style="color:#fff">@ViewBag.loggedinUserDetails.Description</p>
+                        @*<h4 style="color:red;">Details</h4>
+                        <p>Proin vulputate congue rutrum. Fusce lobortis a enim eget tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse potenti. Ut gravida mattis magna, non varius lorem sodales nec. In libero orci, ornare non nisl a, auctor euismod purus. Morbi pretium interdum vestibulum. Fusce nec eleifend ipsum. Sed non blandit tellus. </p>*@
                     </div>
 
                 </div>
@@ -57,7 +57,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
             <div class="col-lg-4 col-md-8 sidebar">
                 <div class="agent-widget">
                     @*<img src="~/img/blog/1.jpg" alt="">*@
-                    <img class="m-photo__img lazy" src="https://img.staticmb.com/mbimages/project/Photo_h310_w462/2019/12/17/Project-Photo-13-Sai-Gangothri-Hill-Crest-Bangalore-5129271_560_996_310_462.jpg" title="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" alt="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" style="">
+                    <img class="m-photo__img lazy" src="@ViewBag.loggedinUserDetails.ProfileImage" title="" style="">
 
                 </div>
                 <div class="map-widget">
