@@ -12,7 +12,7 @@ namespace NeedyBuddy.Models
         public Task MailSend(string senderEmail, string recipientEmail, string mailSubject, string mailBody, string apiKey)
         {
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress(senderEmail, "NeedyBuddy Admin");
+            var from = new EmailAddress("c2chack20@gmail.com", "NeedyBuddy Admin");
             var subject = mailSubject;
             var to = new EmailAddress(recipientEmail, "Admin NeedyBuddy");
             string[] mailname = recipientEmail.Split("@");
