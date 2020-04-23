@@ -210,7 +210,7 @@ namespace NeedyBuddy.Controllers
         public async Task<ActionResult> AddServices(string description, string selectedvalue)
         {
             string currentUserName = User.Identity.Name;
-            var userid = _context.Users.SingleOrDefault(u => u.UserName == currentUserName);
+            var userid = _context.Users.SingleOrDefault(x => x.UserName == currentUserName);
 
             Service s = new Service();
             ServiceCategory sc = new ServiceCategory();
