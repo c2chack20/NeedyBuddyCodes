@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="contactForHelp" class="btn btn-primary" asp-controller="UserServices" asp-action="ServiceDetails">Contact for help</button>
+                <button id="contactForHelp" class="btn btn-primary" asp-controller="UserServices" asp-action="ServiceDetails" data-dismiss="modal">Contact for help</button>
                 <button class="btn btn-default bg-danger text-white" data-dismiss="modal">Cancel</button>
             </div>
 
@@ -64,7 +64,7 @@
 
         $('#contactForHelp').click(function () {
 
-
+            alert("Succesfully Notified to Service Provider");
             var agentContactObj = {};
             agentContactObj.Name= $('#MyName').val()
             agentContactObj.Email = $('#MyEmail').val()
