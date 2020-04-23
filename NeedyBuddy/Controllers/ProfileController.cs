@@ -38,7 +38,7 @@ namespace NeedyBuddy.Controllers
             ViewBag.nonSelectedServicesList = nonSelectedServicesList;
             ViewBag.loggedinUser = loggedinUser;
 
-            ViewBag.Message = "Successful";
+           
 
             return View();
         }
@@ -66,6 +66,7 @@ namespace NeedyBuddy.Controllers
                                      LastName = p.LastName,
                                      Address = p.Address,
                                      //ServiceId = q.ServiceId
+                                     UserType=p.UserType.ToString()
 
                                  };
 
@@ -81,7 +82,8 @@ namespace NeedyBuddy.Controllers
             loggedinUser.ProfileImage = servicedetails.FirstOrDefault().ProfileImage;
             loggedinUser.Descriptions = servicedetails.FirstOrDefault().Descriptions;
             loggedinUser.UserType = servicedetails.FirstOrDefault().UserType;
-            if (loggedinUser.UserType == "1")
+            //below code not required now but earlier implemented so later will modify.
+            if (loggedinUser.UserType == "Provider")
             {
                 loggedinUser.UserTypeName = "Provider";
             }
@@ -123,7 +125,11 @@ namespace NeedyBuddy.Controllers
             {
                 if (servicesList.Exists(x => x.ServiceCategoryId == item.ServiceCategory.ServiceCategoryId))
                 {
-                    selectedServicesList.Add(item.ServiceCategory);
+                    if (!selectedServicesList.Any(x=>x.ServiceCategoryId==item.ServiceCategoryId))
+                    {
+                        selectedServicesList.Add(item.ServiceCategory);
+                    }
+                        
                 }
                 else
                 {
