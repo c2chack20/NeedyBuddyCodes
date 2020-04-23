@@ -15,8 +15,13 @@ namespace NeedyBuddy.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IRepository _repository;
+
+
+        //public UserServicesController(ApplicationDbContext context, IRepository repository)
+
         private IConfiguration _configuration;
         public UserServicesController(ApplicationDbContext context, IRepository repository,IConfiguration configuration)
+
         {
             _context = context;
             _repository = repository;
@@ -79,6 +84,9 @@ namespace NeedyBuddy.Controllers
                             serviceDetailsViewModel= new List<ServiceDetailsViewModel>()
                         };
             var detailsViewModel = detailsViewModel1.FirstOrDefault();
+            ViewBag.loggedinUserDetails = detailsViewModel;
+
+
 
             var servicedetails = from p in _context.Users
                                    join q in _context.Service on p.Id equals q.User.Id
@@ -90,24 +98,52 @@ namespace NeedyBuddy.Controllers
                                        Descriptions = q.Descriptions
 
                                    };
-
             ViewBag.ServiceDetails = servicedetails.ToList();
 
-            return View(detailsViewModel);
-        }
 
-        public ActionResult AgentContact(string Email)
-        {
             var currentUserName = User.Identity.Name;
             var use = _context.Users.Where(c => c.UserName == currentUserName).FirstOrDefault();
-            AgentContactViewModel agentContactViewModel = new AgentContactViewModel()
-            {  Name = use.FirstName,
-               Email = use.Email,
-               ContactNumber = use.PhoneNumber,
-               AgentEmail = Email
+            ViewBag.detailsForPopup = new AgentContactViewModel()
+            {
+                Name = use.FirstName,
+                Email = use.Email,
+                ContactNumber = use.PhoneNumber,
+                AgentEmail = detailsViewModel.Email
             };
-            return PartialView(agentContactViewModel);
+
+            
+
+            return View();
         }
+
+        public void getLoggedInUser()
+        {
+
+        }
+
+
+        //public ActionResult AgentContact(string Email)
+        //{
+        //    var currentUserName = User.Identity.Name;
+        //    var use = _context.Users.Where(c => c.UserName == currentUserName).FirstOrDefault();
+        //    AgentContactViewModel agentContactViewModel = new AgentContactViewModel()
+        //    {  Name = use.FirstName,
+        //       Email = use.Email,
+        //       ContactNumber = use.PhoneNumber,
+        //       AgentEmail = Email
+        //    };
+        //    return PartialView(agentContactViewModel);
+        //}
+        [HttpPost]
+        public ViewResult ServiceDetails(AgentContactViewModel agentContact)
+        {
+
+            MailTemplate objmail = new MailTemplate();
+            string apiKey = "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";
+            
+            var test = objmail.MailSend(agentContact.Email, agentContact.AgentEmail, "Comunity Service Help", "Hi volunteer, <br/> My name is "+ agentContact.Name + " and I stay near to your are. I urgently needs your help. Below are the contact information for your reference. <br/> Contact number: " + agentContact.ContactNumber + " <br/> Request Description: " + agentContact.RequestDescription, apiKey);
+            
+            return View();
 
         public Task ContactAgent(AgentContactViewModel agentContactViewModel)
         {
