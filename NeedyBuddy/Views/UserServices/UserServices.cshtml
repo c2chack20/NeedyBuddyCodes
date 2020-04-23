@@ -5,136 +5,135 @@
 }
 
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        var s = "@ViewBag.serviceList";
-        //$('[name=searchvalue]']).val(s);
-        
-        $('[name=ServicesDropdown]').val(s);
-        //$('select[name="ServicesDropdown"]').find('option[value=s]').attr("selected", true);
-});
-
-</script>
 
 
 <div style="padding-top:58px; background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg');">
     <section>
+        <form asp-action="UserServices">
+            <div class="search-input" style="background-color:#d8232a;">
 
-
-
-
-
-        <div class="search-input" style="background-color:#d8232a;">
-
-            <input type="text" style="font-size:medium;" id="searchvalue" name="searchvalue" value="@ViewBag.area" placeholder="Search by state, postcode or suburb">
-            <select id="ServicesDropdown" name="ServicesDropdown" style="font-size:medium;">
-                @*<option value="Test">Test</option>
-        <option value="Medicine">Medicine</option>*@
-                @foreach (var item in Model)
-                {
-                    <option value="@item.ServiceCategoryId">
-                        @item.ServiceName
-                    </option>
-
-                }
-            </select>
-            <button class="site-btn" asp-action="UserServices" asp-controller="UserServices">Search</button>
-
-        </div>
+                <input type="text" style="font-size:medium;" id="area" name="area" value="@ViewBag.area" placeholder="Search by state, postcode or suburb">
+                <select id="serviceList" name="serviceList" style="font-size:medium;">
+                    @foreach (var item in ViewBag.servicesList)
+                    {
+                        <option value="@item.ServiceCategoryId">
+                            @item.ServiceName
+                        </option>
+                    }
+                </select>
+                <button class="site-btn" asp-action="UserServices" asp-controller="UserServices">Search</button>
+            </div>
+        </form>
         <br />
-
-        @for (int i = 0; i < Model.Count; i++)
+        @if (Model.Count != 0)
         {
-            <div class="flex relative clearfix m-srp-card__container">
-                <div class="m-srp-card__photo flex__item">
-                    <div class="m-srp-card__listing-type">
-                        &nbsp;
-                    </div>
-                    <div class="m-photo" style="max-width:200px !important; width:200px !important; height:150px !important; max-height:150px !important;">
-                        <div class="m-photo__fig
-			zoom-cursor" onclick="getPhotoMapUrl ('46765577','PROJ1667993','11120','null','photoComponent');">
-                            <img class="m-photo__img lazy" src="https://img.staticmb.com/mbimages/project/Photo_h310_w462/2019/12/17/Project-Photo-13-Sai-Gangothri-Hill-Crest-Bangalore-5129271_560_996_310_462.jpg" title="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" alt="2BHK Apartment for New Property in Sai Gangothri Hill Crest at Kengeri" style="">
+
+
+            @for (int i = 0; i < Model.Count; i++)
+            {
+
+                <div class="flex relative clearfix m-srp-card__container" style="background-color:#8080805c;">
+                    <div class="m-srp-card__photo flex__item">
+                        <div class="m-srp-card__listing-type">
+                            &nbsp;
                         </div>
-
-                    </div>
-                    <div class="m-srp-card__heading clearfix">
-                        <h3>
-                            <span class="m-srp-card__title">
-
-                            <b style="color:red; font-size:15px;">@Model[i].FirstName &nbsp; @Model[i].LastName</b>
-                        </span>
-                    </h3>
-
-                    </div>
-                </div>
-
-                <div class="m-srp-card__desc flex__item">
-
-
-                    <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
-                        <div class="m-srp-card__summary js-collapse__content" style="background-color:#d8232a;">
-                            <input type="hidden" id="propertyArea46765577" value="815 sqft">
-                            <div class="m-srp-card__summary__item" style="font-weight:bold">
-                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">@Model[i].ServiceName</div>
-                                @*<div class="m-srp-card__summary__info">
-                                    Possession by Apr '22
-                                </div>*@
-                            </div>
-                            <div class="m-srp-card__summary__item" style="font-weight:bold">
-                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">@Model[i].Descriptions</div>
-                                @*<div class="m-srp-card__summary__info">6 out of 6 floors</div>*@
-                            </div>
-                            <div class="m-srp-card__summary__item" style="font-weight:bold">
-                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">@Model[i].City</div>
-                            </div>
-                            <div class="m-srp-card__summary__item" style="font-weight:bold">
-                                <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">@Model[i].ContactNumber</div>
+                        <div class="">
+                            <div class="m-photo__figcursor" onclick="getPhotoMapUrl ('46765577','PROJ1667993','11120','null','photoComponent');">
+                                <img class=" lazy" src="@Model[i].ProfileImage" title="@Model[i].FirstName" alt="@Model[i].FirstName" style=" width:200px;height:130px;">
                             </div>
 
                         </div>
-                        <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
-                            <div class="ico m-srp-card__ico">
-                                <svg role="icon">
-                                    <use xlink:href="#icon-caret-down"></use>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="m-srp-card__action">
                         <div class="m-srp-card__heading clearfix">
                             <h3>
-                                <span class="m-srp-card__title">
+                                <span class="">
 
-                                    <b style="color:white; font-size:15px;">@Model[i].Address</b>
+                                    <b style="color:red; font-size:15px;">@Model[i].FirstName &nbsp; @Model[i].LastName</b>
                                 </span>
                             </h3>
 
                         </div>
                     </div>
-                    <br />
-                    <div class="m-srp-card__action">
-                        <div class="m-srp-card__action__item relative">
 
-                            <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices">Contact Agent</a>
+                    <div class="m-srp-card__desc flex__item">
+
+
+                        <div class="m-srp-card__collapse js-collapse" aria-collapsed="collapsed" data-container="srp-card-summary">
+                            <div class="m-srp-card__summary js-collapse__content" style="background-color:#d8232a;">
+                                <input type="hidden" id="propertyArea46765577" value="815 sqft">
+                                <div class="m-srp-card__summary__item" style="font-weight:bold">
+                                    <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">@Model[i].ServiceName</div>
+                                    @*<div class="m-srp-card__summary__info">
+                                        Possession by Apr '22
+                                    </div>*@
+                                </div>
+
+                                <div class="m-srp-card__summary__item" style="font-weight:bold">
+                                    <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">@Model[i].City</div>
+                                </div>
+                                <div class="m-srp-card__summary__item" style="font-weight:bold">
+                                    <div class="m-srp-card__summary__title" style="color:white; font-weight:bold;">@Model[i].ContactNumber</div>
+                                </div>
+
+                            </div>
+                            <div class="m-srp-card__collapse__control js-collapse__control" data-toggle="list-collapse" data-target="srp-card-summary" onclick="stopPage=true;">
+                                <div class="ico m-srp-card__ico">
+                                    <svg role="icon">
+                                        <use xlink:href="#icon-caret-down"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-srp-card__action">
+                            <div class="m-srp-card__heading clearfix">
+                                <p style="color:white;">  @Model[i].Descriptions</p>
+                                <h3>
+                                    <span class="m-srp-card__title">
+
+                                        <b style="color:white; font-size:15px;">@Model[i].Address</b>
+                                    </span>
+                                </h3>
+
+                            </div>
+                        </div>
+                        <br />
+                        @*<div class="m-srp-card__action">
+                            <div class="m-srp-card__action__item relative">
+
+                                <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices">Contact Agent</a>
+
+                            </div>
+
+                        </div>*@
+                        <br />
+                        <div class="m-srp-card__action" style="float:right;">
+                            <div class="m-srp-card__action__item relative">
+
+                                <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices" asp-route-usermodel=@Model[i].Id>Read More...</a>
+
+                            </div>
 
                         </div>
-
-                    </div>
-                    <br />
-                    <div class="m-srp-card__action" style="float:right;">
-                        <div class="m-srp-card__action__item relative">
-
-                        <a class="m-srp-card__btn m-srp-card__btn--primary" asp-action="ServiceDetails" asp-controller="UserServices" asp-route-usermodel=@Model[i].Id >Read More...</a>
-
-                        </div>
-
                     </div>
                 </div>
-            </div>
+                <hr />
+            }
         }
-        <hr />
+        else
+        {
+            <div><p class="text-danger">NO services Provided</p></div>
+        }
+
         <br />
 
     </section>
-        </div>
+</div>
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var s = "@ViewBag.serviceList";
+        $('[name=serviceList]').val(s);
+    });
+</script>

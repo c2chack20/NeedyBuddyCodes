@@ -39,24 +39,24 @@
         });
     }
 
-    $('#btnSaveComments').click(function () {
-        var comments = $('#comment').val();
-        var selectedId = 12;
-        alert(comments)
-        $.ajax({
-            url: '<%: Url.Action("AddServices")%>',
-            data: { 'id': selectedId, 'comments': comments },
-            type: "post",
-            cache: false,
-            success: function (savingStatus) {
-                $("#hdnOrigComments").val($('#comment').val());
-                $('#lblCommentsNotification').text(savingStatus);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                $('#lblCommentsNotification').text("Error encountered while saving the comments.");
-            }
-        });
-    });
+    //$('#btnSaveComments').click(function () {
+    //    var comments = $('#comment').val();
+    //    var selectedId = 12;
+    //    alert(comments)
+    //    $.ajax({
+    //        url: '<%: Url.Action("AddServices")%>',
+    //        data: { 'id': selectedId, 'comments': comments },
+    //        type: "post",
+    //        cache: false,
+    //        success: function (savingStatus) {
+    //            $("#hdnOrigComments").val($('#comment').val());
+    //            $('#lblCommentsNotification').text(savingStatus);
+    //        },
+    //        error: function (xhr, ajaxOptions, thrownError) {
+    //            $('#lblCommentsNotification').text("Error encountered while saving the comments.");
+    //        }
+    //    });
+    //});
 
 
     $(function () {
@@ -66,7 +66,7 @@
     });
 </script>
 
-<p>@ViewBag.message</p>
+
 <div class="profile-main">
     <div class="profile-header">
         <div class="user-detail">
@@ -194,11 +194,13 @@
                 </div>
                 <br />
 
-                @*<input type="text" name="description" placeholder="Description">*@
-                <input type="text" id="mytext" name="selectedvalue" style="display:none">
-                @*<button class="site-btn" asp-action="AddServices" asp-controller="Profile">Search</button>*@
-                <button id="btnSaveComments" class="btn btn-primary bg-danger border-danger">Save</button>
-                @*<button class="site-btn" asp-action="MyServicesDetails" asp-controller="MyServices">details</button>*@
+                    @*<input type="text" name="description" placeholder="Description">*@
+                    <textarea style="display:none" class="form-control" rows="5" id="comment" name="description" placeholder="Add Service Description"></textarea>
+                    <input type="text" id="mytext" name="selectedvalue" style="display:none">
+                    @*<button class="site-btn" asp-action="AddServices" asp-controller="Profile">Search</button>*@
+                    <button type="submit" id="btnSaveComments" class="btn btn-primary bg-danger border-danger">Save</button>
+                    @*<button class="site-btn" asp-action="MyServicesDetails" asp-controller="MyServices">details</button>*@
+                
 
 
             </div>
