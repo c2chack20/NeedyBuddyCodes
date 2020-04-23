@@ -57,8 +57,9 @@ namespace NeedyBuddy.Controllers
                                             City = p.City,
                                             Pincode = p.Pincode,
                                             ServiceName = r.ServiceName,
-                                            Descriptions = q.Descriptions,
+                                            Descriptions = p.Descriptions,
                                             Address = p.Address,
+                                            ProfileImage = p.ProfileImage,
                                             ServiceCategoryId = Convert.ToInt64(r.ServiceCategoryId.ToString())
                                         };
             ViewBag.area = area;
@@ -86,6 +87,7 @@ namespace NeedyBuddy.Controllers
                                         Pincode = p.Pincode,
                                         Address = p.Address,
                                         Description = p.Descriptions,
+                                        ProfileImage = p.ProfileImage,
                                         serviceDetailsViewModel = new List<ServiceDetailsViewModel>()
                                     };
             var detailsViewModel = detailsViewModel1.FirstOrDefault();
