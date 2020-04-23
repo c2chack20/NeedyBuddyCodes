@@ -46,7 +46,7 @@ namespace NeedyBuddy.Controllers
                                         join q in _context.Service on p.Id equals q.User.Id
                                         join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
                                         //where (p.Pincode.Equals(area) || p.City.Equals(area)) && r.ServiceCategoryId.Equals(serviceList)
-                                        where p.Pincode.Equals(area) && r.ServiceCategoryId.Equals(Convert.ToInt64(serviceList))
+                                        where  r.ServiceCategoryId.Equals(Convert.ToInt64(serviceList)) && (p.Pincode.Equals(area) || p.City.StartsWith(area) || p.Address.Contains(area)) 
                                         select new UserServicesViewModel
                                         {
                                             Id = p.Id,
