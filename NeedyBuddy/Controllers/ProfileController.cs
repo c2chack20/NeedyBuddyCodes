@@ -25,6 +25,7 @@ namespace NeedyBuddy.Controllers
         public List<ServiceCategory> selectedServicesList = new List<ServiceCategory>();
         public List<ServiceCategory> nonSelectedServicesList = new List<ServiceCategory>();
         public UserServicesViewModel loggedinUser = new UserServicesViewModel();
+        public List<Service> services = new List<Service>();
 
 
         public IActionResult Index()
@@ -108,15 +109,53 @@ namespace NeedyBuddy.Controllers
         }
         public void getServicesList()
         {
+            
+                servicesList = _context.ServiceCategory.ToList();
+
+            var currentUserName = User.Identity.Name;
+            var userid = _context.Users.FirstOrDefault(x => x.UserName == currentUserName);
             servicesList = _context.ServiceCategory.ToList();
 
-            foreach (ServiceCategory eachService in servicesList)
+            services = _context.Service.ToList().Where(x=>x.UserId==userid.Id).ToList();
+            
+            //var commons1 = servicesList.Select(s1 => s1.ServiceCategoryId).ToList().Intersect(services1.Select(s2 => s2.ServiceCategory.ServiceCategoryId).ToList()).ToList();
+            foreach (var item in services)
             {
-                if (!selectedServicesList.Exists(x => x.ServiceCategoryId == eachService.ServiceCategoryId))
+                if (servicesList.Exists(x => x.ServiceCategoryId == item.ServiceCategory.ServiceCategoryId))
                 {
-                    nonSelectedServicesList.Add(eachService);
+                    selectedServicesList.Add(item.ServiceCategory);
+                }
+                else
+                {
+                    nonSelectedServicesList.Add(item.ServiceCategory);
                 }
             }
+
+            foreach (var item in servicesList)
+            {
+                if (!selectedServicesList.Exists(x => x.ServiceCategoryId == item.ServiceCategoryId))
+                {
+                    nonSelectedServicesList.Add(item);
+                }
+            }
+            //servicesList.Add(new ServiceCategory() { ServiceCategoryId = 1, ServiceName = "Test" });
+            //servicesList.Add(new ServiceCategory() { ServiceCategoryId = 2, ServiceName = "Food" });
+            //servicesList.Add(new ServiceCategory() { ServiceCategoryId = 3, ServiceName = "Medicine" });
+            //servicesList.Add(new ServiceCategory() { ServiceCategoryId = 4, ServiceName = "Grocessary" });
+            //servicesList.Add(new ServiceCategory() { ServiceCategoryId = 5, ServiceName = "Doctor" });
+            //servicesList.Add(new ServiceCategory() { ServiceCategoryId = 6, ServiceName = "Physical Help" });
+            //servicesList.Add(new ServiceCategory() { ServiceCategoryId = 7, ServiceName = "Transportation" });
+
+            //selectedServicesList.Add(new ServiceCategory() { ServiceCategoryId = 3, ServiceName = "Medicine" });
+
+            //foreach (ServiceCategory eachService in servicesList)
+            //{
+            //    if (!selectedServicesList.Exists(x => x.ServiceCategoryId == eachService.ServiceCategoryId))
+            //    {
+            //        nonSelectedServicesList.Add(eachService);
+            //    }
+                
+            //}
         }
         public async Task<IActionResult> Save(string FirstName, string LastName,
             string Email, string ContactNumber, string City, string Pincode, string Address, string ProfileImage, string Descriptions)
@@ -164,8 +203,25 @@ namespace NeedyBuddy.Controllers
         }
         public async Task<ActionResult> AddServices(string description, string selectedvalue)
         {
+            string currentUserName = User.Identity.Name;
+            var userid = _context.Users.SingleOrDefault(u => u.UserName == currentUserName);
 
-            return RedirectToAction("Index", "Home");
+            Service s = new Service();
+            ServiceCategory sc = new ServiceCategory();
+            ApplicationUser u = new ApplicationUser();
+            s.Descriptions = description;
+         
+       
+            s.ServiceCategoryId = Convert.ToInt64(selectedvalue);
+            s.UserId = userid.Id;
+           
+           
+
+            await _repository.CreateAsync<Service>(s);
+            //_context.Entry(Service).State = EntityState.Modified;
+            //await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Profile");
             //return View();
         }
 
