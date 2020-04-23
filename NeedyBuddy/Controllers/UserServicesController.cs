@@ -143,15 +143,17 @@ namespace NeedyBuddy.Controllers
         {
 
             MailTemplate objmail = new MailTemplate();
-            string apiKey = "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";
+            string apiKey = _configuration.GetSection("Appsettings").GetSection("Apikey").Value;
 
-            var test = objmail.MailSend(agentContact.Email, agentContact.AgentEmail, "Comunity Service Help", "Hi volunteer, <br/> My name is " + agentContact.Name + " and I stay near to your are. I urgently needs your help. Below are the contact information for your reference. <br/> Contact number: " + agentContact.ContactNumber + " <br/> Request Description: " + agentContact.RequestDescription, apiKey);
+            var test = objmail.MailSend(agentContact.Email, agentContact.AgentEmail, "Comunity Service Help", "Hi volunteer, <br/> My name is " + agentContact.Name + " and I stay near to your are. I urgently needs your help. Below are the contact information for your reference. <br/> Contact number: " + agentContact.ContactNumber + "<br/> Email Id: "  + agentContact.Email + " <br/> Request Description: " + agentContact.RequestDescription, apiKey);
 
             return View();
         }
-        public Task ContactAgent(AgentContactViewModel agentContactViewModel)
-        {
-            SendMail objmail = new SendMail();
+
+            //[HttpPost]
+            //public Task ContactAgent(AgentContactViewModel agentContactViewModel)
+            //{
+            //    SendMail objmail = new SendMail();
 
             string key = _configuration.GetSection("Appsettings").GetSection("Apikey").Value;
             Task response = objmail.MailSend(agentContactViewModel.AgentEmail, key);
@@ -164,4 +166,9 @@ namespace NeedyBuddy.Controllers
             ViewBag.servicesList = servicesList;
         }
     }
+            //    string key = _configuration.GetSection("Appsettings").GetSection("Apikey").Value;
+            //    Task response = objmail.MailSend(agentContactViewModel.AgentEmail, key);
+            //    return response;
+            //}
+        }
 }
