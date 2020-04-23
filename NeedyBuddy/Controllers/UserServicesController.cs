@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using NeedyBuddy.Data;
 using NeedyBuddy.Data.Model;
 using NeedyBuddy.Models;
+using NeedyBuddy.Services;
 
 namespace NeedyBuddy.Controllers
 {
@@ -13,10 +15,17 @@ namespace NeedyBuddy.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IRepository _repository;
-        public UserServicesController(ApplicationDbContext context, IRepository repository)
+
+
+        //public UserServicesController(ApplicationDbContext context, IRepository repository)
+
+        private IConfiguration _configuration;
+        public UserServicesController(ApplicationDbContext context, IRepository repository,IConfiguration configuration)
+
         {
             _context = context;
-            _repository = repository;           
+            _repository = repository;
+            _configuration = configuration;
         }
 
         public List<ServiceCategory> servicesList = new List<ServiceCategory>();
@@ -36,11 +45,12 @@ namespace NeedyBuddy.Controllers
             var userServicesViewModel = from p in _context.Users
                                         join q in _context.Service on p.Id equals q.User.Id
                                         join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
-                                        where p.Pincode.Equals(area) && r.ServiceCategoryId.Equals(Convert.ToInt64(serviceList))
+                                        where (p.Pincode.Equals(area)|| p.City.Equals(area))&& r.ServiceCategoryId.Equals(serviceList)
                                         select new UserServicesViewModel
                                         {
                                             Id = p.Id,
-                                            FirstName = p.UserName,
+                                            FirstName = p.FirstName,
+                                            LastName = p.LastName,
                                             ContactNumber = p.PhoneNumber,
                                             Email = p.Email,
                                             City = p.City,
@@ -56,42 +66,95 @@ namespace NeedyBuddy.Controllers
             return View(userServicesViewModel.ToList());
         }
 
-       
-        public IActionResult ServiceDetails(string userId="1")
+        //string userId = "c91daa76-275f-4c2e-9b58-f1e266ceedf7"
+        public IActionResult ServiceDetails(string usermodel)
         {
             List<DetailsViewModel> detailsViewModels = new List<DetailsViewModel>();
 
             List<ServiceDetailsViewModel> serviceDetailsViewModel = new List<ServiceDetailsViewModel>();
-            var detailsViewModel = from p in _context.Users where p.Id.Equals(userId)
+            var detailsViewModel1 = from p in _context.Users where p.Id.Equals(usermodel)
                                    select new DetailsViewModel
                                    {
                             Id = p.Id,
-                            FirstName = p.UserName,
+                            FirstName = p.FirstName,
+                            LastName = p.LastName,
                             ContactNumber = p.PhoneNumber,
                             Email = p.Email,
                             City = p.City,
                             Pincode = p.Pincode,
-                            Address = p.Address
+                            Address = p.Address,
+                            Description = p.Descriptions,
+                            serviceDetailsViewModel= new List<ServiceDetailsViewModel>()
                         };
-            
+            var detailsViewModel = detailsViewModel1.FirstOrDefault();
+            ViewBag.loggedinUserDetails = detailsViewModel;
+
+
+
             var servicedetails = from p in _context.Users
                                    join q in _context.Service on p.Id equals q.User.Id
                                    join r in _context.ServiceCategory on q.ServiceCategory.ServiceCategoryId equals r.ServiceCategoryId
-                                   where p.Id.Equals(userId)
+                                   where p.Id.Equals(usermodel)
                                    select new ServiceDetailsViewModel
                                    {
                                        ServiceName = r.ServiceName,
                                        Descriptions = q.Descriptions
-                                   };
-            foreach (ServiceDetailsViewModel sd in servicedetails.ToList())
-            {
-                detailsViewModels.SingleOrDefault().serviceDetailsViewModel.Add(sd);
-                //detailsViewModel.SingleOrDefault().serviceDetailsViewModel.SingleOrDefault().Descriptions = sd.Descriptions;
-                //detailsViewModel.SingleOrDefault().serviceDetailsViewModel.SingleOrDefault().ServiceName= sd.ServiceName;
-                detailsViewModels.SingleOrDefault().serviceDetailsViewModel.Add(new ServiceDetailsViewModel() { Descriptions = sd.Descriptions, ServiceName = sd.ServiceName });
-            }
 
-            return View(detailsViewModel.SingleOrDefault());
+                                   };
+            ViewBag.ServiceDetails = servicedetails.ToList();
+
+
+            var currentUserName = User.Identity.Name;
+            var use = _context.Users.Where(c => c.UserName == currentUserName).FirstOrDefault();
+            ViewBag.detailsForPopup = new AgentContactViewModel()
+            {
+                Name = use.FirstName,
+                Email = use.Email,
+                ContactNumber = use.PhoneNumber,
+                AgentEmail = detailsViewModel.Email
+            };
+
+            
+
+            return View();
+        }
+
+        public void getLoggedInUser()
+        {
+
+        }
+
+
+        //public ActionResult AgentContact(string Email)
+        //{
+        //    var currentUserName = User.Identity.Name;
+        //    var use = _context.Users.Where(c => c.UserName == currentUserName).FirstOrDefault();
+        //    AgentContactViewModel agentContactViewModel = new AgentContactViewModel()
+        //    {  Name = use.FirstName,
+        //       Email = use.Email,
+        //       ContactNumber = use.PhoneNumber,
+        //       AgentEmail = Email
+        //    };
+        //    return PartialView(agentContactViewModel);
+        //}
+        [HttpPost]
+        public ViewResult ServiceDetails(AgentContactViewModel agentContact)
+        {
+
+            MailTemplate objmail = new MailTemplate();
+            string apiKey = "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";
+            
+            var test = objmail.MailSend(agentContact.Email, agentContact.AgentEmail, "Comunity Service Help", "Hi volunteer, <br/> My name is "+ agentContact.Name + " and I stay near to your are. I urgently needs your help. Below are the contact information for your reference. <br/> Contact number: " + agentContact.ContactNumber + " <br/> Request Description: " + agentContact.RequestDescription, apiKey);
+            
+            return View();
+
+        public Task ContactAgent(AgentContactViewModel agentContactViewModel)
+        {
+            SendMail objmail = new SendMail();
+
+            string key = _configuration.GetSection("Appsettings").GetSection("Apikey").Value;
+            Task response = objmail.MailSend(agentContactViewModel.AgentEmail, key);
+            return response;
         }
         public void getServicesList()
         {
