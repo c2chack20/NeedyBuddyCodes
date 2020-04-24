@@ -12,9 +12,10 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        var ID = [];
         $('#nonSelectedServices li').click(function () {
             //Get the id of list items
-            var ID = $(this).attr('id');
+            ID.push($(this).attr('id'));
             //alert(ID);
             document.getElementById("mytext").value = ID;
             //alert(document.getElementById("mytext").value);
@@ -85,7 +86,11 @@
 
                 <ul class="tabs">
                     <li class="tab-link current" data-tab="Basic-detail">Basic Detail</li>
-                    <li class="tab-link" data-tab="Edu-detail">Service provides</li>
+                    @if (@ViewBag.loggedinUser.UserType=="Provider")
+                    {
+                        <li class="tab-link" data-tab="Edu-detail">Service provides</li>
+                    }
+
                     <li style="display:none">
                         @Html.ActionLink("Provided Services", "MyServicesDetails", "MyServices", new { @class = "tab-link" }, null)
                     </li>
