@@ -24,8 +24,10 @@ namespace NeedyBuddy.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
         public UserType UserType { get; set; }
-
-        public string Name { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
         public string PhoneNumber { get; set; }
     }
 
