@@ -223,7 +223,7 @@ namespace AspNetCoreMvcIdentity.Controllers
             string apiKey = _configuration.GetSection("Appsettings").GetSection("Apikey").Value;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber , EmailConfirmed = true, UserType = model.UserType };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber , EmailConfirmed = true, UserType = model.UserType,FirstName = model.FirstName, LastName = model.LastName };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
