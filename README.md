@@ -26,7 +26,7 @@ The Idea is to connect Needy with the potential nearby volunteers with proper fi
 
 ## Demo video
 
-[![Watch the video](https://github.com/c2chack20/NeedyBuddyCodes/blob/master/NeedyBuddy-Home.JPG)](https://youtu.be/j44gclTPy4c)
+[![Watch the video](https://github.com/c2chack20/NeedyBuddyCodes/blob/master/NeedyBuddy-Home.jpg)](https://youtu.be/j44gclTPy4c)
 
 ## Project FlowChart
 
