@@ -10,11 +10,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-<script type="text/javascript" >
-    $(document).ready(function() {
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ID = [];
         $('#nonSelectedServices li').click(function () {
             //Get the id of list items
-            var ID = $(this).attr('id');
+            ID.push($(this).attr('id'));
             //alert(ID);
             document.getElementById("mytext").value = ID;
             //alert(document.getElementById("mytext").value);
@@ -39,34 +40,34 @@
         });
     }
 
-    $('#btnSaveComments').click(function () {
-        var comments = $('#comment').val();
-        var selectedId = 12;
-        alert(comments)
-        $.ajax({
-            url: '<%: Url.Action("AddServices")%>',
-            data: { 'id': selectedId, 'comments': comments },
-            type: "post",
-            cache: false,
-            success: function (savingStatus) {
-                $("#hdnOrigComments").val($('#comment').val());
-                $('#lblCommentsNotification').text(savingStatus);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                $('#lblCommentsNotification').text("Error encountered while saving the comments.");
-            }
-        });
-    });
+    //$('#btnSaveComments').click(function () {
+    //    var comments = $('#comment').val();
+    //    var selectedId = 12;
+    //    alert(comments)
+    //    $.ajax({
+    //        url: '<%: Url.Action("AddServices")%>',
+    //        data: { 'id': selectedId, 'comments': comments },
+    //        type: "post",
+    //        cache: false,
+    //        success: function (savingStatus) {
+    //            $("#hdnOrigComments").val($('#comment').val());
+    //            $('#lblCommentsNotification').text(savingStatus);
+    //        },
+    //        error: function (xhr, ajaxOptions, thrownError) {
+    //            $('#lblCommentsNotification').text("Error encountered while saving the comments.");
+    //        }
+    //    });
+    //});
 
 
     $(function () {
         $("#profilesave").click(function () {
             alert("successfully updated");
-    });
+        });
     });
 </script>
 
-<p>@ViewBag.message</p>
+
 <div class="profile-main">
     <div class="profile-header">
         <div class="user-detail">
@@ -85,7 +86,11 @@
 
                 <ul class="tabs">
                     <li class="tab-link current" data-tab="Basic-detail">Basic Detail</li>
-                    <li class="tab-link" data-tab="Edu-detail">Service provides</li>
+                    @if (@ViewBag.loggedinUser.UserType=="Provider")
+                    {
+                        <li class="tab-link" data-tab="Edu-detail">Service provides</li>
+                    }
+
                     <li style="display:none">
                         @Html.ActionLink("Provided Services", "MyServicesDetails", "MyServices", new { @class = "tab-link" }, null)
                     </li>
@@ -115,8 +120,8 @@
                             <input type="text" value="@ViewBag.loggedinUser.City" name="City" class="form-control" placeholder="City" />
                         </div>
                         @*<div class="form-group">
-                    <input type="text" value="@ViewBag.loggedinUser.ProfileImage" name="ProfileImage" class="form-control" placeholder="your ProfileImage" />
-                </div>*@
+                                <input type="text" value="@ViewBag.loggedinUser.ProfileImage" name="ProfileImage" class="form-control" placeholder="your ProfileImage" />
+                            </div>*@
 
 
                     </div>
@@ -135,8 +140,8 @@
                             <input type="text" value="@ViewBag.loggedinUser.Pincode" class="form-control" name="PinCode" placeholder="Pincode" />
                         </div>
                         @*<div class="form-group">
-                    <input type="text" value="@ViewBag.loggedinUser.Descriptions" class="form-control" name="Descriptions" placeholder="Descriptions" />
-                </div>*@
+                                <input type="text" value="@ViewBag.loggedinUser.Descriptions" class="form-control" name="Descriptions" placeholder="Descriptions" />
+                            </div>*@
                     </div>
 
                 </div>
@@ -164,46 +169,43 @@
                         <ul id="nonSelectedServices" name="ntservices">
                             @foreach (var service in ViewBag.nonSelectedServicesList)
                             {
-
-                                <li id="@service.ServiceCategoryId">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="add" style="color:green;">&#10010;</a></li>
+                                <li id="@service.ServiceCategoryId" value="@service.ServiceName">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="add" style="color:green;">&#10010;</a></li>
                             }
                             @foreach (var service in ViewBag.selectedServicesList)
                             {
-
-                                <li id="@service.ServiceCategoryId" style="display:none;">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="add" style="color:green;">&#10010;</a></li>
+                                <li id="@service.ServiceCategoryId" value="@service.ServiceName" style="display:none;">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="add" style="color:green;">&#10010;</a></li>
                             }
                         </ul>
                     </div>
                 </div>
 
                 <br />
-                <form asp-action="AddServices">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4 class="text-danger">Selected Services</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="text-danger">Selected Services</h4>
 
-                            <ul id="selectedServices" name="services">
-                                @foreach (var service in ViewBag.selectedServicesList)
-                                {
-                                    <li id="@service.ServiceCategoryId">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="close" style="color:red;">&times;</a></li>
-                                }
-                                @foreach (var service in ViewBag.nonSelectedServicesList)
-                                {
-                                    <li id="@service.ServiceCategoryId" style="display:none;">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="close" style="color:red;">&times;</a></li>
-                                }
-                            </ul>
-                        </div>
-
+                        <ul id="selectedServices" name="selectedServices">
+                            @foreach (var service in ViewBag.selectedServicesList)
+                            {
+                                <li id="@service.ServiceCategoryId" value="@service.ServiceName">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="close" style="color:red;">&times;</a></li>
+                            }
+                            @foreach (var service in ViewBag.nonSelectedServicesList)
+                            {
+                                <li id="@service.ServiceCategoryId" value="@service.ServiceName" style="display:none;">@service.ServiceName &nbsp; &nbsp; &nbsp; &nbsp;<a class="close" style="color:red;">&times;</a></li>
+                            }
+                        </ul>
                     </div>
-                    <br />
+
+                </div>
+                <br />
 
                     @*<input type="text" name="description" placeholder="Description">*@
-                    <textarea class="form-control" rows="5" id="comment" name="description" placeholder="Add Service Description"></textarea>
+                    <textarea style="display:none" class="form-control" rows="5" id="comment" name="description" placeholder="Add Service Description"></textarea>
                     <input type="text" id="mytext" name="selectedvalue" style="display:none">
                     @*<button class="site-btn" asp-action="AddServices" asp-controller="Profile">Search</button>*@
                     <button type="submit" id="btnSaveComments" class="btn btn-primary bg-danger border-danger">Save</button>
                     @*<button class="site-btn" asp-action="MyServicesDetails" asp-controller="MyServices">details</button>*@
-                </form>
+                
 
 
             </div>
@@ -213,8 +215,12 @@
     <div style="clear: both;"></div>
 
 </div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+
         $('ul.tabs li').click(function () {
             var tab_id = $(this).attr('data-tab');
 
@@ -226,27 +232,42 @@
         });
 
         $('.close').click(function () {
-
             var parentId = $(this).parent().attr("id");
             this.parentElement.style.display = 'none';
             $('#nonSelectedServices #' + parentId).css("display", "inline-block");
-
         });
 
         $('.add').click(function () {
             var parentId = $(this).parent().attr("id");
             this.parentElement.style.display = 'none';
-
             $('#selectedServices #' + parentId).css("display", "inline-block");
-
         });
 
+        $('#btnSaveComments').click(function () {
+            var result = "";
+            var lis = document.getElementById("selectedServices").getElementsByTagName("li");
+            var opt;
 
+            for (var i = 0, iLen = lis.length; i < iLen; i++) {
+                opt = lis[i];
+                if ($(lis[i]).css("display") != "none") {
+                    result = result + opt.id + ",";
+                }
+            }
+            alert("Data saved successfully")
+            
+            $.ajax({
+                type: "POST",
+                url: "/Profile/SaveServices",
+                data: { selectedServiceIds: result },
+                dataType: "xml",
+            }).success(function (data) {
+                alert("Data saved successfully")
+            });
 
-
+            
+        })
     });
-
-
 </script>
 
 
