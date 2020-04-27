@@ -35,7 +35,8 @@ The Idea is to connect Needy with the potential nearby volunteers with proper fi
 ## Built with
 
 * [IBM Cloudant](https://cloud.ibm.com/catalog?search=cloudant#search_results) - Cloud hosting
-* [.Net Core](https://cloud.ibm.com/catalog?search=cloud%20functions#search_results) - Web Designing
+* [.Net Core](https://cloud.ibm.com/catalog?search=cloud%20functions#search_results) - Web Development
+* [Email Service](https://sendgrid.com/) - SendGrid
 
 ## Contributing
 
